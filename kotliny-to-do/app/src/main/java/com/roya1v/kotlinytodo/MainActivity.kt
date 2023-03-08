@@ -14,9 +14,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val items = mutableListOf<ToDo>()
+        val manager = ToDoPersistenceManager()
+        var list = manager.getAllToDos().toMutableList()
 
-        val adapter = ToDoAdapter(items)
+        val adapter = ToDoAdapter(list)
 
         binding.tvToDos.adapter = adapter
         binding.tvToDos.layoutManager = LinearLayoutManager(this)
@@ -24,8 +25,9 @@ class MainActivity : AppCompatActivity() {
         binding.bSubmit.setOnClickListener {
             val title = binding.tiToDoValue.text.toString()
             val todo = ToDo(title)
-            items.add(todo)
-            adapter.notifyItemInserted(items.size - 1)
+            list.add(todo)
+            adapter.notifyItemInserted(list.size - 1)
+            manager.save(todo)
         }
     }
 }
