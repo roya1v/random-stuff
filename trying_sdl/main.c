@@ -1,15 +1,12 @@
 #include <SDL.h>
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-
 int main()
 {
     SDL_Window *win = NULL;
     SDL_Renderer *ren = NULL;
 
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_CreateWindowAndRenderer(320, 640, 0, &win, &ren);
+    SDL_CreateWindowAndRenderer(640, 480, 0, &win, &ren);
 
     SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
     SDL_RenderClear(ren);
