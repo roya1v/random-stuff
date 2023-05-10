@@ -8,24 +8,11 @@ int draw_rect(SDL_Renderer *ren, int x, int y, int w, int h) {
     rect.h = h;
 
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
-    SDL_RenderDrawRect(ren, &rect);
-
-    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
-
-    SDL_RenderPresent(ren);
-
-    return 0;
-}
-
-int clear_rect(SDL_Renderer *ren, int x, int y, int w, int h) {
-    SDL_Rect rect;
-    rect.x = x;
-    rect.y = y;
-    rect.w = w;
-    rect.h = h;
-
-    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
-    SDL_RenderDrawRect(ren, &rect);
+    //SDL_RenderDrawRect(ren, &rect);
+    SDL_RenderDrawLine(ren, x, y, x+w, y);
+    SDL_RenderDrawLine(ren, x, y, x, y+h);
+    SDL_RenderDrawLine(ren, x+w, y, x+w, y+h);
+    SDL_RenderDrawLine(ren, x, y+w, x+w, y+h);
 
     SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 
