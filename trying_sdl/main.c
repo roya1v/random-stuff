@@ -1,5 +1,39 @@
 #include <SDL.h>
 
+int draw_rect(SDL_Renderer *ren, int x, int y, int w, int h) {
+    SDL_Rect rect;
+    rect.x = x;
+    rect.y = y;
+    rect.w = w;
+    rect.h = h;
+
+    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    SDL_RenderDrawRect(ren, &rect);
+
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+
+    SDL_RenderPresent(ren);
+
+    return 0;
+}
+
+int clear_rect(SDL_Renderer *ren, int x, int y, int w, int h) {
+    SDL_Rect rect;
+    rect.x = x;
+    rect.y = y;
+    rect.w = w;
+    rect.h = h;
+
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+    SDL_RenderDrawRect(ren, &rect);
+
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+
+    SDL_RenderPresent(ren);
+
+    return 0;
+}
+
 int main()
 {
     SDL_Window *win = NULL;
@@ -20,18 +54,13 @@ int main()
 
     SDL_RenderClear(ren);
 
-    SDL_Rect rect;
-    rect.x = 250;
-    rect.y = 150;
-    rect.w = 200;
-    rect.h = 200;
+    int x = 250;
+    int y = 150;
+    int w = 200;
+    int h = 200;
 
-    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
-    SDL_RenderDrawRect(ren, &rect);
+    draw_rect(ren, x, y, w, h);
 
-    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
-
-    SDL_RenderPresent(ren);
     // While application is running
     while (!quit)
     {
@@ -39,6 +68,31 @@ int main()
         
         while (SDL_PollEvent(&e) != 0) // poll for event
         {
+            
+            if(e.type == SDL_KEYDOWN) {
+                SDL_RenderClear(ren);
+
+                switch (e.key.keysym.sym) {
+                case SDLK_UP:
+                    y-=10;
+                    break;
+                case SDLK_DOWN:
+                    y+=10;
+                    break;
+                case SDLK_RIGHT:
+                    x+=10;
+                    break;
+                case SDLK_LEFT:
+                    x-=10;
+                    break;
+                default:
+                    printf("%i", e.key.keysym.sym);
+                    break;
+                }
+                draw_rect(ren, x, y, w, h);
+                //SDL_RenderClear(ren);
+            
+            }
             // User requests quit
             if (e.type == SDL_QUIT) // unless player manually quits
             {
