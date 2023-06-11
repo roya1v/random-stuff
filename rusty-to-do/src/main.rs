@@ -4,6 +4,7 @@ use axum::{Router, routing::{get, post}, Json, extract::{self, State}};
 
 mod todo;
 use todo::{ToDo, ToDoManager};
+use tokio::sync::Mutex;
 
 struct AppState {
     mngr: ToDoManager   
@@ -11,7 +12,7 @@ struct AppState {
 
 #[tokio::main]
 async fn main() {
-    let shared_state = Arc::new(AppState { mngr: ToDoManager::new("todo.db".to_string()) });
+    let shared_state = Arc::new(Mutex::new(AppState { mngr: ToDoManager::new("todo.db".to_string()) }));
 
     let app = Router::new()
     .route("/", get(list_all))
@@ -25,12 +26,11 @@ async fn main() {
         .unwrap();
 }
 
-// THIS IS BAAAAD
-
-async fn list_all(State(state): State<Arc<AppState>>) -> Json<Vec<ToDo>> {
-    Json(state.mngr.get_all().unwrap())
+async fn list_all(State(state): State<Arc<Mutex<AppState>>>) -> Json<Vec<ToDo>> {
+    
+    Json(state.lock().await.mngr.get_all().unwrap())
 }
 
-async fn new(State(state): State<Arc<AppState>>, extract::Json(payload): extract::Json<ToDo>) {
-    state.mngr.add(payload)
+async fn new(State(state): State<Arc<Mutex<AppState>>>, extract::Json(payload): extract::Json<ToDo>) {
+    state.lock().await.mngr.add(payload)
 }

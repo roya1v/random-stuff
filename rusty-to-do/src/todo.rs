@@ -1,24 +1,26 @@
 use serde::{Serialize, Deserialize};
 
 pub struct ToDoManager {
-    path: String
+    conn: rusqlite::Connection
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ToDo {
-    pub value: String
+    pub value: String,
+    pub is_done: bool
 }
 
 impl ToDoManager {
     pub fn new(path: String) -> Self {
-        ToDoManager { path: path }
+        let conn = rusqlite::Connection::open(path.as_str()).unwrap();
+        conn.execute("CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY, text TEXT, is_done BOOL);", ()).unwrap();
+        ToDoManager { conn }
     }
 
     pub fn get_all(&self) -> Option<Vec<ToDo>> {
-        let conn = rusqlite::Connection::open(self.path.as_str()).unwrap();
-        let mut stmt = conn.prepare("SELECT * FROM todos").unwrap();
+        let mut stmt = self.conn.prepare("SELECT * FROM todos").unwrap();
         let todo_iter = stmt.query_map([], |row| {
-            Ok(ToDo { value: row.get(1).unwrap()})
+            Ok(ToDo { value: row.get(1).unwrap(), is_done: row.get(2).unwrap()})
         }).unwrap();
         let mut result: Vec<ToDo> = vec![];
 
@@ -29,10 +31,9 @@ impl ToDoManager {
     }
 
     pub fn add(&self, to_do: ToDo) {
-        let conn = rusqlite::Connection::open(self.path.as_str()).unwrap();
-        conn.execute("CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY, text TEXT);", ()).unwrap();
-        conn.execute(
-        "INSERT INTO todos (text) VALUES(?1);",
-         (&to_do.value,)).unwrap();
+        
+        self.conn.execute(
+        "INSERT INTO todos (text, is_done) VALUES(?1, ?2);",
+         (&to_do.value, &to_do.is_done)).unwrap();
     }
 }
