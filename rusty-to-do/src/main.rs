@@ -1,10 +1,10 @@
 use std::sync::Arc;
-
 use axum::{Router, routing::{get, post}, Json, extract::{self, State}};
+use tokio::sync::Mutex;
 
 mod todo;
 use todo::{ToDo, ToDoManager};
-use tokio::sync::Mutex;
+
 
 struct AppState {
     mngr: ToDoManager   
@@ -27,7 +27,6 @@ async fn main() {
 }
 
 async fn list_all(State(state): State<Arc<Mutex<AppState>>>) -> Json<Vec<ToDo>> {
-    
     Json(state.lock().await.mngr.get_all().unwrap())
 }
 
