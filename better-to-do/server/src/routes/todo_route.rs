@@ -15,22 +15,21 @@ pub fn make_router() -> Router {
         .route("/todos", put(update_todo))
 }
 
-async fn get_all_todos() -> Json<Value> {
+async fn get_all_todos() -> Json<Vec<ToDoItem>> {
     let store = ToDoStore::new("todos.db").await.unwrap();
     let todos = store.get_all().await.unwrap();
-    let json = json!(todos);
-    Json(json!(json))
+    Json(todos)
 }
 
-async fn new_todo(Json(new_todo): Json<ToDoItem>) -> Json<Value> {
+async fn new_todo(Json(new_todo): Json<ToDoItem>) -> Json<ToDoItem> {
     let store = ToDoStore::new("todos.db").await.unwrap();
     let created_todo = store.new_todo(new_todo).await.unwrap();
 
-    Json(json!(created_todo))
+    Json(created_todo)
 }
 
-async fn update_todo(Json(updated_todo): Json<ToDoItem>) -> Json<Value> {
+async fn update_todo(Json(updated_todo): Json<ToDoItem>) -> Json<ToDoItem> {
     let store = ToDoStore::new("todos.db").await.unwrap();
     let new_todo = store.update_todo(updated_todo).await.unwrap();
-    Json(json!(new_todo))
+    Json(new_todo)
 }
