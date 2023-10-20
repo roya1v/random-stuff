@@ -3,8 +3,6 @@ use axum::{
      Json, Router,
 };
 
-use serde_json::{json, Value};
-
 use crate::core::todo_store::{ToDoStore, ToDoItem};
 
 pub fn make_router() -> Router {
