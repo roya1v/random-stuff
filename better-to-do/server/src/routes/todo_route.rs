@@ -2,6 +2,7 @@ use axum::{
     routing::{get, post, put},
      Json, Router,
 };
+use tower_http::cors::CorsLayer;
 
 use crate::core::todo_store::{ToDoStore, ToDoItem};
 
@@ -11,6 +12,7 @@ pub fn make_router() -> Router {
         .route("/todos", get(get_all_todos))
         .route("/todos", post(new_todo))
         .route("/todos", put(update_todo))
+    .layer(CorsLayer::permissive())
 }
 
 async fn get_all_todos() -> Json<Vec<ToDoItem>> {
