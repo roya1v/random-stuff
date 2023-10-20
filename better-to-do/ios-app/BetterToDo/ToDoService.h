@@ -9,5 +9,7 @@
 #import "ToDoItem.h"
 
 @interface ToDoService : NSObject
-- (void) fetchAll: (void (^_Nullable)( NSArray<ToDoItem *> * _Nullable  items, NSError * _Nullable  error))completionHandler;
+- (void)fetchAll:(void (^_Nullable)( NSArray<ToDoItem *> * _Nullable items, NSError * _Nullable  error))completionHandler;
+- (void)updateItem:(ToDoItem*_Nonnull)item
+              then:(void (^_Nullable)( ToDoItem * _Nullable  items, NSError * _Nullable  error))completionHandler;
 @end

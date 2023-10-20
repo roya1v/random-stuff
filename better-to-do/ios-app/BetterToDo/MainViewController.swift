@@ -18,18 +18,19 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "test")
 
 
-        service.fetchAll { items, error in
+        service.fetchAll { [weak self] items, error in
             print(items)
             print(error)
             guard let items, error == nil else {
                 return
             }
-            self.items = items
+            self?.items = items
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -50,5 +51,39 @@ extension MainViewController: UITableViewDataSource {
         }
         cellView.contentConfiguration = configuration
         return cellView
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        var item = items[indexPath.row]
+
+        let action = UIContextualAction(style: .normal,
+                                        title: nil) { [weak self] (action, view, completionHandler) in
+            guard let self else {
+                return
+            }
+            item.isDone = !item.isDone
+            self.service.update(item) { [weak self] _, error in
+                print(error)
+                guard error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+            completionHandler(true)
+        }
+        if item.isDone {
+            action.image = UIImage(systemName: "arrow.uturn.backward")
+            action.backgroundColor = .systemBlue
+        } else {
+            action.image = UIImage(systemName: "checkmark")
+            action.backgroundColor = .systemGreen
+        }
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }
