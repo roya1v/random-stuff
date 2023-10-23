@@ -32,18 +32,38 @@
 </script>
 
 <h1>Welcome to Better ToDo</h1>
-
-{#each items as item}
-  <div>
-    <button
-      on:click={() => {
-        toggle(item);
-      }}
-    >
-      {#if !item.is_done}
-        ✅
-      {/if}
-      {item.content}
-    </button>
+<div
+  class="container-fluid-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-centerd"
+>
+  <div class="list-group">
+    {#each items as item}
+      <label class="list-group-item d-flex gap-3">
+        
+        {#if item.is_done}
+        <input
+          class="form-check-input flex-shrink-0"
+          type="checkbox"
+          value=""
+          style="font-size: 1.375em;"
+          on:click={() => {toggle(item)}}
+          checked
+        />
+        {:else}
+        <input
+          class="form-check-input flex-shrink-0"
+          type="checkbox"
+          value=""
+          style="font-size: 1.375em;"
+          on:click={() => {toggle(item)}} 
+        />
+        {/if}
+        <span class="pt-1 form-checked-content">
+          <strong>
+            {item.content}
+          </strong>
+        </span>
+      </label>
+      <div />
+    {/each}
   </div>
-{/each}
+</div>
