@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import ToDoItem from "./ToDoItem.svelte";
 
   var items = [];
 
@@ -19,16 +20,6 @@
     const test = await (await res).json();
     items = test;
   }
-
-  async function updateItem(item) {
-    const res = await fetch("http://localhost:3000/todos", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item),
-    });
-
-    await res.json();
-  }
 </script>
 
 <div class="px-4 py-5 my-5 text-center">
@@ -43,35 +34,7 @@
       >
         <div class="list-group">
           {#each items as item}
-            <label class="list-group-item d-flex gap-3">
-              {#if item.is_done}
-                <input
-                  class="form-check-input flex-shrink-0"
-                  type="checkbox"
-                  value=""
-                  style="font-size: 1.375em;"
-                  on:click={() => {
-                    toggle(item);
-                  }}
-                  checked
-                />
-              {:else}
-                <input
-                  class="form-check-input flex-shrink-0"
-                  type="checkbox"
-                  value=""
-                  style="font-size: 1.375em;"
-                  on:click={() => {
-                    toggle(item);
-                  }}
-                />
-              {/if}
-              <span class="pt-1 form-checked-content">
-                <strong>
-                  {item.content}
-                </strong>
-              </span>
-            </label>
+          <ToDoItem item={item}></ToDoItem>
             <div />
           {/each}
         </div>
