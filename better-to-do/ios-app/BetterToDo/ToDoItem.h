@@ -12,8 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ToDoItem : NSObject
 
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, strong, nullable) NSNumber *id;
 @property (nonatomic, assign) BOOL isDone;
+
+-(NSDictionary*) toDictionary;
+-(id) initWithDict:(NSDictionary*) dictionary;
 
 @end
 

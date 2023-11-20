@@ -21,10 +21,7 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "test")
 
-
         service.fetchAll { [weak self] items, error in
-            print(items)
-            print(error)
             guard let items, error == nil else {
                 return
             }
@@ -33,6 +30,16 @@ class MainViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+
+    @IBAction func didTapAdd(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "New todo item",
+                                      message: "Enter the content of the new todo item",
+                                      preferredStyle: .alert)
+        alert.addTextField()
+        alert.addAction(.init(title: "Save", style: .default))
+        alert.addAction(.init(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
     }
 }
 
@@ -67,7 +74,6 @@ extension MainViewController: UITableViewDelegate {
             }
             item.isDone = !item.isDone
             self.service.update(item) { [weak self] _, error in
-                print(error)
                 guard error == nil else {
                     return
                 }

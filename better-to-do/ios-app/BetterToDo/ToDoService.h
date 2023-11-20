@@ -8,8 +8,20 @@
 #import <Foundation/Foundation.h>
 #import "ToDoItem.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^ToDoItemCompletionHandler)(ToDoItem * _Nullable  items,
+                                          NSError * _Nullable  error);
+
+typedef void (^ToDoItemsCompletionHandler)( NSArray<ToDoItem *> * _Nullable items,
+                                            NSError * _Nullable  error);
+
 @interface ToDoService : NSObject
-- (void)fetchAll:(void (^_Nullable)( NSArray<ToDoItem *> * _Nullable items, NSError * _Nullable  error))completionHandler;
-- (void)updateItem:(ToDoItem*_Nonnull)item
-              then:(void (^_Nullable)( ToDoItem * _Nullable  items, NSError * _Nullable  error))completionHandler;
+- (void)fetchAll:(ToDoItemsCompletionHandler)completionHandler;
+- (void)updateItem:(ToDoItem*)item
+              then:(ToDoItemCompletionHandler)completionHandler;
+- (void)newItem:(ToDoItem*)item
+           then:(ToDoItemCompletionHandler)completionHandler;
 @end
+
+NS_ASSUME_NONNULL_END
