@@ -1,0 +1,30 @@
+{
+  "schemaNamespace" : "RickAndMortyQueries",
+  "input" : {
+    "operationSearchPaths" : [
+      "Operations/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "Schemas/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./Sources",
+      "moduleType" : {
+          "embeddedInTarget": {
+                         "name": "RickAndMortyQueries",
+                         "accessModifier": "public"
+                     }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}
