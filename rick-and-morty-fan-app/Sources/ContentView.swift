@@ -15,7 +15,17 @@ struct ContentView: View {
     }
 
     var body: some View {
-        CharacterListView(store: characterListStore)
+        TabView {
+            CharacterListView(store: characterListStore)
+                .tabItem {
+                    Label("Characters", systemImage: "person")
+                }
+            Text("Hello world!")
+                .tabItem {
+                    Label("Episodes", systemImage: "person")
+                }
+        }
+
     }
 }
 

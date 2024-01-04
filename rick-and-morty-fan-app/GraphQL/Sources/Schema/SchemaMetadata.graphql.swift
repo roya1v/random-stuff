@@ -32,8 +32,9 @@ public extension RickAndMortyQueries {
     public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
       case "Query": return RickAndMortyQueries.Objects.Query
-      case "Characters": return RickAndMortyQueries.Objects.Characters
       case "Character": return RickAndMortyQueries.Objects.Character
+      case "Episode": return RickAndMortyQueries.Objects.Episode
+      case "Characters": return RickAndMortyQueries.Objects.Characters
       default: return nil
       }
     }

@@ -1,8 +1,13 @@
 query CharacterList($page: Int) {
   characters(page: $page) {
     results {
+      id
       name
       image
+      gender
+      species
+      status
+      type
     }
   }
 }
