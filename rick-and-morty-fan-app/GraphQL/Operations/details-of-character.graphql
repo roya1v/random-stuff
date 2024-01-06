@@ -7,6 +7,12 @@ query CharacterDetails($id: ID!) {
     species
     status
     type
+    origin {
+      name
+    }
+    location {
+      name
+    }
     episode {
       id
       name

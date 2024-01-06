@@ -8,7 +8,7 @@ public extension RickAndMortyQueries {
     public static let operationName: String = "CharacterDetails"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query CharacterDetails($id: ID!) { character(id: $id) { __typename id name image gender species status type episode { __typename id name episode } } }"#
+        #"query CharacterDetails($id: ID!) { character(id: $id) { __typename id name image gender species status type origin { __typename name } location { __typename name } episode { __typename id name episode } } }"#
       ))
 
     public var id: ID
@@ -48,6 +48,8 @@ public extension RickAndMortyQueries {
           .field("species", String?.self),
           .field("status", String?.self),
           .field("type", String?.self),
+          .field("origin", Origin?.self),
+          .field("location", Location?.self),
           .field("episode", [Episode?].self),
         ] }
 
@@ -66,8 +68,46 @@ public extension RickAndMortyQueries {
         public var status: String? { __data["status"] }
         /// The type or subspecies of the character.
         public var type: String? { __data["type"] }
+        /// The character's origin location
+        public var origin: Origin? { __data["origin"] }
+        /// The character's last known location
+        public var location: Location? { __data["location"] }
         /// Episodes in which this character appeared.
         public var episode: [Episode?] { __data["episode"] }
+
+        /// Character.Origin
+        ///
+        /// Parent Type: `Location`
+        public struct Origin: RickAndMortyQueries.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { RickAndMortyQueries.Objects.Location }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("name", String?.self),
+          ] }
+
+          /// The name of the location.
+          public var name: String? { __data["name"] }
+        }
+
+        /// Character.Location
+        ///
+        /// Parent Type: `Location`
+        public struct Location: RickAndMortyQueries.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { RickAndMortyQueries.Objects.Location }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("name", String?.self),
+          ] }
+
+          /// The name of the location.
+          public var name: String? { __data["name"] }
+        }
 
         /// Character.Episode
         ///

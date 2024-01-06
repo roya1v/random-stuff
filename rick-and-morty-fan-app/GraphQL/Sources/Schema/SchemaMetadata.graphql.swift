@@ -33,6 +33,7 @@ public extension RickAndMortyQueries {
       switch typename {
       case "Query": return RickAndMortyQueries.Objects.Query
       case "Character": return RickAndMortyQueries.Objects.Character
+      case "Location": return RickAndMortyQueries.Objects.Location
       case "Episode": return RickAndMortyQueries.Objects.Episode
       case "Characters": return RickAndMortyQueries.Objects.Characters
       default: return nil

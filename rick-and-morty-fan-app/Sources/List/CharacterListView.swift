@@ -12,8 +12,9 @@ struct CharacterListView: View {
 
     let store: StoreOf<CharacterListFeature>
 
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             WithViewStore(self.store, observe: { $0 }) { viewStore in
                 List {
                     ForEach(viewStore.characters, id: \.self) { character in
@@ -29,6 +30,9 @@ struct CharacterListView: View {
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Characters")
+            .navigationDestination(for: String.self) { id in
+                CharacterDetailView(characterID: id)
+            }
         }
 
     }
@@ -39,6 +43,7 @@ struct CharacterCellView: View {
     let character: RickAndMortyQueries.CharacterListQuery.Data.Characters.Result
 
     var body: some View {
+        NavigationLink(value: character.id) {
             HStack {
                 AsyncImage(url: URL(string: character.image!)!) { image in
                     image
@@ -63,9 +68,9 @@ struct CharacterCellView: View {
                         .foregroundStyle(Color.color3)
                 }
                 .frame(maxWidth: .infinity)
-
+            }
         }
-            .listRowBackground(Color.color1)
+        .listRowBackground(Color.color1)
     }
 }
 
