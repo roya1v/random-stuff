@@ -47,7 +47,6 @@ class LogicThing {
   }
 
   Uri _getGithubDownloadLink(Uri originalLink) {
-    print(originalLink.pathSegments);
     final author =
         originalLink.pathSegments[originalLink.pathSegments.length - 2];
     final repo = originalLink.pathSegments.last;

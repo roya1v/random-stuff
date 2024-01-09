@@ -17,6 +17,7 @@ dependencies:
   archive: ^3.4.10
   markdown_widget: ^2.3.2+3
   sqflite: ^2.3.0
+  flutter_bloc: ^8.0.0
 
 dev_dependencies:
   flutter_test:
