@@ -11,6 +11,18 @@ final class MainViewController: UIViewController {
 
     private let card = ProfileCardView()
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+
+        tabBarItem = UITabBarItem(title: nil,
+                                  image: UIImage(systemName: "flame.fill"),
+                                  tag: 0)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +30,8 @@ final class MainViewController: UIViewController {
     }
 
     private func setupView() {
+        view.backgroundColor = .white
+
         card.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(card)
         NSLayoutConstraint.activate([
@@ -31,9 +45,7 @@ final class MainViewController: UIViewController {
         card.addGestureRecognizer(gestureDetector)
         gestureDetector.addTarget(self, action: #selector(cardWasPanned))
 
-        tabBarItem = UITabBarItem(title: nil,
-                                  image: UIImage(systemName: "flame.fill"),
-                                  tag: 0)
+
     }
 
     @objc func cardWasPanned(_ sender: UIPanGestureRecognizer) {

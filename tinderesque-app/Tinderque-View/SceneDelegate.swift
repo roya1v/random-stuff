@@ -15,22 +15,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-
-        let tabBarVC = UITabBarController()
-        tabBarVC.viewControllers = [MainViewController()]
-        window.rootViewController = tabBarVC
-
+        window.rootViewController = getRootViewController()
 
         self.window = window
         window.makeKeyAndVisible()
     }
+
+    fileprivate func getRootViewController() -> UIViewController {
+        let tabBarVC = UITabBarController()
+        tabBarVC.viewControllers = [
+            MainViewController(),
+            ChatsViewController()
+        ]
+        return tabBarVC
+    }
 }
 
 #Preview {
-    let tabBarVC = UITabBarController()
-    tabBarVC.viewControllers = [
-        MainViewController(),
-        ChatsViewController()
-    ]
-    return tabBarVC
+    SceneDelegate().getRootViewController()
 }

@@ -9,11 +9,15 @@ import UIKit
 
 class ChatsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init() {
+        super.init(nibName: nil, bundle: nil)
 
         tabBarItem = UITabBarItem(title: nil,
                                   image: UIImage(systemName: "bubble.fill"),
                                   tag: 1)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
