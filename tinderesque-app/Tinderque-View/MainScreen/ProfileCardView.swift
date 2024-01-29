@@ -65,7 +65,6 @@ class ProfileCardView: UIView {
     }
 
     @objc func onTap(_ sender: UITapGestureRecognizer) {
-        print()
         let tapLocation = sender.location(in: self)
         if tapLocation.x > frame.width / 2 {
             currentImage += 1
@@ -79,9 +78,4 @@ class ProfileCardView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-#Preview {
-    let vc = MainViewController()
-    return vc
 }
