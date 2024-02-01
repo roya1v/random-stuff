@@ -28,13 +28,15 @@ final class ChatsViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
 
         tableView.register(ChatTableViewCell.self,
                            forCellReuseIdentifier: "test")
         tableView.dataSource = self
+
+        tableView.rowHeight = 96
     }
 
     required init?(coder: NSCoder) {
@@ -47,14 +49,21 @@ extension ChatsViewController: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Hello")
-        return 5
+        15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "test", for: indexPath) as? ChatTableViewCell else {
             return UITableViewCell()
         }
+
+        cell.name = "Test"
+        cell.lastMessage = "Lorem ipsum blablablabla"
+        cell.userImage = ProfileModel.mock().images.randomElement()
         return cell
     }
+}
+
+#Preview {
+    ChatsViewController()
 }

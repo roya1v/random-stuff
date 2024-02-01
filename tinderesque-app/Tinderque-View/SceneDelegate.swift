@@ -27,7 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             MainViewController(),
             ChatsViewController()
         ]
-        return tabBarVC
+        let navVC = UINavigationController(rootViewController: tabBarVC)
+        return navVC
     }
 }
 

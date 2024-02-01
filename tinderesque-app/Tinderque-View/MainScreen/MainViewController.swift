@@ -37,7 +37,7 @@ final class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             card.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             card.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            card.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40.0),
+            card.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             card.widthAnchor.constraint(equalTo: card.heightAnchor, multiplier: 8 / 13)
         ])
 
