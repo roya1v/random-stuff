@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: Todo collection's scheme
+  version: 1.0.0
+paths:
+  /todos:
+    get:
+      summary: Get all todos
+      description: Get all existing todos as a list.
+      operationId: getToDos
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToDos'
+    post:
+      summary: Create a new todo
+      description: Create a new todo
+      operationId: addToDo
+      requestBody:
+        description: Create a new todo
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToDo'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToDo'  
+    put:
+      summary: Update an existing todo.
+      description: Update an existing todo.
+      operationId: updateToDo
+      requestBody:
+        description: The new todo content
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToDo'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToDo'
+  /todos/{id}/delete:
+    delete:
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Delete an existing todo.
+      description: Delete an existing todo.
+      operationId: deleteToDo
+      responses:
+        '200':
+         description: Successful operation
+        
+components:
+  schemas:
+    ToDos:
+      type: array
+      items:
+        type: object
+        required:
+          - id
+          - content
+          - is_done
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 10
+          content:
+            type: string
+            example: Buy stuff
+          is_done:
+            type: boolean
+    ToDo:
+      required:
+        - content
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        content:
+          type: string
+          example: Buy stuff
+        is_done:
+          type: boolean
+  requestBodies:
+    ToDo:
+      description: ToDo that needs to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToDo'
