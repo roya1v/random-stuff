@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011E708B2ADFD925003E92F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011E708A2ADFD925003E92F5 /* AppDelegate.swift */; };
-		011E708D2ADFD925003E92F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011E708C2ADFD925003E92F5 /* SceneDelegate.swift */; };
 		011E708F2ADFD925003E92F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011E708E2ADFD925003E92F5 /* MainViewController.swift */; };
 		011E70922ADFD925003E92F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011E70902ADFD925003E92F5 /* Main.storyboard */; };
 		011E70942ADFD926003E92F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011E70932ADFD926003E92F5 /* Assets.xcassets */; };
 		011E70972ADFD926003E92F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011E70952ADFD926003E92F5 /* LaunchScreen.storyboard */; };
 		011E70A22AE015E3003E92F5 /* ToDoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E70A12AE015E3003E92F5 /* ToDoService.m */; };
 		011E70A62AE01C08003E92F5 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E70A52AE01C08003E92F5 /* ToDoItem.m */; };
+		01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B682B7969D800D7D7CF /* AppDelegate.m */; };
+		01524B6B2B796A1B00D7D7CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B6A2B796A1B00D7D7CF /* main.m */; };
+		01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		011E70872ADFD925003E92F5 /* BetterToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		011E708A2ADFD925003E92F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		011E708C2ADFD925003E92F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		011E708E2ADFD925003E92F5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		011E70912ADFD925003E92F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		011E70932ADFD926003E92F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,6 +30,11 @@
 		011E70A32AE0160E003E92F5 /* ToDoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoService.h; sourceTree = "<group>"; };
 		011E70A42AE01C08003E92F5 /* ToDoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		011E70A52AE01C08003E92F5 /* ToDoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
+		01524B672B7969A200D7D7CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		01524B682B7969D800D7D7CF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		01524B6A2B796A1B00D7D7CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		01524B6C2B796A3700D7D7CF /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +67,10 @@
 		011E70892ADFD925003E92F5 /* BetterToDo */ = {
 			isa = PBXGroup;
 			children = (
-				011E708A2ADFD925003E92F5 /* AppDelegate.swift */,
-				011E708C2ADFD925003E92F5 /* SceneDelegate.swift */,
+				01524B672B7969A200D7D7CF /* AppDelegate.h */,
+				01524B682B7969D800D7D7CF /* AppDelegate.m */,
+				01524B6C2B796A3700D7D7CF /* SceneDelegate.h */,
+				01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */,
 				011E708E2ADFD925003E92F5 /* MainViewController.swift */,
 				011E70A02AE015E2003E92F5 /* BetterToDo-Bridging-Header.h */,
 				011E70A32AE0160E003E92F5 /* ToDoService.h */,
@@ -75,6 +81,7 @@
 				011E70932ADFD926003E92F5 /* Assets.xcassets */,
 				011E70952ADFD926003E92F5 /* LaunchScreen.storyboard */,
 				011E70982ADFD926003E92F5 /* Info.plist */,
+				01524B6A2B796A1B00D7D7CF /* main.m */,
 			);
 			path = BetterToDo;
 			sourceTree = "<group>";
@@ -152,10 +159,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				011E70A62AE01C08003E92F5 /* ToDoItem.m in Sources */,
+				01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */,
 				011E708F2ADFD925003E92F5 /* MainViewController.swift in Sources */,
+				01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */,
 				011E70A22AE015E3003E92F5 /* ToDoService.m in Sources */,
-				011E708B2ADFD925003E92F5 /* AppDelegate.swift in Sources */,
-				011E708D2ADFD925003E92F5 /* SceneDelegate.swift in Sources */,
+				01524B6B2B796A1B00D7D7CF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
