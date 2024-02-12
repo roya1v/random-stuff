@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011E708F2ADFD925003E92F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011E708E2ADFD925003E92F5 /* MainViewController.swift */; };
 		011E70922ADFD925003E92F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011E70902ADFD925003E92F5 /* Main.storyboard */; };
 		011E70942ADFD926003E92F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011E70932ADFD926003E92F5 /* Assets.xcassets */; };
 		011E70972ADFD926003E92F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011E70952ADFD926003E92F5 /* LaunchScreen.storyboard */; };
@@ -16,16 +15,15 @@
 		01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B682B7969D800D7D7CF /* AppDelegate.m */; };
 		01524B6B2B796A1B00D7D7CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B6A2B796A1B00D7D7CF /* main.m */; };
 		01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */; };
+		01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D22C6D2B7A223B0066B049 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		011E70872ADFD925003E92F5 /* BetterToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		011E708E2ADFD925003E92F5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		011E70912ADFD925003E92F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		011E70932ADFD926003E92F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		011E70962ADFD926003E92F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		011E70982ADFD926003E92F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		011E70A02AE015E2003E92F5 /* BetterToDo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BetterToDo-Bridging-Header.h"; sourceTree = "<group>"; };
 		011E70A12AE015E3003E92F5 /* ToDoService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoService.m; sourceTree = "<group>"; };
 		011E70A32AE0160E003E92F5 /* ToDoService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoService.h; sourceTree = "<group>"; };
 		011E70A42AE01C08003E92F5 /* ToDoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
@@ -35,6 +33,8 @@
 		01524B6A2B796A1B00D7D7CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		01524B6C2B796A3700D7D7CF /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		01D22C6C2B7A223B0066B049 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		01D22C6D2B7A223B0066B049 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +71,8 @@
 				01524B682B7969D800D7D7CF /* AppDelegate.m */,
 				01524B6C2B796A3700D7D7CF /* SceneDelegate.h */,
 				01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */,
-				011E708E2ADFD925003E92F5 /* MainViewController.swift */,
-				011E70A02AE015E2003E92F5 /* BetterToDo-Bridging-Header.h */,
+				01D22C6C2B7A223B0066B049 /* MainViewController.h */,
+				01D22C6D2B7A223B0066B049 /* MainViewController.m */,
 				011E70A32AE0160E003E92F5 /* ToDoService.h */,
 				011E70A12AE015E3003E92F5 /* ToDoService.m */,
 				011E70A42AE01C08003E92F5 /* ToDoItem.h */,
@@ -160,8 +160,8 @@
 			files = (
 				011E70A62AE01C08003E92F5 /* ToDoItem.m in Sources */,
 				01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */,
-				011E708F2ADFD925003E92F5 /* MainViewController.swift in Sources */,
 				01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */,
+				01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */,
 				011E70A22AE015E3003E92F5 /* ToDoService.m in Sources */,
 				01524B6B2B796A1B00D7D7CF /* main.m in Sources */,
 			);
