@@ -6,37 +6,6 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
-
-struct CharacterListView: View {
-
-    let store: StoreOf<CharacterListFeature>
-
-
-    var body: some View {
-        NavigationStack {
-            WithViewStore(self.store, observe: { $0 }) { viewStore in
-                List {
-                    ForEach(viewStore.characters, id: \.self) { character in
-                        CharacterCellView(character: character)
-                    }
-                    ProgressView()
-                        .listRowBackground(Color.color1)
-                        .onAppear {
-                            viewStore.send(.loadMore)
-                        }
-                }
-                .background(Color.color2)
-                .scrollContentBackground(.hidden)
-            }
-            .navigationTitle("Characters")
-            .navigationDestination(for: String.self) { id in
-                CharacterDetailView(characterID: id)
-            }
-        }
-
-    }
-}
 
 struct CharacterCellView: View {
 
@@ -72,10 +41,4 @@ struct CharacterCellView: View {
         }
         .listRowBackground(Color.color1)
     }
-}
-
-#Preview {
-    CharacterListView(store: Store(initialState: CharacterListFeature.State(), reducer: {
-        CharacterListFeature()
-    }))
 }

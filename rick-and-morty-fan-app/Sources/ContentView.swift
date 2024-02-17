@@ -6,17 +6,12 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct ContentView: View {
 
-    let characterListStore = Store(initialState: CharacterListFeature.State()) {
-        CharacterListFeature()
-    }
-
     var body: some View {
         TabView {
-            CharacterListView(store: characterListStore)
+            CharacterListScreen()
                 .tabItem {
                     Label("Characters", systemImage: "person")
                 }
@@ -25,7 +20,6 @@ struct ContentView: View {
                     Label("Episodes", systemImage: "person")
                 }
         }
-
     }
 }
 
