@@ -34,6 +34,8 @@ final class ChatsViewController: UIViewController {
 
         tableView.register(ChatTableViewCell.self,
                            forCellReuseIdentifier: "test")
+        tableView.register(MatchesTableViewCell.self,
+                           forCellReuseIdentifier: "test2")
         tableView.dataSource = self
 
         tableView.rowHeight = 96
@@ -53,6 +55,13 @@ extension ChatsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "test2", for: indexPath) as? MatchesTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "test", for: indexPath) as? ChatTableViewCell else {
             return UITableViewCell()
         }
