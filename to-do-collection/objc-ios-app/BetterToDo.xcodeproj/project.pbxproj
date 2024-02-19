@@ -15,6 +15,7 @@
 		01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B682B7969D800D7D7CF /* AppDelegate.m */; };
 		01524B6B2B796A1B00D7D7CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B6A2B796A1B00D7D7CF /* main.m */; };
 		01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */; };
+		016F0B222B83D60A00C486B0 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016F0B212B83D60A00C486B0 /* NewItemViewController.m */; };
 		01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D22C6D2B7A223B0066B049 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,8 @@
 		01524B6A2B796A1B00D7D7CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		01524B6C2B796A3700D7D7CF /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		016F0B202B83D60A00C486B0 /* NewItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
+		016F0B212B83D60A00C486B0 /* NewItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 		01D22C6C2B7A223B0066B049 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		01D22C6D2B7A223B0066B049 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +76,8 @@
 				01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */,
 				01D22C6C2B7A223B0066B049 /* MainViewController.h */,
 				01D22C6D2B7A223B0066B049 /* MainViewController.m */,
+				016F0B202B83D60A00C486B0 /* NewItemViewController.h */,
+				016F0B212B83D60A00C486B0 /* NewItemViewController.m */,
 				011E70A32AE0160E003E92F5 /* ToDoService.h */,
 				011E70A12AE015E3003E92F5 /* ToDoService.m */,
 				011E70A42AE01C08003E92F5 /* ToDoItem.h */,
@@ -162,6 +167,7 @@
 				01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */,
 				01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */,
 				01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */,
+				016F0B222B83D60A00C486B0 /* NewItemViewController.m in Sources */,
 				011E70A22AE015E3003E92F5 /* ToDoService.m in Sources */,
 				01524B6B2B796A1B00D7D7CF /* main.m in Sources */,
 			);

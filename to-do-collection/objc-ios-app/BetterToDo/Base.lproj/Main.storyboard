@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" id="OD9-DF-nwt">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="0Js-Lk-NRX">
                             <connections>
-                                <action selector="didTapAdd:" destination="BYZ-38-t0r" id="QV4-wz-GJ1"/>
+                                <segue destination="hxM-FW-aA4" kind="show" id="Lk7-VC-XrR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -44,6 +44,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947.32824427480909" y="3.5211267605633805"/>
+        </scene>
+        <!--New Item View Controller-->
+        <scene sceneID="JwJ-dI-Hmw">
+            <objects>
+                <viewController id="hxM-FW-aA4" customClass="NewItemViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bPh-Xu-mLm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55m-gs-33X">
+                                <rect key="frame" x="12" y="115" width="369" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ds-OI-rcB">
+                                <rect key="frame" x="159.33333333333334" y="161" width="74.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Create"/>
+                                <connections>
+                                    <action selector="didTapCreate:" destination="hxM-FW-aA4" eventType="touchUpInside" id="O0A-gc-ehf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NQt-im-Vjn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3ds-OI-rcB" firstAttribute="top" secondItem="55m-gs-33X" secondAttribute="bottom" constant="12" id="9ar-8Y-Rb0"/>
+                            <constraint firstItem="NQt-im-Vjn" firstAttribute="trailing" secondItem="55m-gs-33X" secondAttribute="trailing" constant="12" id="fed-M2-nUb"/>
+                            <constraint firstItem="3ds-OI-rcB" firstAttribute="centerX" secondItem="55m-gs-33X" secondAttribute="centerX" id="t7W-d4-nCx"/>
+                            <constraint firstItem="55m-gs-33X" firstAttribute="leading" secondItem="NQt-im-Vjn" secondAttribute="leading" constant="12" id="vpQ-ek-c0R"/>
+                            <constraint firstItem="55m-gs-33X" firstAttribute="top" secondItem="NQt-im-Vjn" secondAttribute="top" constant="12" id="yTt-6T-Jku"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="o8o-yP-IPF"/>
+                    <connections>
+                        <outlet property="itemContentTextField" destination="55m-gs-33X" id="BPF-pi-1ZE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6Q-2D-9jK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1946" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IKR-oX-Lcs">

@@ -25,6 +25,10 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"test"];
 
     self.service = [[ToDoService alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 
     [self.service fetchAll:^(NSArray<ToDoItem *> *items, NSError *error) {
         if (error == nil) {
@@ -34,16 +38,6 @@
             });
         }
     }];
-}
-
-- (IBAction)didTapAdd:(UIBarButtonItem *)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New todo item"
-                                                                   message:@"Enter the content of the new todo item"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addTextFieldWithConfigurationHandler:nil];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
