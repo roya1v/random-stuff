@@ -72,15 +72,15 @@ class MatchesTableViewCell: UITableViewCell {
 
 extension MatchesTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        15
+        ProfileService.shared.getProfiles().count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "test2", for: indexPath) as? MatchCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.imageView.image = ProfileModel.mock().images.randomElement()
-        cell.nameLabel.text = "Lorem"
+        cell.imageView.image = ProfileService.shared.getImages().first
+        cell.nameLabel.text = ProfileService.shared.getProfiles()[indexPath.row].name
         return cell
     }
 }

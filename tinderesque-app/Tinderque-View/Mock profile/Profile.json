@@ -1,5 +1,7 @@
-{
-    "name": "Demo",
-    "age": 22,
-    "distance": 24
-}
+[
+    {
+        "name": "Demo",
+        "age": 22,
+        "distance": 24
+    }
+]

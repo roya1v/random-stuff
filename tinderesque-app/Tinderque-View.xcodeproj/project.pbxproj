@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010D0BCF2B60454300794EA7 /* Profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 010D0BCE2B60454300794EA7 /* Profile.json */; };
-		010D0BD22B6045FF00794EA7 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D0BD12B6045FF00794EA7 /* ProfileModel.swift */; };
+		010D0BD22B6045FF00794EA7 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D0BD12B6045FF00794EA7 /* ProfileService.swift */; };
 		010D0BD82B60466D00794EA7 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010D0BD32B60466D00794EA7 /* 3.jpg */; };
 		010D0BD92B60466D00794EA7 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010D0BD42B60466D00794EA7 /* 2.jpg */; };
 		010D0BDA2B60466D00794EA7 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010D0BD52B60466D00794EA7 /* 1.jpg */; };
@@ -28,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		010D0BCE2B60454300794EA7 /* Profile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Profile.json; sourceTree = "<group>"; };
-		010D0BD12B6045FF00794EA7 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		010D0BD12B6045FF00794EA7 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		010D0BD32B60466D00794EA7 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		010D0BD42B60466D00794EA7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		010D0BD52B60466D00794EA7 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 				01FC5F0A2B5F0D0F00C318D8 /* SceneDelegate.swift */,
 				01F4B80B2B61B4E300B109E8 /* MainScreen */,
 				01F4B80C2B61B4FB00B109E8 /* ChatsScreen */,
-				010D0BD12B6045FF00794EA7 /* ProfileModel.swift */,
+				010D0BD12B6045FF00794EA7 /* ProfileService.swift */,
 				01FC5F112B5F0D1000C318D8 /* Assets.xcassets */,
 				01FC5F132B5F0D1000C318D8 /* LaunchScreen.storyboard */,
 				01FC5F162B5F0D1000C318D8 /* Info.plist */,
@@ -216,7 +216,7 @@
 				01F4B80E2B61B51500B109E8 /* ChatsViewController.swift in Sources */,
 				01FBEAC02B68264400A89F98 /* ChatTableViewCell.swift in Sources */,
 				010D0BE02B604AA300794EA7 /* ProfileImageIndicatorView.swift in Sources */,
-				010D0BD22B6045FF00794EA7 /* ProfileModel.swift in Sources */,
+				010D0BD22B6045FF00794EA7 /* ProfileService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

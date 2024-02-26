@@ -70,7 +70,7 @@ extension ChatsViewController: UITableViewDataSource {
 
         cell.name = "Test"
         cell.lastMessage = "Lorem ipsum blablablabla"
-        cell.userImage = ProfileModel.mock().images.randomElement()
+        cell.userImage = ProfileService.shared.getImages().first
         return cell
     }
 }

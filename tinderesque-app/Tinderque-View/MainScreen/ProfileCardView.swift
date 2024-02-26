@@ -9,18 +9,19 @@ import UIKit
 
 class ProfileCardView: UIView {
 
-    let profile = ProfileModel.mock()
+    let profile = ProfileService.shared.getProfiles().first
+    let images = ProfileService.shared.getImages()
 
-    lazy var indicator = ProfileImageIndicatorView(numberOfSections: profile.images.count)
+    lazy var indicator = ProfileImageIndicatorView(numberOfSections: images.count)
     var currentImage: Int {
         get {
             indicator.current
         }
         set {
-            if newValue >= profile.images.count {
+            if newValue >= images.count {
                 indicator.current = 0
             } else if newValue < 0 {
-                indicator.current = profile.images.count - 1
+                indicator.current = images.count - 1
             } else {
                 indicator.current = newValue
             }
@@ -41,7 +42,7 @@ class ProfileCardView: UIView {
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
-        imageView.image = profile.images[0]
+        imageView.image = images[0]
         imageView.contentMode = .scaleAspectFill
 
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -71,7 +72,7 @@ class ProfileCardView: UIView {
         } else {
             currentImage -= 1
         }
-        imageView.image = profile.images[currentImage]
+        imageView.image = images[currentImage]
         indicator.current = currentImage
     }
 
