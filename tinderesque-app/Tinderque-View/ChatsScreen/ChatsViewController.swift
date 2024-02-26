@@ -37,8 +37,10 @@ final class ChatsViewController: UIViewController {
         tableView.register(MatchesTableViewCell.self,
                            forCellReuseIdentifier: "test2")
         tableView.dataSource = self
+        tableView.delegate = self
 
-        tableView.rowHeight = 96
+
+        //tableView.rowHeight = 96
     }
 
     required init?(coder: NSCoder) {
@@ -70,6 +72,15 @@ extension ChatsViewController: UITableViewDataSource {
         cell.lastMessage = "Lorem ipsum blablablabla"
         cell.userImage = ProfileModel.mock().images.randomElement()
         return cell
+    }
+}
+
+extension ChatsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 192.0
+        }
+        return 96.0
     }
 }
 
