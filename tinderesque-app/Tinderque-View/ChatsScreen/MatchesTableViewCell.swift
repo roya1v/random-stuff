@@ -12,7 +12,7 @@ class MatchesTableViewCell: UITableViewCell {
     lazy var layout: UICollectionViewLayout = {
         return UICollectionViewCompositionalLayout { (_, _)  in
 
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/5),
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(3/4),
                                                   heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8)
@@ -40,22 +40,14 @@ class MatchesTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        titleLabel.text = "New matches"
 
-        contentView.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 8.0),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
-        ])
 
         contentView.addSubview(matchesView)
         matchesView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            matchesView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            matchesView.topAnchor.constraint(equalTo: contentView.topAnchor),
             matchesView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             matchesView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             matchesView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -105,18 +97,26 @@ class MatchCollectionViewCell: UICollectionViewCell {
         ])
 
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        imageView.layer.cornerRadius = 4.0
+        imageView.layer.masksToBounds = true
 
         contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.textAlignment = .center
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8.0),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
     }
-    
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

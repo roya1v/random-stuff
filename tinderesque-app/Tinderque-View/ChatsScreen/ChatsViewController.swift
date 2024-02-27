@@ -50,15 +50,22 @@ final class ChatsViewController: UIViewController {
 
 extension ChatsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        15
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 15
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "test2", for: indexPath) as? MatchesTableViewCell else {
                 return UITableViewCell()
             }
@@ -73,17 +80,30 @@ extension ChatsViewController: UITableViewDataSource {
         cell.userImage = ProfileService.shared.getImages().first
         return cell
     }
+
+     func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+         switch section {
+         case 0:
+             return "Matches"
+         case 1:
+             return "Messages"
+         default:
+             return nil
+         }
+    }
 }
 
 extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 192.0
+        if indexPath.section == 0 {
+            return 160.0
         }
         return 96.0
     }
 }
 
 #Preview {
-    ChatsViewController()
+    UINavigationController(rootViewController: ChatsViewController())
+
 }
