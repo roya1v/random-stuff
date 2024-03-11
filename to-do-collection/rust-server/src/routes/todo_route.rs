@@ -1,10 +1,11 @@
 use axum::{
-    routing::{get, post, put},
-     Json, Router,
+    extract::Path,
+    routing::{delete, get, post, put},
+    Json, Router,
 };
-use tower_http::cors::CorsLayer;
+use tower_http::{cors::CorsLayer, trace::TraceLayer};
 
-use crate::core::todo_store::{ToDoStore, ToDoItem};
+use crate::core::todo_store::{ToDoItem, ToDoStore};
 
 pub fn make_router() -> Router {
     Router::new()
@@ -12,7 +13,9 @@ pub fn make_router() -> Router {
         .route("/todos", get(get_all_todos))
         .route("/todos", post(new_todo))
         .route("/todos", put(update_todo))
-    .layer(CorsLayer::permissive())
+        .route("/todos/:todo_id/delete", delete(delete_todo))
+        .layer(CorsLayer::permissive())
+        .layer(TraceLayer::new_for_http())
 }
 
 async fn get_all_todos() -> Json<Vec<ToDoItem>> {
@@ -32,4 +35,9 @@ async fn update_todo(Json(updated_todo): Json<ToDoItem>) -> Json<ToDoItem> {
     let store = ToDoStore::new("todos.db").await.unwrap();
     let new_todo = store.update_todo(updated_todo).await.unwrap();
     Json(new_todo)
+}
+
+async fn delete_todo(Path(todo_id): Path<i32>) {
+    let store = ToDoStore::new("todos.db").await.unwrap();
+    store.delete_todo(todo_id).await;
 }

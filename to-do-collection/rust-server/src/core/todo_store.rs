@@ -1,5 +1,5 @@
-use serde::{Serialize, Deserialize};
-use sqlx::{SqliteConnection, sqlite::SqliteConnectOptions, Error, query, Row, ConnectOptions};
+use serde::{Deserialize, Serialize};
+use sqlx::{query, sqlite::SqliteConnectOptions, ConnectOptions, Error, Row, SqliteConnection};
 
 #[derive(Serialize, Deserialize)]
 pub struct ToDoItem {
@@ -54,10 +54,22 @@ impl ToDoStore {
         if todo.id.is_none() {
             todo!("Add error")
         }
-        let _ = query!("UPDATE todos SET content = ?, is_done = ? WHERE id = ?", todo.content, todo.is_done, todo.id)
+        let _ = query!(
+            "UPDATE todos SET content = ?, is_done = ? WHERE id = ?",
+            todo.content,
+            todo.is_done,
+            todo.id
+        )
         .execute(&mut self.pool)
         .await;
-    
+
         Ok(todo)
+    }
+
+    pub async fn delete_todo(mut self, todo_id: i32) -> Option<Error> {
+        let _ = query!("DELETE FROM todos WHERE id = ?", todo_id)
+            .execute(&mut self.pool)
+            .await;
+        None
     }
 }
