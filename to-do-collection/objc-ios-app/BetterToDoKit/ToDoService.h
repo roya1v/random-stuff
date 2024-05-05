@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ToDoItem.h"
+#import <BetterToDoKit/ToDoItem.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

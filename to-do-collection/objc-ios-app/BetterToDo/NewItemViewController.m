@@ -6,7 +6,7 @@
 //
 
 #import "NewItemViewController.h"
-#import "ToDoService.h"
+#import <BetterToDoKit/BetterToDoKit.h>
 
 @interface NewItemViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *itemContentTextField;

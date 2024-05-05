@@ -6,7 +6,7 @@
 //
 
 #import "MainViewController.h"
-#import "ToDoService.h"
+#import <BetterToDoKit/BetterToDoKit.h>
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate>
 
