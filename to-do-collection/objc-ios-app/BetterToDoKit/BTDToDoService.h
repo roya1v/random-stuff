@@ -1,26 +1,26 @@
 //
-//  ToDoService.h
+//  BTDToDoService.h
 //  BetterToDo
 //
 //  Created by Mike S. on 18/10/2023.
 //
 
 #import <Foundation/Foundation.h>
-#import <BetterToDoKit/ToDoItem.h>
+#import <BetterToDoKit/BTDToDoItem.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^ToDoItemCompletionHandler)(ToDoItem * _Nullable  items,
+typedef void (^ToDoItemCompletionHandler)(BTDToDoItem * _Nullable  items,
                                           NSError * _Nullable  error);
 
-typedef void (^ToDoItemsCompletionHandler)( NSArray<ToDoItem *> * _Nullable items,
+typedef void (^ToDoItemsCompletionHandler)( NSArray<BTDToDoItem *> * _Nullable items,
                                             NSError * _Nullable  error);
 
-@interface ToDoService : NSObject
+@interface BTDToDoService : NSObject
 - (void)fetchAll:(ToDoItemsCompletionHandler)completionHandler;
-- (void)updateItem:(ToDoItem*)item
+- (void)updateItem:(BTDToDoItem*)item
               then:(ToDoItemCompletionHandler)completionHandler;
-- (void)newItem:(ToDoItem*)item
+- (void)newItem:(BTDToDoItem*)item
            then:(ToDoItemCompletionHandler)completionHandler;
 @end
 

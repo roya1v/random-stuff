@@ -1,16 +1,16 @@
 //
-//  ToDoService.m
+//  BTDToDoService.m
 //  BetterToDo
 //
 //  Created by Mike S. on 18/10/2023.
 //
 
-#import "ToDoService.h"
-#import "ToDoItem.h"
+#import "BTDToDoService.h"
+#import <BetterToDoKit/BTDToDoItem.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation ToDoService
+@implementation BTDToDoService
 
 - (NSURLComponents*)getBaseUrl {
     return [[NSURLComponents alloc] initWithString:@"http://localhost:3000"];
@@ -33,9 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
         }
         NSError *error2 = nil;
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error2];
-        NSMutableArray<ToDoItem *> *result = [[NSMutableArray alloc] init];
+        NSMutableArray<BTDToDoItem *> *result = [[NSMutableArray alloc] init];
         for (NSDictionary *objectDictionary in array) {
-            ToDoItem *item = [[ToDoItem alloc] init];
+            BTDToDoItem *item = [[BTDToDoItem alloc] init];
             item.content = objectDictionary[@"content"];
             item.isDone = [objectDictionary[@"is_done"] boolValue];
             item.id = [[NSNumber alloc] initWithLong:[objectDictionary[@"id"] longValue] ];
@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
     }] resume];
 }
 
-- (void)updateItem:(ToDoItem * _Nonnull)item
+- (void)updateItem:(BTDToDoItem * _Nonnull)item
               then:(ToDoItemCompletionHandler)completionHandler {
     NSURLComponents *urlComponens = [self getBaseUrl];
     urlComponens.path = @"/todos";
@@ -84,12 +84,12 @@ NS_ASSUME_NONNULL_BEGIN
             return;
         }
 
-        ToDoItem *item = [[ToDoItem alloc] initWithDict:dictionary];
+        BTDToDoItem *item = [[BTDToDoItem alloc] initWithDict:dictionary];
         completionHandler(item, NULL);
     }] resume];
 }
 
-- (void)newItem:(ToDoItem *)item
+- (void)newItem:(BTDToDoItem *)item
            then:(ToDoItemCompletionHandler)completionHandler {
 
     NSURLComponents *urlComponens = [self getBaseUrl];
@@ -125,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
             return;
         }
 
-        ToDoItem *item = [[ToDoItem alloc] initWithDict:dictionary];
+        BTDToDoItem *item = [[BTDToDoItem alloc] initWithDict:dictionary];
         completionHandler(item, NULL);
     }] resume];
 }

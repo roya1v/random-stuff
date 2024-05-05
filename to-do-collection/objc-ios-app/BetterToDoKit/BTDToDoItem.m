@@ -1,15 +1,15 @@
 //
-//  ToDoItem.m
+//  BTDToDoItem.m
 //  BetterToDo
 //
 //  Created by Mike S. on 18/10/2023.
 //
 
-#import "ToDoItem.h"
+#import "BTDToDoItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation ToDoItem
+@implementation BTDToDoItem
 
 - (nonnull NSDictionary *)toDictionary {
     NSMutableDictionary *itemDictionary = [[NSMutableDictionary alloc] init];

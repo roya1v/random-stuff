@@ -1,5 +1,5 @@
 //
-//  ToDoItem.h
+//  BTDToDoItem.h
 //  BetterToDo
 //
 //  Created by Mike S. on 18/10/2023.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ToDoItem : NSObject
+@interface BTDToDoItem : NSObject
 
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong, nullable) NSNumber *id;

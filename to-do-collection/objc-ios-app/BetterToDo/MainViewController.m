@@ -10,8 +10,8 @@
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray<ToDoItem *> *items;
-@property (nonatomic, strong) ToDoService *service;
+@property (nonatomic, strong) NSMutableArray<BTDToDoItem *> *items;
+@property (nonatomic, strong) BTDToDoService *service;
 
 @end
 
@@ -24,13 +24,13 @@
     self.tableView.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"test"];
 
-    self.service = [[ToDoService alloc] init];
+    self.service = [[BTDToDoService alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self.service fetchAll:^(NSArray<ToDoItem *> *items, NSError *error) {
+    [self.service fetchAll:^(NSArray<BTDToDoItem *> *items, NSError *error) {
         if (error == nil) {
             self.items = [items mutableCopy];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -48,7 +48,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cellView = [tableView dequeueReusableCellWithIdentifier:@"test" forIndexPath:indexPath];
-    ToDoItem *item = self.items[indexPath.row];
+    BTDToDoItem *item = self.items[indexPath.row];
 
     UIListContentConfiguration *configuration = [UIListContentConfiguration cellConfiguration];
     configuration.text = item.content;
@@ -63,7 +63,7 @@
 #pragma mark - UITableViewDelegate
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ToDoItem *item = self.items[indexPath.row];
+    BTDToDoItem *item = self.items[indexPath.row];
 
     UIContextualAction *action = [UIContextualAction
                                   contextualActionWithStyle:UIContextualActionStyleNormal
@@ -73,7 +73,7 @@
                                             void (^ _Nonnull completionHandler)(BOOL)) {
         item.isDone = !item.isDone;
         [self.service updateItem:item
-                            then:^(ToDoItem * _Nullable items,
+                            then:^(BTDToDoItem * _Nullable items,
                                    NSError * _Nullable error) {
             if (error == nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{

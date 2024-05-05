@@ -13,5 +13,5 @@ FOUNDATION_EXPORT double BetterToDoKitVersionNumber;
 //! Project version string for BetterToDoKit.
 FOUNDATION_EXPORT const unsigned char BetterToDoKitVersionString[];
 
-#import <BetterToDoKit/ToDoService.h>
-#import <BetterToDoKit/ToDoItem.h>
+#import <BetterToDoKit/BTDToDoService.h>
+#import <BetterToDoKit/BTDToDoItem.h>
