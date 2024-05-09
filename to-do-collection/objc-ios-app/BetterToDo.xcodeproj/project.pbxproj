@@ -23,10 +23,32 @@
 		0162A0412BE80D15009B83E9 /* BTDToDoService.h in Headers */ = {isa = PBXBuildFile; fileRef = 011E70A32AE0160E003E92F5 /* BTDToDoService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		016F0B222B83D60A00C486B0 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016F0B212B83D60A00C486B0 /* NewItemViewController.m */; };
 		01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D22C6D2B7A223B0066B049 /* MainViewController.m */; };
+		01F4EE472BECDADA00273C2E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4EE462BECDADA00273C2E /* WidgetKit.framework */; };
+		01F4EE492BECDADA00273C2E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4EE482BECDADA00273C2E /* SwiftUI.framework */; };
+		01F4EE4C2BECDADA00273C2E /* BetterToDoWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4EE4B2BECDADA00273C2E /* BetterToDoWidgetBundle.swift */; };
+		01F4EE4E2BECDADA00273C2E /* BetterToDoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4EE4D2BECDADA00273C2E /* BetterToDoWidget.swift */; };
+		01F4EE502BECDADB00273C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F4EE4F2BECDADB00273C2E /* Assets.xcassets */; };
+		01F4EE542BECDADB00273C2E /* BetterToDoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 01F4EE442BECDADA00273C2E /* BetterToDoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		01F4EE592BECDB2500273C2E /* BetterToDoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0162A0302BE80C6C009B83E9 /* BetterToDoKit.framework */; };
+		01F4EE5A2BECDB2500273C2E /* BetterToDoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0162A0302BE80C6C009B83E9 /* BetterToDoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0162A0362BE80C6C009B83E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 011E707F2ADFD925003E92F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0162A02F2BE80C6C009B83E9;
+			remoteInfo = BetterToDoKit;
+		};
+		01F4EE522BECDADB00273C2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 011E707F2ADFD925003E92F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01F4EE432BECDADA00273C2E;
+			remoteInfo = BetterToDoWidgetExtension;
+		};
+		01F4EE5B2BECDB2500273C2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 011E707F2ADFD925003E92F5 /* Project object */;
 			proxyType = 1;
@@ -43,6 +65,28 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0162A0392BE80C6C009B83E9 /* BetterToDoKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01F4EE552BECDADB00273C2E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				01F4EE542BECDADB00273C2E /* BetterToDoWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01F4EE5D2BECDB2500273C2E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				01F4EE5A2BECDB2500273C2E /* BetterToDoKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +115,13 @@
 		016F0B212B83D60A00C486B0 /* NewItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 		01D22C6C2B7A223B0066B049 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		01D22C6D2B7A223B0066B049 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		01F4EE442BECDADA00273C2E /* BetterToDoWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetterToDoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		01F4EE462BECDADA00273C2E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		01F4EE482BECDADA00273C2E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		01F4EE4B2BECDADA00273C2E /* BetterToDoWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterToDoWidgetBundle.swift; sourceTree = "<group>"; };
+		01F4EE4D2BECDADA00273C2E /* BetterToDoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterToDoWidget.swift; sourceTree = "<group>"; };
+		01F4EE4F2BECDADB00273C2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01F4EE512BECDADB00273C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +140,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01F4EE412BECDADA00273C2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01F4EE592BECDB2500273C2E /* BetterToDoKit.framework in Frameworks */,
+				01F4EE492BECDADA00273C2E /* SwiftUI.framework in Frameworks */,
+				01F4EE472BECDADA00273C2E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,6 +158,8 @@
 			children = (
 				011E70892ADFD925003E92F5 /* BetterToDo */,
 				0162A0312BE80C6C009B83E9 /* BetterToDoKit */,
+				01F4EE4A2BECDADA00273C2E /* BetterToDoWidget */,
+				01F4EE452BECDADA00273C2E /* Frameworks */,
 				011E70882ADFD925003E92F5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +169,7 @@
 			children = (
 				011E70872ADFD925003E92F5 /* BetterToDo.app */,
 				0162A0302BE80C6C009B83E9 /* BetterToDoKit.framework */,
+				01F4EE442BECDADA00273C2E /* BetterToDoWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +207,26 @@
 			path = BetterToDoKit;
 			sourceTree = "<group>";
 		};
+		01F4EE452BECDADA00273C2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01F4EE462BECDADA00273C2E /* WidgetKit.framework */,
+				01F4EE482BECDADA00273C2E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		01F4EE4A2BECDADA00273C2E /* BetterToDoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				01F4EE4B2BECDADA00273C2E /* BetterToDoWidgetBundle.swift */,
+				01F4EE4D2BECDADA00273C2E /* BetterToDoWidget.swift */,
+				01F4EE4F2BECDADB00273C2E /* Assets.xcassets */,
+				01F4EE512BECDADB00273C2E /* Info.plist */,
+			);
+			path = BetterToDoWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -167,11 +251,13 @@
 				011E70842ADFD925003E92F5 /* Frameworks */,
 				011E70852ADFD925003E92F5 /* Resources */,
 				0162A03A2BE80C6C009B83E9 /* Embed Frameworks */,
+				01F4EE552BECDADB00273C2E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				0162A0372BE80C6C009B83E9 /* PBXTargetDependency */,
+				01F4EE532BECDADB00273C2E /* PBXTargetDependency */,
 			);
 			name = BetterToDo;
 			productName = BetterToDo;
@@ -196,6 +282,25 @@
 			productReference = 0162A0302BE80C6C009B83E9 /* BetterToDoKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		01F4EE432BECDADA00273C2E /* BetterToDoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01F4EE582BECDADB00273C2E /* Build configuration list for PBXNativeTarget "BetterToDoWidgetExtension" */;
+			buildPhases = (
+				01F4EE402BECDADA00273C2E /* Sources */,
+				01F4EE412BECDADA00273C2E /* Frameworks */,
+				01F4EE422BECDADA00273C2E /* Resources */,
+				01F4EE5D2BECDB2500273C2E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01F4EE5C2BECDB2500273C2E /* PBXTargetDependency */,
+			);
+			name = BetterToDoWidgetExtension;
+			productName = BetterToDoWidgetExtension;
+			productReference = 01F4EE442BECDADA00273C2E /* BetterToDoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,7 +308,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					011E70862ADFD925003E92F5 = {
@@ -211,6 +316,9 @@
 						LastSwiftMigration = 1500;
 					};
 					0162A02F2BE80C6C009B83E9 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					01F4EE432BECDADA00273C2E = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -230,6 +338,7 @@
 			targets = (
 				011E70862ADFD925003E92F5 /* BetterToDo */,
 				0162A02F2BE80C6C009B83E9 /* BetterToDoKit */,
+				01F4EE432BECDADA00273C2E /* BetterToDoWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +358,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01F4EE422BECDADA00273C2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01F4EE502BECDADB00273C2E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +394,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01F4EE402BECDADA00273C2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01F4EE4C2BECDADA00273C2E /* BetterToDoWidgetBundle.swift in Sources */,
+				01F4EE4E2BECDADA00273C2E /* BetterToDoWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -284,6 +410,16 @@
 			isa = PBXTargetDependency;
 			target = 0162A02F2BE80C6C009B83E9 /* BetterToDoKit */;
 			targetProxy = 0162A0362BE80C6C009B83E9 /* PBXContainerItemProxy */;
+		};
+		01F4EE532BECDADB00273C2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01F4EE432BECDADA00273C2E /* BetterToDoWidgetExtension */;
+			targetProxy = 01F4EE522BECDADB00273C2E /* PBXContainerItemProxy */;
+		};
+		01F4EE5C2BECDB2500273C2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0162A02F2BE80C6C009B83E9 /* BetterToDoKit */;
+			targetProxy = 01F4EE5B2BECDB2500273C2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,6 +565,7 @@
 		011E709C2ADFD926003E92F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -460,6 +597,7 @@
 		011E709D2ADFD926003E92F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -553,6 +691,62 @@
 			};
 			name = Release;
 		};
+		01F4EE562BECDADB00273C2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4S3J7NRC9R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetterToDoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetterToDoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.roya1v.BetterToDo.BetterToDoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01F4EE572BECDADB00273C2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4S3J7NRC9R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetterToDoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetterToDoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.roya1v.BetterToDo.BetterToDoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -579,6 +773,15 @@
 			buildConfigurations = (
 				0162A03B2BE80C6C009B83E9 /* Debug */,
 				0162A03C2BE80C6C009B83E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01F4EE582BECDADB00273C2E /* Build configuration list for PBXNativeTarget "BetterToDoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01F4EE562BECDADB00273C2E /* Debug */,
+				01F4EE572BECDADB00273C2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -29,6 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
+- (nonnull id)init:(nonnull NSString *)content {
+    self = [self init];
+    if(self) {
+        self.content = content;
+        self.isDone = NO;
+    }
+    return self;
+}
+
+- (nonnull id)init:(nonnull NSString *)content isDone:(BOOL)isDone {
+    self = [self init];
+    if(self) {
+        self.content = content;
+        self.isDone = isDone;
+    }
+    return self;
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSDictionary*) toDictionary;
 -(id) initWithDict:(NSDictionary*) dictionary;
+-(id) init:(NSString*) content;
+-(id) init:(NSString*) content isDone:(BOOL) isDone;
 
 @end
 
