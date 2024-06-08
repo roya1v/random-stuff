@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */; };
 		01574E9B2C148B7F00C2FD86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574E9A2C148B7F00C2FD86 /* ContentView.swift */; };
-		01574E9D2C148B7F00C2FD86 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574E9C2C148B7F00C2FD86 /* Item.swift */; };
 		01574E9F2C148B8000C2FD86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01574E9E2C148B8000C2FD86 /* Assets.xcassets */; };
 		01574EA22C148B8000C2FD86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01574EA12C148B8000C2FD86 /* Preview Assets.xcassets */; };
 		01574EAC2C148B8000C2FD86 /* BicycleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574EAB2C148B8000C2FD86 /* BicycleAppTests.swift */; };
 		01574EB62C148B8000C2FD86 /* BicycleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574EB52C148B8000C2FD86 /* BicycleAppUITests.swift */; };
 		01574EB82C148B8000C2FD86 /* BicycleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574EB72C148B8000C2FD86 /* BicycleAppUITestsLaunchTests.swift */; };
+		016738192C148D660061C9F3 /* TrackingThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016738182C148D660061C9F3 /* TrackingThing.swift */; };
+		0167381B2C14908D0061C9F3 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381A2C14908D0061C9F3 /* Ride.swift */; };
+		0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381C2C1496A40061C9F3 /* RidesListScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,6 @@
 		01574E952C148B7F00C2FD86 /* BicycleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BicycleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppApp.swift; sourceTree = "<group>"; };
 		01574E9A2C148B7F00C2FD86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		01574E9C2C148B7F00C2FD86 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		01574E9E2C148B8000C2FD86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01574EA12C148B8000C2FD86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		01574EA72C148B8000C2FD86 /* BicycleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BicycleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +47,9 @@
 		01574EB12C148B8000C2FD86 /* BicycleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BicycleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01574EB52C148B8000C2FD86 /* BicycleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppUITests.swift; sourceTree = "<group>"; };
 		01574EB72C148B8000C2FD86 /* BicycleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		016738182C148D660061C9F3 /* TrackingThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingThing.swift; sourceTree = "<group>"; };
+		0167381A2C14908D0061C9F3 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
+		0167381C2C1496A40061C9F3 /* RidesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,9 @@
 			children = (
 				01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */,
 				01574E9A2C148B7F00C2FD86 /* ContentView.swift */,
-				01574E9C2C148B7F00C2FD86 /* Item.swift */,
+				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
+				016738182C148D660061C9F3 /* TrackingThing.swift */,
+				0167381A2C14908D0061C9F3 /* Ride.swift */,
 				01574E9E2C148B8000C2FD86 /* Assets.xcassets */,
 				01574EA02C148B8000C2FD86 /* Preview Content */,
 			);
@@ -261,8 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				01574E9B2C148B7F00C2FD86 /* ContentView.swift in Sources */,
-				01574E9D2C148B7F00C2FD86 /* Item.swift in Sources */,
 				01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */,
+				0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */,
+				0167381B2C14908D0061C9F3 /* Ride.swift in Sources */,
+				016738192C148D660061C9F3 /* TrackingThing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +436,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BicycleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need this request";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need this too";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,6 +466,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BicycleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need this request";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need this too";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
