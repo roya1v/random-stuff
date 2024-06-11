@@ -22,27 +22,32 @@ final class TrackingThing: NSObject {
     private let dbContainer = try! ModelContainer(for: Ride.self, configurations: ModelConfiguration())
 
     private var currentRide: [CLLocation]?
+    private var startTime: Date?
 
     func startRide() {
         if locationManager.authorizationStatus != .authorizedAlways && locationManager.authorizationStatus != .authorizedWhenInUse {
             locationManager.requestAlwaysAuthorization()
+            return
         }
 
         currentRide = []
+        startTime = Date.now
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
     }
 
+    @MainActor
     func stopRide() {
         locationManager.stopUpdatingLocation()
         guard let currentRide else {
             print("Current ride was nil...")
             return
         }
-        let ride = Ride(points: currentRide.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)})
-        Task {
-            let context = await dbContainer.mainContext
-            context.insert(ride)
-        }
+        let points = currentRide
+            .map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, timestamp: $0.timestamp)}
+        let ride = Ride(startTime: startTime!, endTime: Date.now,  points: points)
+        let context = dbContainer.mainContext
+        context.insert(ride)
     }
 
     @MainActor
@@ -54,6 +59,6 @@ final class TrackingThing: NSObject {
 
 extension TrackingThing: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentRide?.append(locations.first!)
+        currentRide?.append(locations.last!)
     }
 }

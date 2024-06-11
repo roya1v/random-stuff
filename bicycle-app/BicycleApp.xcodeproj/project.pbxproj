@@ -17,6 +17,7 @@
 		016738192C148D660061C9F3 /* TrackingThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016738182C148D660061C9F3 /* TrackingThing.swift */; };
 		0167381B2C14908D0061C9F3 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381A2C14908D0061C9F3 /* Ride.swift */; };
 		0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381C2C1496A40061C9F3 /* RidesListScreen.swift */; };
+		0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		016738182C148D660061C9F3 /* TrackingThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingThing.swift; sourceTree = "<group>"; };
 		0167381A2C14908D0061C9F3 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		0167381C2C1496A40061C9F3 /* RidesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListScreen.swift; sourceTree = "<group>"; };
+		0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */,
 				01574E9A2C148B7F00C2FD86 /* ContentView.swift */,
 				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
+				0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */,
 				016738182C148D660061C9F3 /* TrackingThing.swift */,
 				0167381A2C14908D0061C9F3 /* Ride.swift */,
 				01574E9E2C148B8000C2FD86 /* Assets.xcassets */,
@@ -270,6 +273,7 @@
 				01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */,
 				0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */,
 				0167381B2C14908D0061C9F3 /* Ride.swift in Sources */,
+				0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */,
 				016738192C148D660061C9F3 /* TrackingThing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

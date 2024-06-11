@@ -10,7 +10,11 @@ import SwiftUI
 struct RidesListScreen: View {
     var body: some View {
         List(TrackingThing.shared.getRides()) { ride in
-            Text("\(ride.points.count)")
+            NavigationLink {
+                RideDetailsScreen(ride: ride)
+            } label: {
+                Text("This is a trip from \(ride.startTime.formatted(date: .omitted, time: .standard)) to \(ride.endTime.formatted(date: .omitted, time: .standard)) on \(ride.startTime.formatted(date: .numeric, time: .omitted))")
+            }
         }
     }
 }

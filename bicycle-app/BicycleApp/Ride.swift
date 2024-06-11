@@ -16,18 +16,24 @@ class Ride {
     class Point {
         var latitude: Double
         var longitude: Double
+        var timestamp: Date
 
-        init(latitude: Double, longitude: Double) {
+        init(latitude: Double, longitude: Double, timestamp: Date) {
             self.latitude = latitude
             self.longitude = longitude
+            self.timestamp = timestamp
         }
     }
 
-
-
+    @Attribute(.unique) var id: UUID
     var points: [Point]
+    var startTime: Date
+    var endTime: Date
 
-    init(points: [Point]) {
+    init(id: UUID = UUID(), startTime: Date, endTime: Date, points: [Point]) {
+        self.id = id
+        self.startTime = startTime
+        self.endTime = endTime
         self.points = points
     }
 }
