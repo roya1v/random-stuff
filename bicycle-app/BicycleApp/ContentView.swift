@@ -10,23 +10,16 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Button("Start trip") {
-                    TrackingThing.shared.startRide()
+        TabView {
+            HomeScreen()
+                .tabItem {
+                    Label("Home", systemImage: "house")
                 }
-                Button("Stop trip") {
-                    TrackingThing.shared.stopRide()
+            RidesListScreen()
+                .tabItem {
+                    Label("Rides", systemImage: "bicycle")
                 }
-                NavigationLink {
-                    RidesListScreen()
-                } label: {
-                    Text("Rides list")
-                }
-
-            }
         }
-
     }
 }
 
