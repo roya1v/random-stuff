@@ -9,16 +9,20 @@ import SwiftUI
 
 struct HomeScreen: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Button("Start trip") {
-                    TrackingThing.shared.startRide()
-                }
-                Button("Stop trip") {
-                    TrackingThing.shared.stopRide()
-                }
+        VStack {
+            Text("Are you ready to ride?")
+                .font(.largeTitle)
+            Spacer()
+            Button("Start trip") {
+                TrackingThing.shared.startRide()
             }
+            .buttonStyle(.borderedProminent)
+            Button("Stop trip") {
+                TrackingThing.shared.stopRide()
+            }
+            .buttonStyle(.bordered)
         }
+        .padding()
     }
 }
 
