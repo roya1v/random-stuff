@@ -24,10 +24,41 @@ struct RideDetailsScreen: View {
             MapPolyline(coordinates: coordinates)
                 .stroke(.blue, lineWidth: 2.0)
         }
+        .sheet(isPresented: .constant(true)) {
+            HStack {
+                Spacer()
+                VStack {
+                    Text("Ride start")
+                        .font(.caption)
+                    Text(ride.startTime.formatted(date: .omitted, time: .shortened))
+                        .font(.title)
+                }
+                Spacer()
+                VStack {
+                    Text("Ride end")
+                        .font(.caption)
+                    Text(ride.startTime.formatted(date: .omitted, time: .shortened))
+                        .font(.title)
+                }
+                Spacer()
+            }
+            .padding()
+            .presentationBackgroundInteraction(.enabled(upThrough: .height(100.0)))
+                .presentationDetents([.height(100.0), .medium])
+                .interactiveDismissDisabled()
+
+        }
     }
 }
 
 #Preview {
-    let ride = Ride(id: UUID(), startTime: Date.now, endTime: Date.now, points: [])
+    let thing = TrackingThing.preview
+    let ride = Ride(id: UUID(),
+                    startTime: Date.now,
+                    endTime: Date.now,
+                    points: [
+
+                    ])
     return RideDetailsScreen(ride: ride)
+        .environment(thing)
 }
