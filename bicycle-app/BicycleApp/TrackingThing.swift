@@ -8,21 +8,29 @@
 import Foundation
 import CoreLocation
 import SwiftData
+import Observation
 
+@Observable
 final class TrackingThing: NSObject {
 
-    static let shared = TrackingThing()
-    override init() {
+    private let locationManager = CLLocationManager()
+    private let dbContainer: ModelContainer
+
+    private var currentRide: [CLLocation]?
+    private var startTime: Date?
+    
+    init(configuration: ModelConfiguration) {
+        dbContainer = try! ModelContainer(for: Ride.self, configurations: configuration)
+
         super.init()
 
         locationManager.delegate = self
     }
 
-    private let locationManager = CLLocationManager()
-    private let dbContainer = try! ModelContainer(for: Ride.self, configurations: ModelConfiguration())
+    static var preview: TrackingThing {
+        TrackingThing(configuration: ModelConfiguration(isStoredInMemoryOnly: true))
+    }
 
-    private var currentRide: [CLLocation]?
-    private var startTime: Date?
 
     func startRide() {
         if locationManager.authorizationStatus != .authorizedAlways && locationManager.authorizationStatus != .authorizedWhenInUse {

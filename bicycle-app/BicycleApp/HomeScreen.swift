@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeScreen: View {
+
+    @Environment(TrackingThing.self) private var thing
+
     var body: some View {
         VStack {
             Text("Are you ready to ride?")
                 .font(.largeTitle)
             Spacer()
             Button("Start trip") {
-                TrackingThing.shared.startRide()
+                thing.startRide()
             }
             .buttonStyle(.borderedProminent)
             Button("Stop trip") {
-                TrackingThing.shared.stopRide()
+                thing.stopRide()
             }
             .buttonStyle(.bordered)
         }
@@ -28,4 +32,5 @@ struct HomeScreen: View {
 
 #Preview {
     HomeScreen()
+        .environment(TrackingThing.preview)
 }

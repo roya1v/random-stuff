@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct RidesListScreen: View {
+
+    @Environment(TrackingThing.self) private var thing
+
     var body: some View {
         NavigationView {
-            List(TrackingThing.shared.getRides()) { ride in
+            List(thing.getRides()) { ride in
                 NavigationLink {
                     RideDetailsScreen(ride: ride)
                 } label: {
@@ -23,4 +26,5 @@ struct RidesListScreen: View {
 
 #Preview {
     RidesListScreen()
+        .environment(TrackingThing.preview)
 }
