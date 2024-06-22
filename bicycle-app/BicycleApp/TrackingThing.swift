@@ -52,7 +52,10 @@ final class TrackingThing: NSObject {
             return
         }
         let points = currentRide
-            .map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, timestamp: $0.timestamp)}
+            .map { Ride.Point(latitude: $0.coordinate.latitude,
+                              longitude: $0.coordinate.longitude,
+                              altitude: $0.altitude,
+                              timestamp: $0.timestamp)}
         let ride = Ride(startTime: startTime!, endTime: Date.now,  points: points)
         let context = dbContainer.mainContext
         context.insert(ride)

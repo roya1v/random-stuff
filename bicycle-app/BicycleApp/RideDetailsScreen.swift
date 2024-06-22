@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import Charts
 
 struct RideDetailsScreen: View {
     
@@ -25,28 +26,35 @@ struct RideDetailsScreen: View {
                 .stroke(.blue, lineWidth: 2.0)
         }
         .sheet(isPresented: .constant(true)) {
-            HStack {
-                Spacer()
-                VStack {
-                    Text("Ride start")
-                        .font(.caption)
-                    Text(ride.startTime.formatted(date: .omitted, time: .shortened))
-                        .font(.title)
+            VStack {
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text("Ride start")
+                            .font(.caption)
+                        Text(ride.startTime.formatted(date: .omitted, time: .shortened))
+                            .font(.title)
+                    }
+                    Spacer()
+                    VStack {
+                        Text("Ride end")
+                            .font(.caption)
+                        Text(ride.startTime.formatted(date: .omitted, time: .shortened))
+                            .font(.title)
+                    }
+                    Spacer()
                 }
-                Spacer()
-                VStack {
-                    Text("Ride end")
-                        .font(.caption)
-                    Text(ride.startTime.formatted(date: .omitted, time: .shortened))
-                        .font(.title)
+                Chart {
+                    ForEach(ride.points) { point in
+                        LineMark(x: .value("Time", point.timestamp),
+                                 y: .value("Altitude", point.altitude))
+                    }
                 }
-                Spacer()
             }
             .padding()
             .presentationBackgroundInteraction(.enabled(upThrough: .height(100.0)))
-                .presentationDetents([.height(100.0), .medium])
-                .interactiveDismissDisabled()
-
+            .presentationDetents([.height(100.0), .medium])
+            .interactiveDismissDisabled()
         }
     }
 }
