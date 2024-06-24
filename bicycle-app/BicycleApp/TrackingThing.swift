@@ -14,13 +14,21 @@ import Observation
 final class TrackingThing: NSObject {
 
     private let locationManager = CLLocationManager()
-    private let dbContainer: ModelContainer
+    let dbContainer: ModelContainer
 
     private var currentRide: [CLLocation]?
     private var startTime: Date?
     
-    init(configuration: ModelConfiguration) {
-        dbContainer = try! ModelContainer(for: Ride.self, configurations: configuration)
+    init(modelContainer: ModelContainer) {
+        dbContainer = modelContainer
+
+        super.init()
+
+        locationManager.delegate = self
+    }
+
+    override init() {
+        dbContainer = try! ModelContainer(for: Ride.self, configurations: ModelConfiguration())
 
         super.init()
 
@@ -28,7 +36,9 @@ final class TrackingThing: NSObject {
     }
 
     static var preview: TrackingThing {
-        TrackingThing(configuration: ModelConfiguration(isStoredInMemoryOnly: true))
+        let container = try! ModelContainer(for: Ride.self,
+                                            configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        return TrackingThing(modelContainer: container)
     }
 
 
