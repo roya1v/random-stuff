@@ -7,8 +7,6 @@
 
 #import "BTDToDoItem.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @implementation BTDToDoItem
 
 - (nonnull NSDictionary *)toDictionary {
@@ -48,5 +46,3 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @end
-
-NS_ASSUME_NONNULL_END

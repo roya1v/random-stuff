@@ -22,6 +22,8 @@ typedef void (^ToDoItemsCompletionHandler)( NSArray<BTDToDoItem *> * _Nullable i
               then:(ToDoItemCompletionHandler)completionHandler;
 - (void)newItem:(BTDToDoItem*)item
            then:(ToDoItemCompletionHandler)completionHandler;
+- (void)deleteItem:(BTDToDoItem*)item
+              then:(void(^)(NSError * _Nullable error))completionHandler;
 @end
 
 NS_ASSUME_NONNULL_END

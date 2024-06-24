@@ -8,8 +8,6 @@
 #import "BTDToDoService.h"
 #import <BetterToDoKit/BTDToDoItem.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @implementation BTDToDoService
 
 - (NSURLComponents*)getBaseUrl {
@@ -130,6 +128,29 @@ NS_ASSUME_NONNULL_BEGIN
     }] resume];
 }
 
-@end
+- (void)deleteItem:(BTDToDoItem *)item then:(void(^)(NSError * error))completionHandler {
+    NSURLComponents *urlComponens = [self getBaseUrl];
+    urlComponens.path = [NSString stringWithFormat:@"/todos/%@/delete", item.id];
 
-NS_ASSUME_NONNULL_END
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:urlComponens.URL];
+    request.HTTPMethod = @"DELETE";
+
+    NSError *error;
+
+    NSData *bodyData = [NSJSONSerialization dataWithJSONObject:[item toDictionary] options:kNilOptions error:&error];
+
+    if (error != nil) {
+        completionHandler(error);
+    }
+
+    request.HTTPBody = bodyData;
+
+    [[NSURLSession.sharedSession dataTaskWithRequest:request
+                                   completionHandler:^(NSData * _Nullable data,
+                                                       NSURLResponse * _Nullable response,
+                                                       NSError * _Nullable error) {
+        completionHandler(error);
+    }] resume];
+}
+
+@end

@@ -65,7 +65,7 @@
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     BTDToDoItem *item = self.items[indexPath.row];
 
-    UIContextualAction *action = [UIContextualAction
+    UIContextualAction *completeAction = [UIContextualAction
                                   contextualActionWithStyle:UIContextualActionStyleNormal
                                   title:nil
                                   handler:^(UIContextualAction * _Nonnull action,
@@ -83,13 +83,31 @@
         }];
     }];
     if (item.isDone) {
-        action.image = [UIImage systemImageNamed:@"arrow.uturn.backward"];
-        action.backgroundColor = [UIColor systemBlueColor];
+        completeAction.image = [UIImage systemImageNamed:@"arrow.uturn.backward"];
+        completeAction.backgroundColor = [UIColor systemBlueColor];
     } else {
-        action.image = [UIImage systemImageNamed:@"checkmark"];
-        action.backgroundColor = [UIColor systemGreenColor];
+        completeAction.image = [UIImage systemImageNamed:@"checkmark"];
+        completeAction.backgroundColor = [UIColor systemGreenColor];
     }
-    UISwipeActionsConfiguration *configuration = [UISwipeActionsConfiguration configurationWithActions:@[action]];
+    UIContextualAction *deleteAction = [UIContextualAction
+                                  contextualActionWithStyle:UIContextualActionStyleNormal
+                                  title:nil
+                                  handler:^(UIContextualAction * _Nonnull action,
+                                            __kindof UIView * _Nonnull sourceView,
+                                            void (^ _Nonnull completionHandler)(BOOL)) {
+        [self.items removeObjectAtIndex:indexPath.row];
+        [self.service deleteItem:item
+                            then:^(NSError * _Nullable error) {
+            if (error == nil) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }
+        }];
+    }];
+    deleteAction.image = [UIImage systemImageNamed:@"trash"];
+    deleteAction.backgroundColor = [UIColor systemRedColor];
+    UISwipeActionsConfiguration *configuration = [UISwipeActionsConfiguration configurationWithActions:@[completeAction, deleteAction]];
     return configuration;
 }
 
