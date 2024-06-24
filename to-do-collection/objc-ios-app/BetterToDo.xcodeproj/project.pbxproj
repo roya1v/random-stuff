@@ -21,8 +21,8 @@
 		0162A03F2BE80C9D009B83E9 /* BTDToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E70A52AE01C08003E92F5 /* BTDToDoItem.m */; };
 		0162A0402BE80D08009B83E9 /* BTDToDoItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 011E70A42AE01C08003E92F5 /* BTDToDoItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0162A0412BE80D15009B83E9 /* BTDToDoService.h in Headers */ = {isa = PBXBuildFile; fileRef = 011E70A32AE0160E003E92F5 /* BTDToDoService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		016F0B222B83D60A00C486B0 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016F0B212B83D60A00C486B0 /* NewItemViewController.m */; };
-		01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D22C6D2B7A223B0066B049 /* MainViewController.m */; };
+		016F0B222B83D60A00C486B0 /* BTDNewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016F0B212B83D60A00C486B0 /* BTDNewItemViewController.m */; };
+		01D22C6E2B7A223B0066B049 /* BTDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D22C6D2B7A223B0066B049 /* BTDMainViewController.m */; };
 		01F4EE472BECDADA00273C2E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4EE462BECDADA00273C2E /* WidgetKit.framework */; };
 		01F4EE492BECDADA00273C2E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4EE482BECDADA00273C2E /* SwiftUI.framework */; };
 		01F4EE4C2BECDADA00273C2E /* BetterToDoWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4EE4B2BECDADA00273C2E /* BetterToDoWidgetBundle.swift */; };
@@ -111,10 +111,10 @@
 		0162A0302BE80C6C009B83E9 /* BetterToDoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BetterToDoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0162A0322BE80C6C009B83E9 /* BetterToDoKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetterToDoKit.h; sourceTree = "<group>"; };
 		0162A0332BE80C6C009B83E9 /* BetterToDoKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = BetterToDoKit.docc; sourceTree = "<group>"; };
-		016F0B202B83D60A00C486B0 /* NewItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
-		016F0B212B83D60A00C486B0 /* NewItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
-		01D22C6C2B7A223B0066B049 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		01D22C6D2B7A223B0066B049 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		016F0B202B83D60A00C486B0 /* BTDNewItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTDNewItemViewController.h; sourceTree = "<group>"; };
+		016F0B212B83D60A00C486B0 /* BTDNewItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTDNewItemViewController.m; sourceTree = "<group>"; };
+		01D22C6C2B7A223B0066B049 /* BTDMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTDMainViewController.h; sourceTree = "<group>"; };
+		01D22C6D2B7A223B0066B049 /* BTDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTDMainViewController.m; sourceTree = "<group>"; };
 		01F4EE442BECDADA00273C2E /* BetterToDoWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetterToDoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F4EE462BECDADA00273C2E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		01F4EE482BECDADA00273C2E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -181,10 +181,10 @@
 				01524B682B7969D800D7D7CF /* AppDelegate.m */,
 				01524B6C2B796A3700D7D7CF /* SceneDelegate.h */,
 				01524B6D2B796A4C00D7D7CF /* SceneDelegate.m */,
-				01D22C6C2B7A223B0066B049 /* MainViewController.h */,
-				01D22C6D2B7A223B0066B049 /* MainViewController.m */,
-				016F0B202B83D60A00C486B0 /* NewItemViewController.h */,
-				016F0B212B83D60A00C486B0 /* NewItemViewController.m */,
+				01D22C6C2B7A223B0066B049 /* BTDMainViewController.h */,
+				01D22C6D2B7A223B0066B049 /* BTDMainViewController.m */,
+				016F0B202B83D60A00C486B0 /* BTDNewItemViewController.h */,
+				016F0B212B83D60A00C486B0 /* BTDNewItemViewController.m */,
 				011E70902ADFD925003E92F5 /* Main.storyboard */,
 				011E70932ADFD926003E92F5 /* Assets.xcassets */,
 				011E70952ADFD926003E92F5 /* LaunchScreen.storyboard */,
@@ -378,8 +378,8 @@
 			files = (
 				01524B6E2B796A4C00D7D7CF /* SceneDelegate.m in Sources */,
 				01524B692B7969D800D7D7CF /* AppDelegate.m in Sources */,
-				01D22C6E2B7A223B0066B049 /* MainViewController.m in Sources */,
-				016F0B222B83D60A00C486B0 /* NewItemViewController.m in Sources */,
+				01D22C6E2B7A223B0066B049 /* BTDMainViewController.m in Sources */,
+				016F0B222B83D60A00C486B0 /* BTDNewItemViewController.m in Sources */,
 				01524B6B2B796A1B00D7D7CF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

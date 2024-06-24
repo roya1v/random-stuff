@@ -5,14 +5,14 @@
 //  Created by Mike S. on 19/02/2024.
 //
 
-#import "NewItemViewController.h"
+#import "BTDNewItemViewController.h"
 #import <BetterToDoKit/BetterToDoKit.h>
 
-@interface NewItemViewController ()
+@interface BTDNewItemViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *itemContentTextField;
 @end
 
-@implementation NewItemViewController
+@implementation BTDNewItemViewController
 
 #pragma mark - actions
 

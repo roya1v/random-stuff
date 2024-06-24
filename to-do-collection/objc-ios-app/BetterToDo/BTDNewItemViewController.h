@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NewItemViewController : UIViewController
+@interface BTDNewItemViewController : UIViewController
 
 @end
 

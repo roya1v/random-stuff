@@ -5,17 +5,17 @@
 //  Created by Mike S. on 12/02/2024.
 //
 
-#import "MainViewController.h"
+#import "BTDMainViewController.h"
 #import <BetterToDoKit/BetterToDoKit.h>
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface BTDMainViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray<BTDToDoItem *> *items;
 @property (nonatomic, strong) BTDToDoService *service;
 
 @end
 
-@implementation MainViewController
+@implementation BTDMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
