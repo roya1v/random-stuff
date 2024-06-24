@@ -19,6 +19,7 @@
 		0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381C2C1496A40061C9F3 /* RidesListScreen.swift */; };
 		0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */; };
 		0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AAE62C20AA07004559C4 /* HomeScreen.swift */; };
+		01C6B58B2C23369C009EFB3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01C6B58A2C23369C009EFB3F /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		0167381C2C1496A40061C9F3 /* RidesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListScreen.swift; sourceTree = "<group>"; };
 		0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreen.swift; sourceTree = "<group>"; };
 		0195AAE62C20AA07004559C4 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		01C6B58A2C23369C009EFB3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				0167381A2C14908D0061C9F3 /* Ride.swift */,
 				01574E9E2C148B8000C2FD86 /* Assets.xcassets */,
 				01574EA02C148B8000C2FD86 /* Preview Content */,
+				01C6B58A2C23369C009EFB3F /* Settings.bundle */,
 			);
 			path = BicycleApp;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01574EA22C148B8000C2FD86 /* Preview Assets.xcassets in Resources */,
+				01C6B58B2C23369C009EFB3F /* Settings.bundle in Resources */,
 				01574E9F2C148B8000C2FD86 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +446,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BicycleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 4S3J7NRC9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need this request";
@@ -451,6 +456,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -472,6 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BicycleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 4S3J7NRC9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need this request";
@@ -481,6 +488,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
