@@ -22,7 +22,7 @@ impl ToDoStore {
         Ok(ToDoStore { pool })
     }
 
-    pub async fn get_all(mut self) -> Result<Vec<ToDoItem>, Error> {
+    pub async fn get_all(&mut self) -> Result<Vec<ToDoItem>, Error> {
         let result = query("SELECT * FROM todos")
             .fetch_all(&mut self.pool)
             .await?;
@@ -38,7 +38,7 @@ impl ToDoStore {
         Ok(todos)
     }
 
-    pub async fn new_todo(mut self, todo: ToDoItem) -> Result<ToDoItem, Error> {
+    pub async fn new_todo(&mut self, todo: ToDoItem) -> Result<ToDoItem, Error> {
         let _ = query!(
             "INSERT INTO todos (content, is_done) VALUES(?, ?)",
             todo.content,
@@ -50,7 +50,7 @@ impl ToDoStore {
         Ok(todo)
     }
 
-    pub async fn update_todo(mut self, todo: ToDoItem) -> Result<ToDoItem, Error> {
+    pub async fn update_todo(&mut self, todo: ToDoItem) -> Result<ToDoItem, Error> {
         if todo.id.is_none() {
             todo!("Add error")
         }
@@ -66,7 +66,7 @@ impl ToDoStore {
         Ok(todo)
     }
 
-    pub async fn delete_todo(mut self, todo_id: i32) -> Option<Error> {
+    pub async fn delete_todo(&mut self, todo_id: i32) -> Option<Error> {
         let _ = query!("DELETE FROM todos WHERE id = ?", todo_id)
             .execute(&mut self.pool)
             .await;
