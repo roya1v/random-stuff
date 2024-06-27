@@ -13,7 +13,7 @@ struct BicycleAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(TrackingThing(configuration: ModelConfiguration()))
+                .environment(TrackingThing())
         }
     }
 }

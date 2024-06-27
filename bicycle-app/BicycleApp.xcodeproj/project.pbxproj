@@ -19,6 +19,8 @@
 		0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381C2C1496A40061C9F3 /* RidesListScreen.swift */; };
 		0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */; };
 		0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AAE62C20AA07004559C4 /* HomeScreen.swift */; };
+		01AA7C1C2C2DE897006548C8 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */; };
+		01AA7C1E2C2DE8A2006548C8 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */; };
 		01C6B58B2C23369C009EFB3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01C6B58A2C23369C009EFB3F /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,7 @@
 		0167381C2C1496A40061C9F3 /* RidesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListScreen.swift; sourceTree = "<group>"; };
 		0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreen.swift; sourceTree = "<group>"; };
 		0195AAE62C20AA07004559C4 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
 		01C6B58A2C23369C009EFB3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01AA7C1C2C2DE897006548C8 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +113,7 @@
 				01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */,
 				01574E9A2C148B7F00C2FD86 /* ContentView.swift */,
 				0195AAE62C20AA07004559C4 /* HomeScreen.swift */,
+				01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */,
 				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
 				0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */,
 				016738182C148D660061C9F3 /* TrackingThing.swift */,
@@ -161,6 +166,9 @@
 			dependencies = (
 			);
 			name = BicycleApp;
+			packageProductDependencies = (
+				01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */,
+			);
 			productName = BicycleApp;
 			productReference = 01574E952C148B7F00C2FD86 /* BicycleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -233,6 +241,9 @@
 				Base,
 			);
 			mainGroup = 01574E8C2C148B7F00C2FD86;
+			packageReferences = (
+				01AA7C1A2C2DE897006548C8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 01574E962C148B7F00C2FD86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01574E9B2C148B7F00C2FD86 /* ContentView.swift in Sources */,
+				01AA7C1E2C2DE8A2006548C8 /* HomeFeature.swift in Sources */,
 				01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */,
 				0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */,
 				0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */,
@@ -614,6 +626,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01AA7C1A2C2DE897006548C8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.11.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01AA7C1A2C2DE897006548C8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01574E8D2C148B7F00C2FD86 /* Project object */;
 }

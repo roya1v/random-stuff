@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContentView: View {
 
+    @Environment(TrackingThing.self) private var trackingThing
+
     var body: some View {
         TabView {
-            HomeScreen()
+            HomeScreen(store: Store(initialState: HomeFeature.State(), reducer: {
+                HomeFeature(trackingThing: trackingThing)
+            }))
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
