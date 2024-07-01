@@ -12,7 +12,7 @@ import ComposableArchitecture
 
 struct HomeScreen: View {
 
-    let store: StoreOf<HomeFeature>
+    @Bindable var store: StoreOf<HomeFeature>
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -33,16 +33,27 @@ struct HomeScreen: View {
                 .disabled(!store.isStopEnabled)
             }
             .padding()
-            .background(Color.white, in: .rect(cornerSize: .init(width: 16.0, height: 16.0)))
+            .background(Color.white,
+                        in: .rect(cornerSize: CGSize(width: 16.0, height: 16.0)))
             .padding()
+        }
+        .sheet(isPresented: $store
+            .isShowingPermissionSheet
+            .sending(\.isShowingPermissionSheetChanged)) {
+            PermissionScreen(store: store)
         }
     }
 }
 
 #Preview {
     let trackingThing = TrackingThing.preview
-    return HomeScreen(store: Store(initialState: HomeFeature.State(), reducer: {
-        HomeFeature(trackingThing: trackingThing)
-    }))
-        .environment(trackingThing)
+    return HomeScreen(
+        store: Store(
+            initialState: HomeFeature.State(),
+            reducer: {
+                HomeFeature(trackingThing: trackingThing)
+            }
+        )
+    )
+    .environment(trackingThing)
 }

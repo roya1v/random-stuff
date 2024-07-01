@@ -40,14 +40,16 @@ final class TrackingThing: NSObject {
                                             configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         return TrackingThing(modelContainer: container)
     }
-
+    
+    func hasPermission() -> Bool {
+        locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse
+    }
+    
+    func requestPermission() {
+        locationManager.requestAlwaysAuthorization()
+    }
 
     func startRide() {
-        if locationManager.authorizationStatus != .authorizedAlways && locationManager.authorizationStatus != .authorizedWhenInUse {
-            locationManager.requestAlwaysAuthorization()
-            return
-        }
-
         currentRide = []
         startTime = Date.now
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
