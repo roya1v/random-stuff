@@ -60,7 +60,7 @@ struct RideDetailsScreen: View {
 }
 
 #Preview {
-    let thing = TrackingThing.preview
+    let manager = RidesManager.preview
     let ride = Ride(id: UUID(),
                     startTime: Date.now,
                     endTime: Date.now,
@@ -68,5 +68,4 @@ struct RideDetailsScreen: View {
 
                     ])
     return RideDetailsScreen(ride: ride)
-        .environment(thing)
 }

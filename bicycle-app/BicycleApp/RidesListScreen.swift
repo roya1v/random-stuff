@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct RidesListScreen: View {
 
-    @Environment(TrackingThing.self) private var thing
+    @Bindable var store: StoreOf<HomeFeature>
 
     var body: some View {
         NavigationView {
-            List(thing.getRides()) { ride in
+            List(store.rides) { ride in
                 NavigationLink {
                     RideDetailsScreen(ride: ride)
                 } label: {
@@ -25,6 +26,13 @@ struct RidesListScreen: View {
 }
 
 #Preview {
-    RidesListScreen()
-        .environment(TrackingThing.preview)
+    RidesListScreen(
+        store: Store(
+            initialState: HomeFeature.State(),
+            reducer: {
+                HomeFeature()
+                    .dependency(\.ridesManager, .previewValue)
+            }
+        )
+    )
 }

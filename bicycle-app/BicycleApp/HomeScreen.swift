@@ -18,6 +18,8 @@ struct HomeScreen: View {
         ZStack(alignment: .bottom) {
             Map {
                 UserAnnotation()
+                MapPolyline(coordinates: store.points.map(\.coordinate))
+                    .stroke(.blue, lineWidth: 2.0)
             }
             VStack {
                 if true {
@@ -70,14 +72,13 @@ struct HomeScreen: View {
 }
 
 #Preview {
-    let trackingThing = TrackingThing.preview
-    return HomeScreen(
+    HomeScreen(
         store: Store(
             initialState: HomeFeature.State(),
             reducer: {
-                HomeFeature(trackingThing: trackingThing)
+                HomeFeature()
+                    .dependency(\.ridesManager, .previewValue)
             }
         )
     )
-    .environment(trackingThing)
 }

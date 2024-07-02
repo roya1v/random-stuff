@@ -10,25 +10,33 @@ import ComposableArchitecture
 
 struct ContentView: View {
 
-    @Environment(TrackingThing.self) private var trackingThing
+    var store: StoreOf<HomeFeature>
 
     var body: some View {
         TabView {
-            HomeScreen(store: Store(initialState: HomeFeature.State(), reducer: {
-                HomeFeature(trackingThing: trackingThing)
-            }))
+            HomeScreen(store: store)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            RidesListScreen()
+            RidesListScreen(store: store)
                 .tabItem {
                     Label("Rides", systemImage: "bicycle")
                 }
+        }
+        .task {
+            store.send(.appeared)
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .environment(TrackingThing.preview)
+    ContentView(
+        store: Store(
+            initialState: HomeFeature.State(),
+            reducer: {
+                HomeFeature()
+                    .dependency(\.ridesManager, .previewValue)
+            }
+        )
+    )
 }

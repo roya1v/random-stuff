@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011FAD572C3481FF00FFC706 /* ComposableCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 011FAD562C3481FF00FFC706 /* ComposableCoreLocation */; };
+		011FAD592C3485DA00FFC706 /* RidesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011FAD582C3485DA00FFC706 /* RidesManager.swift */; };
 		01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */; };
 		01574E9B2C148B7F00C2FD86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574E9A2C148B7F00C2FD86 /* ContentView.swift */; };
 		01574E9F2C148B8000C2FD86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01574E9E2C148B8000C2FD86 /* Assets.xcassets */; };
@@ -14,7 +16,6 @@
 		01574EAC2C148B8000C2FD86 /* BicycleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574EAB2C148B8000C2FD86 /* BicycleAppTests.swift */; };
 		01574EB62C148B8000C2FD86 /* BicycleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574EB52C148B8000C2FD86 /* BicycleAppUITests.swift */; };
 		01574EB82C148B8000C2FD86 /* BicycleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574EB72C148B8000C2FD86 /* BicycleAppUITestsLaunchTests.swift */; };
-		016738192C148D660061C9F3 /* TrackingThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016738182C148D660061C9F3 /* TrackingThing.swift */; };
 		0167381B2C14908D0061C9F3 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381A2C14908D0061C9F3 /* Ride.swift */; };
 		0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381C2C1496A40061C9F3 /* RidesListScreen.swift */; };
 		0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011FAD582C3485DA00FFC706 /* RidesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesManager.swift; sourceTree = "<group>"; };
 		01574E952C148B7F00C2FD86 /* BicycleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BicycleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppApp.swift; sourceTree = "<group>"; };
 		01574E9A2C148B7F00C2FD86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,7 +55,6 @@
 		01574EB12C148B8000C2FD86 /* BicycleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BicycleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01574EB52C148B8000C2FD86 /* BicycleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppUITests.swift; sourceTree = "<group>"; };
 		01574EB72C148B8000C2FD86 /* BicycleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		016738182C148D660061C9F3 /* TrackingThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingThing.swift; sourceTree = "<group>"; };
 		0167381A2C14908D0061C9F3 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		0167381C2C1496A40061C9F3 /* RidesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListScreen.swift; sourceTree = "<group>"; };
 		0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreen.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01AA7C1C2C2DE897006548C8 /* ComposableArchitecture in Frameworks */,
+				011FAD572C3481FF00FFC706 /* ComposableCoreLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,9 +119,9 @@
 				0195AAE62C20AA07004559C4 /* HomeScreen.swift */,
 				016A91162C32E61E002D4761 /* PermissionScreen.swift */,
 				01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */,
+				011FAD582C3485DA00FFC706 /* RidesManager.swift */,
 				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
 				0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */,
-				016738182C148D660061C9F3 /* TrackingThing.swift */,
 				0167381A2C14908D0061C9F3 /* Ride.swift */,
 				01574E9E2C148B8000C2FD86 /* Assets.xcassets */,
 				01574EA02C148B8000C2FD86 /* Preview Content */,
@@ -171,6 +173,7 @@
 			name = BicycleApp;
 			packageProductDependencies = (
 				01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */,
+				011FAD562C3481FF00FFC706 /* ComposableCoreLocation */,
 			);
 			productName = BicycleApp;
 			productReference = 01574E952C148B7F00C2FD86 /* BicycleApp.app */;
@@ -246,6 +249,7 @@
 			mainGroup = 01574E8C2C148B7F00C2FD86;
 			packageReferences = (
 				01AA7C1A2C2DE897006548C8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				011FAD552C3481FE00FFC706 /* XCRemoteSwiftPackageReference "composable-core-location" */,
 			);
 			productRefGroup = 01574E962C148B7F00C2FD86 /* Products */;
 			projectDirPath = "";
@@ -298,7 +302,7 @@
 				0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */,
 				0167381B2C14908D0061C9F3 /* Ride.swift in Sources */,
 				0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */,
-				016738192C148D660061C9F3 /* TrackingThing.swift in Sources */,
+				011FAD592C3485DA00FFC706 /* RidesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +636,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		011FAD552C3481FE00FFC706 /* XCRemoteSwiftPackageReference "composable-core-location" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rcasula/composable-core-location";
+			requirement = {
+				branch = "swift-concurrency";
+				kind = branch;
+			};
+		};
 		01AA7C1A2C2DE897006548C8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -643,6 +655,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		011FAD562C3481FF00FFC706 /* ComposableCoreLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 011FAD552C3481FE00FFC706 /* XCRemoteSwiftPackageReference "composable-core-location" */;
+			productName = ComposableCoreLocation;
+		};
 		01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01AA7C1A2C2DE897006548C8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

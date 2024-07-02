@@ -1,5 +1,5 @@
 {
-  "originHash" : "e7024a9cd3fa1c40fa4003b3b2b186c00ba720c787de8ba274caf8fc530677e8",
+  "originHash" : "a48bdea00421419c9fbc478744aecbd936a714fb5dc8361e364f8f93ac16da7b",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "9dc9cbe4bc45c65164fa653a563d8d8db61b09bb",
         "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "composable-core-location",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rcasula/composable-core-location",
+      "state" : {
+        "branch" : "swift-concurrency",
+        "revision" : "40a98e18d0350fd1a1efa83c24aca3044b9b7bd2"
       }
     },
     {

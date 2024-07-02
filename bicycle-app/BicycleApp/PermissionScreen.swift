@@ -37,14 +37,13 @@ struct PermissionScreen: View {
 }
 
 #Preview {
-    let trackingThing = TrackingThing.preview
-    return PermissionScreen(
+    PermissionScreen(
         store: Store(
             initialState: HomeFeature.State(),
             reducer: {
-                HomeFeature(trackingThing: trackingThing)
+                HomeFeature()
+                    .dependency(\.ridesManager, .previewValue)
             }
         )
     )
-    .environment(trackingThing)
 }

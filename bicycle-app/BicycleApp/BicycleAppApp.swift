@@ -7,13 +7,20 @@
 
 import SwiftUI
 import SwiftData
+import ComposableArchitecture
 
 @main
 struct BicycleAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(TrackingThing())
+            ContentView(
+                store: Store(
+                    initialState: HomeFeature.State(),
+                    reducer: {
+                        HomeFeature()
+                    }
+                )
+            )
         }
     }
 }
