@@ -31,7 +31,6 @@ struct AppFeature {
         case appeared
         case startTapped
         case stopTapped
-        case tripStopped
         case updateTime
         case isShowingPermissionSheetChanged(Bool)
         case requestPermissionTapped
@@ -94,10 +93,6 @@ struct AppFeature {
         
             case .stopTapped:
                 state.isStopEnabled = false
-                return .run { send in
-                    await send(.tripStopped)
-                }
-            case .tripStopped:
                 state.isStartEnabled = true
                 
                 return .merge(
