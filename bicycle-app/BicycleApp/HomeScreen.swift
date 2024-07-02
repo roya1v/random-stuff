@@ -19,18 +19,42 @@ struct HomeScreen: View {
             Map {
                 UserAnnotation()
             }
-            HStack {
-                Button("Start trip") {
-                    store.send(.startTapped)
+            VStack {
+                if true {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Text("Distance:")
+                                .font(.caption)
+                            Text("13.7km")
+                                .font(.largeTitle)
+                        }
+                        Spacer()
+                        VStack {
+                            Text("Time:")
+                                .font(.caption)
+                            Text("1:12:59")
+                                .font(.largeTitle)
+                        }
+                        Spacer()
+                    }
+                    .animation(.default, value: store.isStopEnabled)
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(!store.isStartEnabled)
+                HStack {
+                    Button("Start trip") {
+                        
+                        store.send(.startTapped)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(!store.isStartEnabled)
+                    
+                    Button("Stop trip") {
+                        store.send(.stopTapped)
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(!store.isStopEnabled)
+                }
                 
-                Button("Stop trip") {
-                    store.send(.stopTapped)
-                }
-                .buttonStyle(.bordered)
-                .disabled(!store.isStopEnabled)
             }
             .padding()
             .background(Color.white,
@@ -40,8 +64,8 @@ struct HomeScreen: View {
         .sheet(isPresented: $store
             .isShowingPermissionSheet
             .sending(\.isShowingPermissionSheetChanged)) {
-            PermissionScreen(store: store)
-        }
+                PermissionScreen(store: store)
+            }
     }
 }
 
