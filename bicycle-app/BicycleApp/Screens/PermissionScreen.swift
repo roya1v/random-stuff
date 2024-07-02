@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct PermissionScreen: View {
     
-    let store: StoreOf<HomeFeature>
+    let store: StoreOf<AppFeature>
     
     var body: some View {
         VStack(alignment: .center) {
@@ -39,9 +39,9 @@ struct PermissionScreen: View {
 #Preview {
     PermissionScreen(
         store: Store(
-            initialState: HomeFeature.State(),
+            initialState: AppFeature.State(),
             reducer: {
-                HomeFeature()
+                AppFeature()
                     .dependency(\.ridesManager, .previewValue)
             }
         )

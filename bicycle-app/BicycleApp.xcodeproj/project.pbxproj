@@ -22,7 +22,7 @@
 		016A91172C32E61E002D4761 /* PermissionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A91162C32E61E002D4761 /* PermissionScreen.swift */; };
 		0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AAE62C20AA07004559C4 /* HomeScreen.swift */; };
 		01AA7C1C2C2DE897006548C8 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */; };
-		01AA7C1E2C2DE8A2006548C8 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */; };
+		01AA7C1E2C2DE8A2006548C8 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */; };
 		01C6B58B2C23369C009EFB3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01C6B58A2C23369C009EFB3F /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +60,7 @@
 		0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreen.swift; sourceTree = "<group>"; };
 		016A91162C32E61E002D4761 /* PermissionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionScreen.swift; sourceTree = "<group>"; };
 		0195AAE62C20AA07004559C4 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
+		01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		01C6B58A2C23369C009EFB3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +91,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011FAD5A2C348E8900FFC706 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0195AAE62C20AA07004559C4 /* HomeScreen.swift */,
+				016A91162C32E61E002D4761 /* PermissionScreen.swift */,
+				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
+				0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		01574E8C2C148B7F00C2FD86 = {
 			isa = PBXGroup;
 			children = (
@@ -116,12 +127,9 @@
 			children = (
 				01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */,
 				01574E9A2C148B7F00C2FD86 /* ContentView.swift */,
-				0195AAE62C20AA07004559C4 /* HomeScreen.swift */,
-				016A91162C32E61E002D4761 /* PermissionScreen.swift */,
-				01AA7C1D2C2DE8A2006548C8 /* HomeFeature.swift */,
+				01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */,
+				011FAD5A2C348E8900FFC706 /* Screens */,
 				011FAD582C3485DA00FFC706 /* RidesManager.swift */,
-				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
-				0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */,
 				0167381A2C14908D0061C9F3 /* Ride.swift */,
 				01574E9E2C148B8000C2FD86 /* Assets.xcassets */,
 				01574EA02C148B8000C2FD86 /* Preview Content */,
@@ -296,7 +304,7 @@
 			files = (
 				016A91172C32E61E002D4761 /* PermissionScreen.swift in Sources */,
 				01574E9B2C148B7F00C2FD86 /* ContentView.swift in Sources */,
-				01AA7C1E2C2DE8A2006548C8 /* HomeFeature.swift in Sources */,
+				01AA7C1E2C2DE8A2006548C8 /* AppFeature.swift in Sources */,
 				01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */,
 				0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */,
 				0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */,

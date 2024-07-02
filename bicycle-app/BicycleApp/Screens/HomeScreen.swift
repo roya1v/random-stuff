@@ -12,7 +12,7 @@ import ComposableArchitecture
 
 struct HomeScreen: View {
 
-    @Bindable var store: StoreOf<HomeFeature>
+    @Bindable var store: StoreOf<AppFeature>
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -74,9 +74,9 @@ struct HomeScreen: View {
 #Preview {
     HomeScreen(
         store: Store(
-            initialState: HomeFeature.State(),
+            initialState: AppFeature.State(),
             reducer: {
-                HomeFeature()
+                AppFeature()
                     .dependency(\.ridesManager, .previewValue)
             }
         )

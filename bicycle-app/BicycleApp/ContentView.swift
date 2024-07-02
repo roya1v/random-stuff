@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct ContentView: View {
 
-    var store: StoreOf<HomeFeature>
+    var store: StoreOf<AppFeature>
 
     var body: some View {
         TabView {
@@ -32,9 +32,9 @@ struct ContentView: View {
 #Preview {
     ContentView(
         store: Store(
-            initialState: HomeFeature.State(),
+            initialState: AppFeature.State(),
             reducer: {
-                HomeFeature()
+                AppFeature()
                     .dependency(\.ridesManager, .previewValue)
             }
         )

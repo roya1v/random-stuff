@@ -15,9 +15,9 @@ struct BicycleAppApp: App {
         WindowGroup {
             ContentView(
                 store: Store(
-                    initialState: HomeFeature.State(),
+                    initialState: AppFeature.State(),
                     reducer: {
-                        HomeFeature()
+                        AppFeature()
                     }
                 )
             )

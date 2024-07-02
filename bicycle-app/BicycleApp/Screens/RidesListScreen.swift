@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct RidesListScreen: View {
 
-    @Bindable var store: StoreOf<HomeFeature>
+    @Bindable var store: StoreOf<AppFeature>
 
     var body: some View {
         NavigationView {
@@ -28,9 +28,9 @@ struct RidesListScreen: View {
 #Preview {
     RidesListScreen(
         store: Store(
-            initialState: HomeFeature.State(),
+            initialState: AppFeature.State(),
             reducer: {
-                HomeFeature()
+                AppFeature()
                     .dependency(\.ridesManager, .previewValue)
             }
         )

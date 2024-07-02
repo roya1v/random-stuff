@@ -1,5 +1,5 @@
 //
-//  HomeFeature.swift
+//  AppFeature.swift
 //  BicycleApp
 //
 //  Created by Mike S. on 27/06/2024.
@@ -10,7 +10,7 @@ import ComposableArchitecture
 import ComposableCoreLocation
 
 @Reducer
-struct HomeFeature {
+struct AppFeature {
     @ObservableState
     struct State: Equatable {
         struct Point: Equatable {
