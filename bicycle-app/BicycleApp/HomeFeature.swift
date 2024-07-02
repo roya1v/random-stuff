@@ -12,6 +12,7 @@ import ComposableArchitecture
 struct HomeFeature {
     @ObservableState
     struct State: Equatable {
+        var secondsSinceStart = 0
         var isStartEnabled = true
         var isStopEnabled = false
         var isShowingPermissionSheet = false
@@ -21,9 +22,11 @@ struct HomeFeature {
         case startTapped
         case stopTapped
         case tripStopped
+        case updateTime
         case isShowingPermissionSheetChanged(Bool)
         case requestPermissionTapped
     }
+    
 
     let trackingThing: TrackingThing
 
@@ -38,7 +41,17 @@ struct HomeFeature {
                 trackingThing.startRide()
                 state.isStartEnabled = false
                 state.isStopEnabled = true
-                return .none
+                let clock = ContinuousClock()
+                return .run { send in
+                    while !Task.isCancelled {
+                        do {
+                            try await clock.sleep(for: .seconds(1))
+                            await send(.updateTime)
+                        } catch {
+                            if !Task.isCancelled{fatalError()}
+                        }
+                    }
+                }.cancellable(id: "test",cancelInFlight: true)
             case .stopTapped:
                 state.isStopEnabled = false
                 return .run { send in
@@ -47,13 +60,16 @@ struct HomeFeature {
                 }
             case .tripStopped:
                 state.isStartEnabled = true
-                return .none
+                return .cancel(id: "test")
             case .isShowingPermissionSheetChanged(let isShowing):
                 state.isShowingPermissionSheet = isShowing
                 return .none
             case .requestPermissionTapped:
                 state.isShowingPermissionSheet = false
                 trackingThing.requestPermission()
+                return .none
+            case .updateTime:
+                state.secondsSinceStart += 1
                 return .none
             }
         }

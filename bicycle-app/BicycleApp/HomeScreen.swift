@@ -33,7 +33,7 @@ struct HomeScreen: View {
                         VStack {
                             Text("Time:")
                                 .font(.caption)
-                            Text("1:12:59")
+                            Text("\(store.secondsSinceStart)")
                                 .font(.largeTitle)
                         }
                         Spacer()
