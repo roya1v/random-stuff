@@ -29,14 +29,18 @@ class Ride {
 
     @Attribute(.unique) var id: UUID
     var points: [Point]
-    var startTime: Date
-    var endTime: Date
 
-    init(id: UUID = UUID(), startTime: Date, endTime: Date, points: [Point]) {
+
+    init(id: UUID = UUID(), points: [Point]) {
         self.id = id
-        self.startTime = startTime
-        self.endTime = endTime
         self.points = points
+    }
+    
+    var startTime: Date? {
+        points.first?.timestamp
+    }
+    var endTime: Date? {
+        points.last?.timestamp ?? points.first?.timestamp
     }
 }
 
@@ -59,9 +63,6 @@ extension Ride {
             Point(latitude: 52.39636573308559, longitude: 20.9417583146379, altitude: 140.0, timestamp: Date(timeIntervalSince1970: 1719046956)),
             Point(latitude: 52.396012210595245, longitude: 20.941554466749345, altitude: 150.0, timestamp: Date(timeIntervalSince1970: 17190469557))
          ]
-        return Ride(
-             startTime: Date(timeIntervalSince1970: 1719046943),
-             endTime: Date(timeIntervalSince1970: 1719051323),
-             points: points)
+        return Ride(points: points)
     }
 }

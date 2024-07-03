@@ -18,7 +18,7 @@ struct RidesListScreen: View {
                 NavigationLink {
                     RideDetailsScreen(ride: ride)
                 } label: {
-                    Text("This is a trip from \(ride.startTime.formatted(date: .omitted, time: .standard)) to \(ride.endTime.formatted(date: .omitted, time: .standard)) on \(ride.startTime.formatted(date: .numeric, time: .omitted))")
+                    Text("This is a trip from \(ride.startTime?.formatted(date: .omitted, time: .standard) ?? "") to \(ride.endTime?.formatted(date: .omitted, time: .standard) ?? "") on \(ride.startTime?.formatted(date: .numeric, time: .omitted) ?? "")")
                 }
             }
         }

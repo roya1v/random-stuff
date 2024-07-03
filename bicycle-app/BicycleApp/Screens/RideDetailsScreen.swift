@@ -28,21 +28,25 @@ struct RideDetailsScreen: View {
         .sheet(isPresented: .constant(true)) {
             VStack {
                 HStack {
-                    Spacer()
-                    VStack {
-                        Text("Ride start")
-                            .font(.caption)
-                        Text(ride.startTime.formatted(date: .omitted, time: .shortened))
-                            .font(.title)
+                    if let startTime = ride.startTime {
+                        Spacer()
+                        VStack {
+                            Text("Ride start")
+                                .font(.caption)
+                            Text(startTime.formatted(date: .omitted, time: .shortened))
+                                .font(.title)
+                        }
                     }
-                    Spacer()
-                    VStack {
-                        Text("Ride end")
-                            .font(.caption)
-                        Text(ride.startTime.formatted(date: .omitted, time: .shortened))
-                            .font(.title)
+                    if let endTime = ride.endTime {
+                        Spacer()
+                        VStack {
+                            Text("Ride end")
+                                .font(.caption)
+                            Text(endTime.formatted(date: .omitted, time: .shortened))
+                                .font(.title)
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
                 Chart {
                     ForEach(ride.points) { point in
@@ -62,8 +66,6 @@ struct RideDetailsScreen: View {
 #Preview {
     let manager = RidesManager.preview
     let ride = Ride(id: UUID(),
-                    startTime: Date.now,
-                    endTime: Date.now,
                     points: [
 
                     ])

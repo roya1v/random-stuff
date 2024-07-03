@@ -100,9 +100,7 @@ struct AppFeature {
                     .cancel(id: "test"),
                     .cancel(id: "test2"),
                     .run { [state] send in
-                        let ride = Ride(startTime: Date.now,
-                                        endTime: Date.now,
-                                        points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.altitude, timestamp: $0.timestamp)})
+                        let ride = Ride(points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.altitude, timestamp: $0.timestamp)})
                         try? await ridesManager.save(ride: ride)
                         await send(.finishedNewRide(ride))
                     }
