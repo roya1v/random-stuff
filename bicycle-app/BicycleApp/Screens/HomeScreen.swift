@@ -13,15 +13,6 @@ import ComposableArchitecture
 struct HomeScreen: View {
 
     @Bindable var store: StoreOf<AppFeature>
-    
-    private var distanceText: String {
-        let distance = store.metersSinceStart
-        if distance < 1000 {
-            return "\(distance)m"
-        } else {
-            return "\(distance / 1000)km"
-        }
-    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -37,7 +28,7 @@ struct HomeScreen: View {
                         VStack {
                             Text("Distance:")
                                 .font(.caption)
-                            Text(distanceText)
+                            Text(store.distanceSinceStart.formatted(.measurement(width: .abbreviated, usage: .road)))
                                 .font(.largeTitle)
                         }
                         Spacer()

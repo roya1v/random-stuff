@@ -20,7 +20,7 @@ struct AppFeature {
         }
         
         var secondsSinceStart = 0
-        var metersSinceStart = 0
+        var distanceSinceStart = Measurement(value: 0.0, unit: UnitLength.meters)
         var isStartEnabled = true
         var isStopEnabled = false
         var isShowingPermissionSheet = false
@@ -118,7 +118,7 @@ struct AppFeature {
             case .locationManager(.didUpdateLocations(let location)):
                 if let location = location.first {
                     if let previosLocation = state.points.last {
-                        state.metersSinceStart += Int(location.rawValue.distance(from: previosLocation.rawValue))
+                        state.distanceSinceStart.value += location.rawValue.distance(from: previosLocation.rawValue)
                     }
                     
                     state.points.append(location)
