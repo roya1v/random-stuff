@@ -19,8 +19,8 @@ struct AppFeature {
             let alitude: Double
         }
         
-        var secondsSinceStart = 0
         var distanceSinceStart = Measurement(value: 0.0, unit: UnitLength.meters)
+        var durationSinceStart = Duration.seconds(0)
         var isStartEnabled = true
         var isStopEnabled = false
         var isShowingPermissionSheet = false
@@ -113,7 +113,7 @@ struct AppFeature {
                 oldLocationManager.requestAlwaysAuthorization()
                 return .none
             case .updateTime:
-                state.secondsSinceStart += 1
+                state.durationSinceStart += Duration.seconds(1)
                 return .none
             case .locationManager(.didUpdateLocations(let location)):
                 if let location = location.first {
