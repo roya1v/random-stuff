@@ -20,10 +20,11 @@ struct AppFeature {
         }
         
         var secondsSinceStart = 0
+        var metersSinceStart = 0
         var isStartEnabled = true
         var isStopEnabled = false
         var isShowingPermissionSheet = false
-        var points = [Point]()
+        var points = [Location]()
         var rides = [Ride]()
     }
 
@@ -101,7 +102,7 @@ struct AppFeature {
                     .run { [state] send in
                         let ride = Ride(startTime: Date.now,
                                         endTime: Date.now,
-                                        points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.alitude, timestamp: $0.date)})
+                                        points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.altitude, timestamp: $0.timestamp)})
                         try? await ridesManager.save(ride: ride)
                         await send(.finishedNewRide(ride))
                     }
@@ -117,8 +118,12 @@ struct AppFeature {
                 state.secondsSinceStart += 1
                 return .none
             case .locationManager(.didUpdateLocations(let location)):
-                if let coordinate = location.first {
-                    state.points.append(State.Point(coordinate: coordinate.coordinate, date: Date.now, alitude: coordinate.altitude))
+                if let location = location.first {
+                    if let previosLocation = state.points.last {
+                        state.metersSinceStart += Int(location.rawValue.distance(from: previosLocation.rawValue))
+                    }
+                    
+                    state.points.append(location)
                 }
                 return .none
             case .locationManager(_):
