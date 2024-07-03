@@ -12,6 +12,7 @@ interface ToDoItem {
 
 export default function Home() {
   const [items, setItems] = useState(Array<ToDoItem>());
+  const [newItem, setNewItem] = useState("");
   useEffect(() => {
     let ignore = false;
     fetch("http://localhost:3000/todos")
@@ -26,6 +27,29 @@ export default function Home() {
       ignore = true;
     };
   }, []);
+
+  const updateItem = (item: ToDoItem, newChecked: boolean) => {
+    item.is_done = newChecked;
+    fetch("http://localhost:3000/todos", {
+      method: "PUT",
+      body: JSON.stringify(item),
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
+  const createNewItem = (content: string) => {
+    let item: ToDoItem = {
+      content: content,
+      id: undefined,
+      is_done: false,
+    };
+    fetch("http://localhost:3000/todos", {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
   return (
     <div className="h-full flex flex-col justify-center items-center">
       <div className="text-2xl">To Do App</div>
@@ -36,13 +60,25 @@ export default function Home() {
             className="flex rounded bg-slate-200 p-2 m-2  items-center justify-between"
           >
             <div className="">{item.content}</div>
-            <Checkbox checked={item.is_done}/>
+            <Checkbox
+              checked={item.is_done}
+              onCheckedChange={(checked) =>
+                updateItem(item, checked as boolean)
+              }
+            />
           </li>
         ))}
       </ul>
       <form className="w-96 px-2 flex items-stretch h-10">
-        <Input placeholder="New todo item..." />
-        <Button variant="default" className="ml-2">
+        <Input
+          placeholder="New todo item..."
+          onChange={(event) => setNewItem(event.target.value)}
+        />
+        <Button
+          onClick={() => createNewItem(newItem)}
+          variant="default"
+          className="ml-2"
+        >
           Create
         </Button>
       </form>
