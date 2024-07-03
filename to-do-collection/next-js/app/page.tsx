@@ -28,11 +28,16 @@ export default function Home() {
     };
   }, []);
 
-  const updateItem = (item: ToDoItem, newChecked: boolean) => {
-    item.is_done = newChecked;
+  const updateItem = (updatedItem: ToDoItem, newChecked: boolean) => {
+    updatedItem.is_done = newChecked;
+    setItems(
+      items.map((item) =>
+        item.id === updatedItem.id ? { ...item, is_done: newChecked } : item
+      )
+    );
     fetch("http://localhost:3000/todos", {
       method: "PUT",
-      body: JSON.stringify(item),
+      body: JSON.stringify(updatedItem),
       headers: { "Content-Type": "application/json" },
     });
   };
