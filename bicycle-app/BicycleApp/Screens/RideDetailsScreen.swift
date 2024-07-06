@@ -63,11 +63,11 @@ struct RideDetailsScreen: View {
     }
 }
 
-#Preview {
-    let manager = RidesManager.preview
-    let ride = Ride(id: UUID(),
-                    points: [
-
-                    ])
-    return RideDetailsScreen(ride: ride)
-}
+//#Preview {
+//    let manager = RidesManager.preview
+//    let ride = Ride(id: UUID(),
+//                    points: [
+//
+//                    ])
+//    return RideDetailsScreen(ride: ride)
+//}

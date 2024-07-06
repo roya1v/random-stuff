@@ -24,8 +24,10 @@ struct AppFeature {
         var isStartEnabled = true
         var isStopEnabled = false
         var isShowingPermissionSheet = false
+        var bicycle: Bicycle? = nil
         var points = [Location]()
         var rides = [Ride]()
+        var bicycles = [Bicycle]()
     }
 
     enum Action {
@@ -36,25 +38,43 @@ struct AppFeature {
         case isShowingPermissionSheetChanged(Bool)
         case requestPermissionTapped
         case locationManager(LocationManager.Action)
-        case existingRidesLoaded([Ride])
+        case existingRidesLoaded([Ride], [Bicycle])
+        case selectedBicycle(Bicycle?)
+        case newBicycleCreated(Bicycle)
+        case newBicycleTapped(String)
         case finishedNewRide(Ride)
     }
     
     @Dependency(\.locationManager) var locationManager
     @Dependency(\.ridesManager) var ridesManager
-    
+    @Dependency(\.bicycleManager) var bicycleManager
+
     private let oldLocationManager = CLLocationManager()
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .newBicycleTapped(let name):
+                return .run { [name] send in
+                    let bicycle = Bicycle(name: name)
+                    try! await bicycleManager.save(bicycle: bicycle)
+                    await send(.newBicycleCreated(bicycle))
+                }
+            case .newBicycleCreated(let newBicycle):
+                state.bicycles.append(newBicycle)
+                return .none
+            case .selectedBicycle(let bicycle):
+                state.bicycle = bicycle
+                return .none
             case .appeared:
                 return .run { send in
                     let rides = try! await ridesManager.getAllExisting()
-                    await send(.existingRidesLoaded(rides))
+                    let bicycles = try! await bicycleManager.getAllExisting()
+                    await send(.existingRidesLoaded(rides, bicycles))
                 }
-            case .existingRidesLoaded(let rides):
+            case .existingRidesLoaded(let rides, let bicycles):
                 state.rides = rides
+                state.bicycles = bicycles
                 return .none
             case .finishedNewRide(let ride):
                 state.rides.append(ride)
@@ -100,7 +120,7 @@ struct AppFeature {
                     .cancel(id: "test"),
                     .cancel(id: "test2"),
                     .run { [state] send in
-                        let ride = Ride(points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.altitude, timestamp: $0.timestamp)})
+                        let ride = Ride(points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.altitude, timestamp: $0.timestamp)}, bicycle: state.bicycle!)
                         try? await ridesManager.save(ride: ride)
                         await send(.finishedNewRide(ride))
                     }

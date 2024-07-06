@@ -20,7 +20,11 @@ struct ContentView: View {
                 }
             RidesListScreen(store: store)
                 .tabItem {
-                    Label("Rides", systemImage: "bicycle")
+                    Label("Rides", systemImage: "map")
+                }
+            BicycleScreen(store: store)
+                .tabItem {
+                    Label("Bicycles", systemImage: "bicycle")
                 }
         }
         .task {

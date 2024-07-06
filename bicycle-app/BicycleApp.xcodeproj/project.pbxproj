@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011473B42C35C50F001190D4 /* Bicycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011473B32C35C50F001190D4 /* Bicycle.swift */; };
+		011473B72C35C556001190D4 /* BicycleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011473B62C35C556001190D4 /* BicycleManager.swift */; };
 		011FAD572C3481FF00FFC706 /* ComposableCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 011FAD562C3481FF00FFC706 /* ComposableCoreLocation */; };
 		011FAD592C3485DA00FFC706 /* RidesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011FAD582C3485DA00FFC706 /* RidesManager.swift */; };
 		01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */; };
@@ -20,6 +22,8 @@
 		0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381C2C1496A40061C9F3 /* RidesListScreen.swift */; };
 		0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */; };
 		016A91172C32E61E002D4761 /* PermissionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A91162C32E61E002D4761 /* PermissionScreen.swift */; };
+		0175855D2C3997B5004FCEF0 /* BicycleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175855C2C3997B4004FCEF0 /* BicycleScreen.swift */; };
+		0175855F2C399DAD004FCEF0 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175855E2C399DAD004FCEF0 /* ModelContainer.swift */; };
 		0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AAE62C20AA07004559C4 /* HomeScreen.swift */; };
 		01AA7C1C2C2DE897006548C8 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */; };
 		01AA7C1E2C2DE8A2006548C8 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */; };
@@ -44,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011473B32C35C50F001190D4 /* Bicycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bicycle.swift; sourceTree = "<group>"; };
+		011473B62C35C556001190D4 /* BicycleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleManager.swift; sourceTree = "<group>"; };
 		011FAD582C3485DA00FFC706 /* RidesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesManager.swift; sourceTree = "<group>"; };
 		01574E952C148B7F00C2FD86 /* BicycleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BicycleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleAppApp.swift; sourceTree = "<group>"; };
@@ -59,6 +65,8 @@
 		0167381C2C1496A40061C9F3 /* RidesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListScreen.swift; sourceTree = "<group>"; };
 		0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreen.swift; sourceTree = "<group>"; };
 		016A91162C32E61E002D4761 /* PermissionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionScreen.swift; sourceTree = "<group>"; };
+		0175855C2C3997B4004FCEF0 /* BicycleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleScreen.swift; sourceTree = "<group>"; };
+		0175855E2C399DAD004FCEF0 /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
 		0195AAE62C20AA07004559C4 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		01C6B58A2C23369C009EFB3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 				016A91162C32E61E002D4761 /* PermissionScreen.swift */,
 				0167381C2C1496A40061C9F3 /* RidesListScreen.swift */,
 				0167381E2C14A6570061C9F3 /* RideDetailsScreen.swift */,
+				0175855C2C3997B4004FCEF0 /* BicycleScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -130,7 +139,10 @@
 				01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */,
 				011FAD5A2C348E8900FFC706 /* Screens */,
 				011FAD582C3485DA00FFC706 /* RidesManager.swift */,
+				011473B62C35C556001190D4 /* BicycleManager.swift */,
+				0175855E2C399DAD004FCEF0 /* ModelContainer.swift */,
 				0167381A2C14908D0061C9F3 /* Ride.swift */,
+				011473B32C35C50F001190D4 /* Bicycle.swift */,
 				01574E9E2C148B8000C2FD86 /* Assets.xcassets */,
 				01574EA02C148B8000C2FD86 /* Preview Content */,
 				01C6B58A2C23369C009EFB3F /* Settings.bundle */,
@@ -307,8 +319,12 @@
 				01AA7C1E2C2DE8A2006548C8 /* AppFeature.swift in Sources */,
 				01574E992C148B7F00C2FD86 /* BicycleAppApp.swift in Sources */,
 				0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */,
+				0175855F2C399DAD004FCEF0 /* ModelContainer.swift in Sources */,
 				0167381D2C1496A40061C9F3 /* RidesListScreen.swift in Sources */,
 				0167381B2C14908D0061C9F3 /* Ride.swift in Sources */,
+				011473B72C35C556001190D4 /* BicycleManager.swift in Sources */,
+				011473B42C35C50F001190D4 /* Bicycle.swift in Sources */,
+				0175855D2C3997B5004FCEF0 /* BicycleScreen.swift in Sources */,
 				0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */,
 				011FAD592C3485DA00FFC706 /* RidesManager.swift in Sources */,
 			);

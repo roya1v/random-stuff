@@ -11,9 +11,9 @@ import SwiftData
 import ComposableArchitecture
 
 struct HomeScreen: View {
-
+    
     @Bindable var store: StoreOf<AppFeature>
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Map {
@@ -42,6 +42,16 @@ struct HomeScreen: View {
                     }
                     .animation(.default, value: store.isStopEnabled)
                 }
+                Picker("Bicycle",
+                       selection: $store.bicycle.sending(\.selectedBicycle)) {
+                    ForEach(store.bicycles) { bicycle in
+                        Text(bicycle.name)
+                            .tag(bicycle as Bicycle?)
+                    }
+                    Text("None")
+                        .tag(nil as Bicycle?)
+                }
+                       .pickerStyle(.menu)
                 HStack {
                     Button("Start trip") {
                         
@@ -77,7 +87,6 @@ struct HomeScreen: View {
             initialState: AppFeature.State(),
             reducer: {
                 AppFeature()
-                    .dependency(\.ridesManager, .previewValue)
             }
         )
     )
