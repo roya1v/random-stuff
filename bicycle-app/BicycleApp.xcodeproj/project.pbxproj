@@ -24,6 +24,7 @@
 		016A91172C32E61E002D4761 /* PermissionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A91162C32E61E002D4761 /* PermissionScreen.swift */; };
 		0175855D2C3997B5004FCEF0 /* BicycleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175855C2C3997B4004FCEF0 /* BicycleScreen.swift */; };
 		0175855F2C399DAD004FCEF0 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175855E2C399DAD004FCEF0 /* ModelContainer.swift */; };
+		017585612C39E3A2004FCEF0 /* RidesListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017585602C39E3A2004FCEF0 /* RidesListFeature.swift */; };
 		0195AAE72C20AA07004559C4 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AAE62C20AA07004559C4 /* HomeScreen.swift */; };
 		01AA7C1C2C2DE897006548C8 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 01AA7C1B2C2DE897006548C8 /* ComposableArchitecture */; };
 		01AA7C1E2C2DE8A2006548C8 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */; };
@@ -67,6 +68,7 @@
 		016A91162C32E61E002D4761 /* PermissionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionScreen.swift; sourceTree = "<group>"; };
 		0175855C2C3997B4004FCEF0 /* BicycleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleScreen.swift; sourceTree = "<group>"; };
 		0175855E2C399DAD004FCEF0 /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
+		017585602C39E3A2004FCEF0 /* RidesListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesListFeature.swift; sourceTree = "<group>"; };
 		0195AAE62C20AA07004559C4 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		01C6B58A2C23369C009EFB3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				01574E982C148B7F00C2FD86 /* BicycleAppApp.swift */,
 				01574E9A2C148B7F00C2FD86 /* ContentView.swift */,
 				01AA7C1D2C2DE8A2006548C8 /* AppFeature.swift */,
+				017585602C39E3A2004FCEF0 /* RidesListFeature.swift */,
 				011FAD5A2C348E8900FFC706 /* Screens */,
 				011FAD582C3485DA00FFC706 /* RidesManager.swift */,
 				011473B62C35C556001190D4 /* BicycleManager.swift */,
@@ -324,6 +327,7 @@
 				0167381B2C14908D0061C9F3 /* Ride.swift in Sources */,
 				011473B72C35C556001190D4 /* BicycleManager.swift in Sources */,
 				011473B42C35C50F001190D4 /* Bicycle.swift in Sources */,
+				017585612C39E3A2004FCEF0 /* RidesListFeature.swift in Sources */,
 				0175855D2C3997B5004FCEF0 /* BicycleScreen.swift in Sources */,
 				0167381F2C14A6570061C9F3 /* RideDetailsScreen.swift in Sources */,
 				011FAD592C3485DA00FFC706 /* RidesManager.swift in Sources */,

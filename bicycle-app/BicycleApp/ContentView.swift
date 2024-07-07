@@ -18,7 +18,8 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            RidesListScreen(store: store)
+            RidesListScreen(store: store.scope(state: \.ridesList,
+                                               action: \.ridesList))
                 .tabItem {
                     Label("Rides", systemImage: "map")
                 }

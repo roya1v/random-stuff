@@ -26,8 +26,8 @@ struct AppFeature {
         var isShowingPermissionSheet = false
         var bicycle: Bicycle? = nil
         var points = [Location]()
-        var rides = [Ride]()
         var bicycles = [Bicycle]()
+        var ridesList = RidesListFeature.State()
     }
 
     enum Action {
@@ -38,12 +38,15 @@ struct AppFeature {
         case isShowingPermissionSheetChanged(Bool)
         case requestPermissionTapped
         case locationManager(LocationManager.Action)
-        case existingRidesLoaded([Ride], [Bicycle])
+        case existingBicyclesLoaded([Bicycle])
         case selectedBicycle(Bicycle?)
         case newBicycleCreated(Bicycle)
         case newBicycleTapped(String)
         case finishedNewRide(Ride)
+        case ridesList(RidesListFeature.Action)
     }
+    
+    enum CancelID { case timer, location }
     
     @Dependency(\.locationManager) var locationManager
     @Dependency(\.ridesManager) var ridesManager
@@ -52,6 +55,9 @@ struct AppFeature {
     private let oldLocationManager = CLLocationManager()
 
     var body: some Reducer<State, Action> {
+        Scope(state: \.ridesList, action: \.ridesList) {
+            RidesListFeature()
+        }
         Reduce { state, action in
             switch action {
             case .newBicycleTapped(let name):
@@ -68,16 +74,14 @@ struct AppFeature {
                 return .none
             case .appeared:
                 return .run { send in
-                    let rides = try! await ridesManager.getAllExisting()
                     let bicycles = try! await bicycleManager.getAllExisting()
-                    await send(.existingRidesLoaded(rides, bicycles))
+                    await send(.existingBicyclesLoaded(bicycles))
                 }
-            case .existingRidesLoaded(let rides, let bicycles):
-                state.rides = rides
+            case .existingBicyclesLoaded(let bicycles):
                 state.bicycles = bicycles
                 return .none
             case .finishedNewRide(let ride):
-                state.rides.append(ride)
+                state.ridesList.rides.append(ride)
                 return .none
             case .startTapped:
                 guard oldLocationManager.authorizationStatus == .authorizedAlways || oldLocationManager.authorizationStatus == .authorizedWhenInUse else {
@@ -92,7 +96,7 @@ struct AppFeature {
                         await locationManager.startUpdatingLocation()
                         await withTaskGroup(of: Void.self) { group in
                             group.addTask {
-                                await withTaskCancellation(id: "test2", cancelInFlight: true) {
+                                await withTaskCancellation(id: CancelID.location, cancelInFlight: true) {
                                     for await action in await locationManager.delegate() {
                                         await send(.locationManager(action), animation: .default)
                                     }
@@ -109,7 +113,7 @@ struct AppFeature {
                                 if !Task.isCancelled{fatalError()}
                             }
                         }
-                    }.cancellable(id: "test",cancelInFlight: true)
+                    }.cancellable(id: CancelID.timer,cancelInFlight: true)
                 )
         
             case .stopTapped:
@@ -117,8 +121,8 @@ struct AppFeature {
                 state.isStartEnabled = true
                 
                 return .merge(
-                    .cancel(id: "test"),
-                    .cancel(id: "test2"),
+                    .cancel(id: CancelID.timer),
+                    .cancel(id: CancelID.location),
                     .run { [state] send in
                         let ride = Ride(points: state.points.map { Ride.Point(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude, altitude: $0.altitude, timestamp: $0.timestamp)}, bicycle: state.bicycle!)
                         try? await ridesManager.save(ride: ride)
@@ -145,6 +149,8 @@ struct AppFeature {
                 }
                 return .none
             case .locationManager(_):
+                return .none
+            case .ridesList:
                 return .none
             }
         }
