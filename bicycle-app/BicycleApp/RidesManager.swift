@@ -25,15 +25,15 @@ struct RidesManager: Sendable {
     
     @Dependency(\.modelContainer) var dbContainer: ModelContainer
     
-
-    
+    @MainActor
     func save(ride: Ride) async throws {
-        let context = await dbContainer.mainContext
+        let context = dbContainer.mainContext
         context.insert(ride)
     }
-    
+   
+    @MainActor
     func getAllExisting() async throws -> [Ride] {
-        let context = await dbContainer.mainContext
+        let context = dbContainer.mainContext
         return try! context.fetch(.init())
     }
 }

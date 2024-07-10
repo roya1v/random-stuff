@@ -24,14 +24,16 @@ extension BicycleManager: DependencyKey {
 struct BicycleManager: Sendable {
     
     @Dependency(\.modelContainer) var dbContainer: ModelContainer
-    
+   
+    @MainActor
     func save(bicycle: Bicycle) async throws {
-        let context = await dbContainer.mainContext
+        let context = dbContainer.mainContext
         context.insert(bicycle)
     }
     
+    @MainActor
     func getAllExisting() async throws -> [Bicycle] {
-        let context = await dbContainer.mainContext
+        let context = dbContainer.mainContext
         return try! context.fetch(.init())
     }
 }
