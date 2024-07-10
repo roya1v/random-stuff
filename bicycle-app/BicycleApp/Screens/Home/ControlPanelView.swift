@@ -14,7 +14,7 @@ struct ControlPanelView: View {
     
     var body: some View {
         VStack {
-            if true {
+            if store.isStopEnabled {
                 HStack {
                     Spacer()
                     VStack {
@@ -32,7 +32,6 @@ struct ControlPanelView: View {
                     }
                     Spacer()
                 }
-                .animation(.default, value: store.isStopEnabled)
             }
             Picker("Bicycle",
                    selection: $store.bicycle.sending(\.selectedBicycle)) {
@@ -46,14 +45,13 @@ struct ControlPanelView: View {
                    .pickerStyle(.menu)
             HStack {
                 Button("Start trip") {
-                    
-                    store.send(.startTapped)
+                    store.send(.startTapped, animation: .easeInOut)
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(!store.isStartEnabled)
                 
                 Button("Stop trip") {
-                    store.send(.stopTapped)
+                    store.send(.stopTapped, animation: .easeInOut)
                 }
                 .buttonStyle(.bordered)
                 .disabled(!store.isStopEnabled)
