@@ -18,10 +18,34 @@ final class swift_copy_withTests: XCTestCase {
 #if canImport(swiftCopyWithMacros)
         assertMacroExpansion(
             """
+            @CopyWith()
+            struct Animal {
+                let name: String
+            }
+            """,
+            expandedSource: """
+            struct Animal {
+                let name: String
+
+                func copyWith(name: String? = nil) -> Animal {
+                    Animal(name: name ?? self.name)
+                }
+            }
+            """,
+            macros: testMacros
+        )
+#else
+        throw XCTSkip("macros are only supported when running tests for the host platform")
+#endif
+    }
+
+    func testMacro2() throws {
+#if canImport(swiftCopyWithMacros)
+        assertMacroExpansion(
+            """
             enum Gender {
                 case male, female, other
             }
-
             @CopyWith()
             struct Animal {
                 let name: String
@@ -32,7 +56,6 @@ final class swift_copy_withTests: XCTestCase {
             enum Gender {
                 case male, female, other
             }
-            @CopyWith()
             struct Animal {
                 let name: String
                 let gender: Gender
