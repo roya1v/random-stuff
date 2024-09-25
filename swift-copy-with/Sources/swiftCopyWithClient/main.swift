@@ -11,6 +11,6 @@ struct Animal {
     let gender: Gender
 }
 
-let test = Animal(name: "ghe", gender: .female)
+let test = Animal(name: "ghe", age: 3, gender: .female)
 
 let test2 = test.copyWith(name: "Hello")

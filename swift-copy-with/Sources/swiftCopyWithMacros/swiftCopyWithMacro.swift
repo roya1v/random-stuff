@@ -78,32 +78,24 @@ public struct CopyWithMacro: MemberMacro {
                             calledExpression: DeclReferenceExprSyntax(baseName: "Animal"),
                             leftParen: .leftParenToken(),
                             arguments: LabeledExprListSyntax {
-                                LabeledExprSyntax(label: "name", expression: SequenceExprSyntax {
-                                    DeclReferenceExprSyntax(baseName: "name")
-                                    BinaryOperatorExprSyntax(operator: "??")
-                                    MemberAccessExprSyntax(
-                                        base: DeclReferenceExprSyntax(
-                                            baseName: .keyword(SwiftSyntax.Keyword.`self`)
-                                        ),
-                                        period: .periodToken(),
-                                        declName: DeclReferenceExprSyntax(
-                                            baseName: .identifier("name")
-                                        )
-                                    )
-                                })
-                                LabeledExprSyntax(label: "gender", expression: SequenceExprSyntax {
-                                    DeclReferenceExprSyntax(baseName: "gender")
-                                    BinaryOperatorExprSyntax(operator: "??")
-                                    MemberAccessExprSyntax(
-                                        base: DeclReferenceExprSyntax(
-                                            baseName: .keyword(SwiftSyntax.Keyword.`self`)
-                                        ),
-                                        period: .periodToken(),
-                                        declName: DeclReferenceExprSyntax(
-                                            baseName: .identifier("gender")
-                                        )
-                                    )
-                                })
+                                getProperties(of: declaration)
+                                    .map { variable in
+                                        LabeledExprSyntax(label: variable.bindings.first!.pattern.as(IdentifierPatternSyntax.self)!.identifier,
+                                                          colon: .colonToken(),
+                                                          expression: SequenceExprSyntax {
+                                            DeclReferenceExprSyntax(baseName: variable.bindings.first!.pattern.as(IdentifierPatternSyntax.self)!.identifier)
+                                            BinaryOperatorExprSyntax(operator: "??")
+                                            MemberAccessExprSyntax(
+                                                base: DeclReferenceExprSyntax(
+                                                    baseName: .keyword(SwiftSyntax.Keyword.`self`)
+                                                ),
+                                                period: .periodToken(),
+                                                declName: DeclReferenceExprSyntax(
+                                                    baseName: variable.bindings.first!.pattern.as(IdentifierPatternSyntax.self)!.identifier
+                                                )
+                                            )
+                                        })
+                                    }
                             },
                             rightParen: .rightParenToken()
                         )
