@@ -26,11 +26,91 @@ public struct StringifyMacro: ExpressionMacro {
 }
 
 public struct CopyWithMacro: MemberMacro {
+
+    private static func getProperties(of declaration: some DeclGroupSyntax) -> [VariableDeclSyntax] {
+        declaration
+            .memberBlock
+            .members
+            .compactMap { $0.decl.as(VariableDeclSyntax.self) }
+    }
+
     public static func expansion(
         of node: AttributeSyntax,
         providingMembersOf declaration: some DeclGroupSyntax,
         in context: some MacroExpansionContext
     ) throws -> [DeclSyntax] {
+        let lastThing = getProperties(of: declaration).last!
+        return [
+            DeclSyntax(
+                FunctionDeclSyntax(
+                    name: "copyWith",
+                    signature: FunctionSignatureSyntax(
+                        parameterClause: FunctionParameterClauseSyntax(
+                            parameters: FunctionParameterListSyntax(
+                                getProperties(of: declaration)
+                                    .dropLast()
+                                    .map { variable in
+                                        FunctionParameterSyntax(
+                                            firstName: variable.bindings.first!.pattern.as(IdentifierPatternSyntax.self)!.identifier,
+                                            type: OptionalTypeSyntax(
+                                                wrappedType: variable.bindings.first!.typeAnnotation!.type
+                                            ),
+                                            defaultValue: InitializerClauseSyntax(value: NilLiteralExprSyntax()),
+                                            trailingComma: .commaToken()
+                                        )
+                                    }
+                                + [
+
+                                    FunctionParameterSyntax(
+                                        firstName: lastThing.bindings.first!.pattern.as(IdentifierPatternSyntax.self)!.identifier,
+                                        type: OptionalTypeSyntax(
+                                            wrappedType: lastThing.bindings.first!.typeAnnotation!.type
+                                        ),
+                                        defaultValue: InitializerClauseSyntax(value: NilLiteralExprSyntax())
+                                    )
+                                ]
+                            )
+                        ),
+                        returnClause: ReturnClauseSyntax(type: IdentifierTypeSyntax(name: "Animal"))
+                    ),
+                    body: CodeBlockSyntax  {
+                        FunctionCallExprSyntax(
+                            calledExpression: DeclReferenceExprSyntax(baseName: "Animal"),
+                            leftParen: .leftParenToken(),
+                            arguments: LabeledExprListSyntax {
+                                LabeledExprSyntax(label: "name", expression: SequenceExprSyntax {
+                                    DeclReferenceExprSyntax(baseName: "name")
+                                    BinaryOperatorExprSyntax(operator: "??")
+                                    MemberAccessExprSyntax(
+                                        base: DeclReferenceExprSyntax(
+                                            baseName: .keyword(SwiftSyntax.Keyword.`self`)
+                                        ),
+                                        period: .periodToken(),
+                                        declName: DeclReferenceExprSyntax(
+                                            baseName: .identifier("name")
+                                        )
+                                    )
+                                })
+                                LabeledExprSyntax(label: "gender", expression: SequenceExprSyntax {
+                                    DeclReferenceExprSyntax(baseName: "gender")
+                                    BinaryOperatorExprSyntax(operator: "??")
+                                    MemberAccessExprSyntax(
+                                        base: DeclReferenceExprSyntax(
+                                            baseName: .keyword(SwiftSyntax.Keyword.`self`)
+                                        ),
+                                        period: .periodToken(),
+                                        declName: DeclReferenceExprSyntax(
+                                            baseName: .identifier("gender")
+                                        )
+                                    )
+                                })
+                            },
+                            rightParen: .rightParenToken()
+                        )
+                    }
+                )
+            )
+        ]
         return [
             DeclSyntax(
                 FunctionDeclSyntax(
@@ -61,7 +141,6 @@ public struct CopyWithMacro: MemberMacro {
                         ),
                         returnClause: ReturnClauseSyntax(type: IdentifierTypeSyntax(name: "Animal"))
                     ),
-
                     body: CodeBlockSyntax  {
                         FunctionCallExprSyntax(
                             calledExpression: DeclReferenceExprSyntax(baseName: "Animal"),
