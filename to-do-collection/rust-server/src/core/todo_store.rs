@@ -6,6 +6,7 @@ pub struct ToDoItem {
     id: Option<i32>,
     content: String,
     is_done: bool,
+    user_id: Option<i32>,
 }
 
 pub struct ToDoStore {
@@ -23,7 +24,7 @@ impl ToDoStore {
     }
 
     pub async fn get_all(&mut self) -> Result<Vec<ToDoItem>, Error> {
-        let result = query("SELECT * FROM todos")
+        let result = query("SELECT id, content, is_done FROM todos")
             .fetch_all(&mut self.pool)
             .await?;
         let todos = result
@@ -32,6 +33,7 @@ impl ToDoStore {
                 id: row.get("id"),
                 content: row.get("content"),
                 is_done: row.get("is_done"),
+                user_id: None,
             })
             .collect();
 
