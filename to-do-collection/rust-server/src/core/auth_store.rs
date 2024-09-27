@@ -1,5 +1,8 @@
+use std::sync::Arc;
+
 use serde::{Deserialize, Serialize};
 use sqlx::{query, sqlite::SqliteConnectOptions, ConnectOptions, Error, Row, SqliteConnection};
+use tokio::sync::Mutex;
 
 #[derive(Serialize, Deserialize)]
 pub struct User {
@@ -9,16 +12,11 @@ pub struct User {
 }
 
 pub struct AuthStore {
-    pool: SqliteConnection,
+    pool: Arc<Mutex<SqliteConnection>>,
 }
 
 impl AuthStore {
-    pub async fn new(filename: &str) -> Result<Self, sqlx::Error> {
-        let pool = SqliteConnectOptions::new()
-            .filename(filename)
-            .connect()
-            .await?;
-
+    pub async fn new(pool: Arc<Mutex<SqliteConnection>>) -> Result<Self, sqlx::Error> {
         Ok(AuthStore { pool })
     }
 

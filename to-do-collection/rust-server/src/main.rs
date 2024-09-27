@@ -10,9 +10,13 @@ mod routes {
     pub mod todo_route;
 }
 
-use std::sync::Arc;
-
+use app_state::AppState;
 use axum::Router;
+use core::auth_store::AuthStore;
+use routes::{auth_route, todo_route};
+use sqlx::sqlite::SqliteConnectOptions;
+use sqlx::ConnectOptions;
+use std::sync::Arc;
 use tokio::sync::Mutex;
 use tower_http::{cors::CorsLayer, trace::TraceLayer};
 
@@ -31,9 +35,22 @@ async fn main() {
 }
 
 async fn make_router() -> Router {
-    let store = ToDoStore::new("todos.db").await.unwrap();
+    let pool = Arc::new(Mutex::new(
+        SqliteConnectOptions::new()
+            .filename("todos.db")
+            .connect()
+            .await
+            .unwrap(),
+    ));
+    let todo_store = ToDoStore::new(pool.clone()).await.unwrap();
+    let auth_store = AuthStore::new(pool).await.unwrap();
+    let state = Arc::new(AppState {
+        todo_store: Mutex::new(todo_store),
+        auth_store: Mutex::new(auth_store),
+    });
     Router::new()
-        .merge(routes::todo_route::make_router(store))
+        .merge(todo_route::make_router(state.clone()))
+        .merge(auth_route::make_router(state))
         .layer(CorsLayer::permissive())
         .layer(TraceLayer::new_for_http())
 }
