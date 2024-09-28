@@ -28,17 +28,21 @@ async fn get_all_todos(State(state): State<Arc<AppState>>) -> Json<Vec<ToDoItem>
 
 async fn get_all_private_todos(
     State(state): State<Arc<AppState>>,
-    Path(user_id): Path<u32>,
+    Path(username): Path<String>,
     headers: HeaderMap,
 ) -> Result<Json<Vec<ToDoItem>>, StatusCode> {
-    let token = headers.get(AUTHORIZATION);
-    if let Some(token) = token {
-        let mut store = state.todo_store.lock().await;
-        let todos = store.get_all().await.unwrap();
-        Ok(Json(todos))
-    } else {
-        Err(StatusCode::FORBIDDEN)
+    if let Some(token) = headers.get(AUTHORIZATION) {
+        let mut auth = state.auth_store.lock().await;
+        let result = auth
+            .auth_user(username, token.to_str().unwrap().to_string())
+            .await;
+        if let Ok(user) = result {
+            let mut store = state.todo_store.lock().await;
+            let todos = store.get_all().await.unwrap();
+            return Ok(Json(todos));
+        }
     }
+    Err(StatusCode::FORBIDDEN)
 }
 
 async fn new_todo(
