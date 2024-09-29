@@ -14,7 +14,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ToDos'
+                type: array
+                items: 
+                  $ref: '#/components/schemas/ToDo'
     post:
       summary: Create a new todo
       description: Create a new todo
@@ -56,7 +58,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: User ID
+          description: ToDo ID
           required: true
           schema:
             type: integer
@@ -70,24 +72,6 @@ paths:
         
 components:
   schemas:
-    ToDos:
-      type: array
-      items:
-        type: object
-        required:
-          - id
-          - content
-          - is_done
-        properties:
-          id:
-            type: integer
-            format: int64
-            example: 10
-          content:
-            type: string
-            example: Buy stuff
-          is_done:
-            type: boolean
     ToDo:
       required:
         - content
