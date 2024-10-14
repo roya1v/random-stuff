@@ -56,7 +56,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-full flex flex-col justify-center items-center">
+    <div className=" flex flex-col justify-center items-center h-screen">
       <div className="text-2xl">To Do App</div>
       <ul className="w-96">
         {items.map((item) => (
