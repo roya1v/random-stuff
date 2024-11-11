@@ -12,7 +12,7 @@ export default function HomePage() {
     });
   }, []);
   return (
-    <main className="flex flex-col bg-white">
+    <main className="grid grid-cols-5">
       {items?.map((item) => {
         return <MenuTile key={item.id} item={item} />;
       })}
