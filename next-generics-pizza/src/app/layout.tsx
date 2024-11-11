@@ -12,7 +12,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="text-5xl">Welcome to Generic's Pizza!</div>
+        {children}
+      </body>
     </html>
   );
 }

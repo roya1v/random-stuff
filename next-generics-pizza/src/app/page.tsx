@@ -1,11 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-
-type MenuItem = {
-  id: string;
-  title: string;
-  description: string;
-};
+import { MenuItem } from "~/lib/menu-item";
+import { MenuTile } from "./_components/menu-tile";
 
 export default function HomePage() {
   const [items, setItems] = useState<null | MenuItem[]>();
@@ -18,12 +14,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col bg-white">
       {items?.map((item) => {
-        return (
-          <div key={item.id}>
-            <div className="text-2xl">{item.title}</div>
-            <div className="">{item.description}</div>
-          </div>
-        );
+        return <MenuTile key={item.id} item={item} />;
       })}
     </main>
   );
