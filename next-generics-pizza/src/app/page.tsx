@@ -1,16 +1,9 @@
-"use client";
-import { useEffect, useState } from "react";
 import { MenuItem } from "~/lib/menu-item";
 import { MenuTile } from "./_components/menu-tile";
 
-export default function HomePage() {
-  const [items, setItems] = useState<null | MenuItem[]>();
-  useEffect(() => {
-    fetch("http://localhost:8080/menu").then(async (resp) => {
-      const body = await resp.json();
-      setItems(body);
-    });
-  }, []);
+export default async function HomePage() {
+  const resp = await fetch("http://localhost:8080/menu");
+  const items: MenuItem[] = await resp.json();
   return (
     <main className="grid grid-cols-5">
       {items?.map((item) => {
