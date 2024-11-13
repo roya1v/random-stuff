@@ -27,7 +27,12 @@ export default function ItemPage({
       <div className="text-3xl">{item?.title}</div>
       <img src={`http://localhost:8080/menu/${item?.id}/image`}></img>
       <div className="">{item?.description}</div>
-      <button onClick={() => onClick(item!)}>Add to cart</button>
+      <button
+        className="m-4 rounded-lg bg-black px-4 py-2 text-white transition hover:scale-110"
+        onClick={() => onClick(item!)}
+      >
+        Add to cart
+      </button>
     </>
   );
 }
