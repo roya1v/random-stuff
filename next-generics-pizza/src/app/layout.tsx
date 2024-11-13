@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="">
+        <div className="flex justify-between p-4 shadow-lg">
           <Link className="" href={"/"}>
             Welcome to Generic's Pizza!
           </Link>

@@ -23,16 +23,24 @@ export default function ItemPage({
   }, []);
   const onClick = useCartStore((state) => state.addItem);
   return (
-    <>
-      <div className="text-3xl">{item?.title}</div>
-      <img src={`http://localhost:8080/menu/${item?.id}/image`}></img>
-      <div className="">{item?.description}</div>
-      <button
-        className="m-4 rounded-lg bg-black px-4 py-2 text-white transition hover:scale-110"
-        onClick={() => onClick(item!)}
-      >
-        Add to cart
-      </button>
-    </>
+    <div className="flex flex-row items-center p-4">
+      <div className="basis-1/2">
+        <img
+          src={`http://localhost:8080/menu/${item?.id}/image`}
+          className="object-contain"
+        ></img>
+      </div>
+
+      <div className="">
+        <div className="text-5xl">{item?.title}</div>
+        <div className="">{item?.description}</div>
+        <button
+          className="rounded-lg bg-black px-4 py-2 text-white transition hover:scale-110"
+          onClick={() => onClick(item!)}
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
   );
 }
