@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "children": {
+            "type": "array",
+            "item": {
+                "type": "object",
+                "properties": {
+                    "parent": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
