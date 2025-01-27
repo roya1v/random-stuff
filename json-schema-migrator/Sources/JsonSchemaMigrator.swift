@@ -10,35 +10,57 @@ struct JsonSchemaMigrator {
     }
 
     static func compare(_ old: JsonSchema, _ new: JsonSchema) {
-        for (oldPropertyName, oldProperty) in old.properties {
-            if let newSchemaProperty = new.properties[oldPropertyName] {
+        compareProperties(old.properties, new.properties)
+    }
+
+    static func compareProperties(_ old: JsonSchema.Properties, _ new: JsonSchema.Properties) {
+        for (oldPropertyName, oldProperty) in old {
+            if let newSchemaProperty = new[oldPropertyName] {
                 if newSchemaProperty != oldProperty {
-                    print("Property '\(oldPropertyName)' changed from \(oldProperty) to \(newSchemaProperty)")
+                    if let oldItem = oldProperty.item, let newItem = newSchemaProperty.item, oldItem != newItem {
+                        compareProperties(oldItem.properties ?? [:],
+                                          newItem.properties ?? [:])
+                    } else {
+                        debugPrint("Property '\(oldPropertyName)' changed from \(oldProperty) to \(newSchemaProperty)")
+                    }
                 }
             } else {
-                print("Property '\(oldPropertyName) deleted")
+                debugPrint("Property '\(oldPropertyName) deleted")
             }
         }
 
-        for (newPropertyName, newProperty) in new.properties {
-            if old.properties[newPropertyName] == nil {
+        for (newPropertyName, newProperty) in new {
+            if old[newPropertyName] == nil {
                 debugPrint("New property '\(newPropertyName)' is \(newProperty)")
             }
         }
     }
-
-}
-
-enum Change {
-    case newProperty(name: String, property: JsonSchema.Property)
 }
 
 struct JsonSchema: Codable {
     typealias Properties = [String: Property]
     let properties: Properties
 
-    struct Property: Codable, Equatable {
+    class Property: Codable, Equatable, CustomDebugStringConvertible {
         let type: JsonType
+        let properties: Properties?
+        let item: Property?
+
+        static func == (lhs: JsonSchema.Property, rhs: JsonSchema.Property) -> Bool {
+            lhs.item == rhs.item && lhs.properties == rhs.properties && lhs.type == rhs.type
+        }
+
+        var debugDescription: String {
+            var string = ["type: \(type)"]
+            if let properties {
+                string.append("properties: \(properties)")
+            }
+            if let item {
+                string.append("item: \(item)")
+            }
+
+            return "Property(\(string.joined(separator: ", ")))"
+        }
 
         enum JsonType: String, Codable, CustomDebugStringConvertible {
             case string
