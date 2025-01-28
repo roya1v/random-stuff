@@ -25,9 +25,9 @@ func testAddedProperty() {
         "newProperty": .init(type: .integer)
     ])
 
-    let changes = compareProperties(oldSchema.properties, newSchema.properties, path: "")
+    let changes = compareProperties(oldSchema.properties, newSchema.properties, path: [])
 
-    let expectedChanges = [Change(path: "", kind: .addedProperty("newProperty", .init(type: .integer)))]
+    let expectedChanges = [Change(path: [], kind: .addedProperty("newProperty", .init(type: .integer)))]
 
     #expect(changes == expectedChanges)
 }
@@ -40,9 +40,9 @@ func testDeletingProperty() {
 
     let newSchema = JsonSchema(properties: [:])
 
-    let changes = compareProperties(oldSchema.properties, newSchema.properties, path: "")
+    let changes = compareProperties(oldSchema.properties, newSchema.properties, path: [])
 
-    let expectedChanges = [Change(path: "", kind: .deletedProperty("existingProperty"))]
+    let expectedChanges = [Change(path: [], kind: .deletedProperty("existingProperty"))]
 
     #expect(changes == expectedChanges)
 }

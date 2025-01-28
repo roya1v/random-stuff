@@ -1,6 +1,6 @@
 import Foundation
 
-public func compareProperties(_ old: JsonSchema.Properties, _ new: JsonSchema.Properties, path: String) -> [Change] {
+public func compareProperties(_ old: JsonSchema.Properties, _ new: JsonSchema.Properties, path: [String]) -> [Change] {
     guard old != new else {
         return []
     }
@@ -8,7 +8,7 @@ public func compareProperties(_ old: JsonSchema.Properties, _ new: JsonSchema.Pr
 
     for (propertyName, oldProperty) in old {
         if let newProperty = new[propertyName] {
-            result.append(contentsOf: comprateProperty(oldProperty, newProperty, path: "\(path)/\(propertyName)"))
+            result.append(contentsOf: comprateProperty(oldProperty, newProperty, path: path + [propertyName]))
         } else {
             result.append(.init(path: path, kind: .deletedProperty(propertyName)))
         }
@@ -22,7 +22,7 @@ public func compareProperties(_ old: JsonSchema.Properties, _ new: JsonSchema.Pr
     return result
 }
 
-public func comprateProperty(_ old: JsonSchema.Property, _ new: JsonSchema.Property, path: String) -> [Change] {
+public func comprateProperty(_ old: JsonSchema.Property, _ new: JsonSchema.Property, path: [String]) -> [Change] {
     guard old != new else {
         return []
     }
@@ -74,7 +74,7 @@ public struct Change: Equatable {
         case changeType(JsonSchema.Property.JsonType)
     }
 
-    public let path: String
+    public let path: [String]
     public let kind: Kind
 }
 

@@ -31,7 +31,7 @@ struct Math: ParsableCommand {
         }
 
         private func compare(_ old: JsonSchema, _ new: JsonSchema) {
-            let changes = compareProperties(old.properties, new.properties, path: "")
+            let changes = compareProperties(old.properties, new.properties, path: [])
 
             for change in changes {
                 switch change.kind {
