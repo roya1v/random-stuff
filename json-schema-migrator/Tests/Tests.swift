@@ -63,3 +63,25 @@ func testAddingPropertyToChild() {
 
     #expect(changes == expectedChanges)
 }
+
+@Test
+func testChanginFromADictionaryToAnArray() {
+    let oldSchema = JsonSchema(properties: [
+        "existingDict": .init(type: .object, properties: ["title": .init(type: .string)])
+    ])
+
+    let newSchema = JsonSchema(properties: [
+        "existingDict": .init(
+            type: .array,
+            item: .init(
+                type: .object,
+                properties: [
+                    "title": .init(type: .string)]))
+    ])
+
+    let changes = compareProperties(oldSchema.properties, newSchema.properties, path: [])
+
+    let expectedChanges = [Change(path: ["existingChild"], kind: .addedProperty("newChildProperty", .init(type: .string)))]
+
+    #expect(changes == expectedChanges)
+}
