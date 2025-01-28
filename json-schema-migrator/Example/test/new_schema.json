@@ -3,7 +3,7 @@
         "message": {
             "type": "string"
         },
-        "test": {
+        "title": {
             "type": "string"
         },
         "author": {
@@ -11,7 +11,10 @@
             "properties": {
               "name": {
                   "type": "string"
-              }
+              },
+              "age": {
+                  "type": "integer"
+              },
             }
         }
     }
