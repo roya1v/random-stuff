@@ -9,10 +9,6 @@ import Testing
 import XCTest
 @testable import JsonSchemaMigratorKit
 
-@Test
-func testTest() {
-    print("test")
-}
 
 @Test
 func testAddedProperty() {
@@ -43,6 +39,27 @@ func testDeletingProperty() {
     let changes = compareProperties(oldSchema.properties, newSchema.properties, path: [])
 
     let expectedChanges = [Change(path: [], kind: .deletedProperty("existingProperty"))]
+
+    #expect(changes == expectedChanges)
+}
+
+@Test
+func testAddingPropertyToChild() {
+    let oldSchema = JsonSchema(properties: [
+        "existingProperty": .init(type: .string),
+        "existingChild": .init(type: .object, properties: [:])
+    ])
+
+    let newSchema = JsonSchema(properties: [
+        "existingProperty": .init(type: .string),
+        "existingChild": .init(type: .object, properties: [
+            "newChildProperty": .init(type: .string)
+        ])
+    ])
+
+    let changes = compareProperties(oldSchema.properties, newSchema.properties, path: [])
+
+    let expectedChanges = [Change(path: ["existingChild"], kind: .addedProperty("newChildProperty", .init(type: .string)))]
 
     #expect(changes == expectedChanges)
 }
