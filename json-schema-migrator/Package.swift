@@ -5,11 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "json-schema-migrator",
-    platforms: [.macOS(.v11)],
+    platforms: [.macOS(.v14)],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMajor(from: "1.5.0")),
+    ],
     targets: [
         .executableTarget(
             name: "JsonSchemaMigrator",
-            dependencies: ["JsonSchemaMigratorKit"]),
+            dependencies: [
+                "JsonSchemaMigratorKit",
+                .product(name: "ArgumentParser", package: "swift-argument-parser")
+            ]
+        ),
         .target(
             name: "JsonSchemaMigratorKit"),
         .testTarget(
