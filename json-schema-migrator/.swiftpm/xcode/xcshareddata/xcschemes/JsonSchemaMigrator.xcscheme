@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1600"
+   LastUpgradeVersion = "1620"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "json-schema-migrator"
-               BuildableName = "json-schema-migrator"
-               BlueprintName = "json-schema-migrator"
+               BlueprintIdentifier = "JsonSchemaMigrator"
+               BuildableName = "JsonSchemaMigrator"
+               BlueprintName = "JsonSchemaMigrator"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "json-schema-migrator"
-            BuildableName = "json-schema-migrator"
-            BlueprintName = "json-schema-migrator"
+            BlueprintIdentifier = "JsonSchemaMigrator"
+            BuildableName = "JsonSchemaMigrator"
+            BlueprintName = "JsonSchemaMigrator"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "json-schema-migrator"
-            BuildableName = "json-schema-migrator"
-            BlueprintName = "json-schema-migrator"
+            BlueprintIdentifier = "JsonSchemaMigrator"
+            BuildableName = "JsonSchemaMigrator"
+            BlueprintName = "JsonSchemaMigrator"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>

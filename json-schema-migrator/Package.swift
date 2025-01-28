@@ -7,9 +7,14 @@ let package = Package(
     name: "json-schema-migrator",
     platforms: [.macOS(.v11)],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .executableTarget(
-            name: "json-schema-migrator"),
+            name: "JsonSchemaMigrator",
+            dependencies: ["JsonSchemaMigratorKit"]),
+        .target(
+            name: "JsonSchemaMigratorKit"),
+        .testTarget(
+            name: "JsonSchemaMigratorTests",
+            dependencies: ["JsonSchemaMigratorKit"]
+        )
     ]
 )
