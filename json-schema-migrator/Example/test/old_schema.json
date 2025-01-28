@@ -1,0 +1,18 @@
+{
+    "properties": {
+        "message": {
+            "type": "string"
+        },
+        "author": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

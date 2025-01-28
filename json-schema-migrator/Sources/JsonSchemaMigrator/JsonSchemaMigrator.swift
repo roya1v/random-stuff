@@ -6,7 +6,7 @@ import ArgumentParser
 struct Math: ParsableCommand {
     static let configuration = CommandConfiguration(
         abstract: "A utility for migrating json files.",
-        subcommands: [Log.self],
+        subcommands: [Log.self, Migrate.self],
         defaultSubcommand: Log.self)
 
     struct JsonSchemas: ParsableArguments {
@@ -49,9 +49,11 @@ struct Math: ParsableCommand {
             }
         }
 
-        private func readSchema(from filePath: String) throws -> JsonSchema {
-            let data = try Data(contentsOf: URL(filePath: filePath))
-            return try JSONDecoder().decode(JsonSchema.self, from: data)
-        }
+
     }
 }
+func readSchema(from filePath: String) throws -> JsonSchema {
+    let data = try Data(contentsOf: URL(filePath: filePath))
+    return try JSONDecoder().decode(JsonSchema.self, from: data)
+}
+

@@ -1,0 +1,7 @@
+{
+    "message": "Hello, World!",
+    "author": {
+        "name": "Someone",
+        "location": "test"
+    }
+}

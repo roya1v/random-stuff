@@ -76,6 +76,13 @@ public struct Change: Equatable {
 
     public let path: [String]
     public let kind: Kind
+
+    public var child: Change? {
+        guard !path.isEmpty else {
+            return nil
+        }
+        return Change(path: Array(path.dropFirst()), kind: kind)
+    }
 }
 
 public struct JsonSchema: Codable {
