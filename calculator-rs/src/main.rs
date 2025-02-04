@@ -60,6 +60,9 @@ fn evaluate(expression: &str) -> Result<i32, Error> {
 fn parse(character: char) -> Option<Expression> {
     match character {
         '+' => Some(Expression::Operator(Box::new(|x, y| {x + y}))),
+        '-' => Some(Expression::Operator(Box::new(|x, y| {x - y}))),
+        '*' => Some(Expression::Operator(Box::new(|x, y| {x * y}))),
+        '/' => Some(Expression::Operator(Box::new(|x, y| {x / y}))),
         _ => None
     }
 }
