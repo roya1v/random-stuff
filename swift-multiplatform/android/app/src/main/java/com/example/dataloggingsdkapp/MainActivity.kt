@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.dataloggingsdkapp.ui.theme.DataLoggingSDKAppTheme
-
+import com.example.swift
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,6 @@ fun Content(modifier: Modifier = Modifier) {
             Text("Start")
         }
         Button(onClick = {
-            print("Hello world")
         }) {
             Text("Stop")
         }

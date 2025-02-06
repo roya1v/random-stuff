@@ -7,10 +7,22 @@ let package = Package(
     products: [
         .library(
             name: "DataLoggingSDK",
-            targets: ["DataLoggingSDK"]),
+            targets: ["DataLoggingSDK"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/swiftlang/swift-java", branch: "main")
     ],
     targets: [
         .target(
-            name: "DataLoggingSDK"),
+            name: "DataLoggingSDK",
+            dependencies: [
+                .product(name: "SwiftKitSwift", package: "swift-java")
+            ],
+            exclude: [
+                "swift-java.config"
+            ],
+            plugins: [
+                .plugin(name: "JExtractSwiftPlugin", package: "swift-java")
+            ])
     ]
 )
