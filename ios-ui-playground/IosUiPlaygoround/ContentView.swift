@@ -20,6 +20,9 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+                NavigationLink("FancyOnboarding") {
+                    FancyOnboarding()
+                }
             }
         }
     }
