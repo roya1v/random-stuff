@@ -14,14 +14,20 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink("ShakyTextField") {
+                NavigationLink("Shaky TextField") {
                     ShakyTextField(text: $text) {
                         text.contains(where: \.isLetter)
                     }
                     .padding()
                 }
-                NavigationLink("FancyOnboarding") {
+                NavigationLink("Fancy Onboarding") {
                     FancyOnboarding()
+                }
+                NavigationLink("Netflix Graphs") {
+                    NetflixCharts()
+                }
+                NavigationLink("Draggable card") {
+                    DraggableCard()
                 }
             }
         }
