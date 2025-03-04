@@ -10,7 +10,7 @@ fn test() {
     }
 }
 
-enum Expression {
+pub enum Expression {
     Operand(i32),
     Operator(Box<dyn Fn(i32, i32) -> i32>)
 }

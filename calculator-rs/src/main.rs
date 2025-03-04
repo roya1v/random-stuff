@@ -10,7 +10,7 @@ use libadwaita::{ActionRow, Application, ApplicationWindow, HeaderBar};
 use libadwaita::gtk::{Box, Button, Label, ListBox, Orientation, SelectionMode};
 use logic::Calculator;
 
-mod calculator;
+pub mod calculator;
 mod logic;
 
 fn main() {
