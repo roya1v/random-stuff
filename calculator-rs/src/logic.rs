@@ -35,22 +35,22 @@ impl Calculator {
                 self.expression
                     .push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
                 self.buffer = "".to_string();
-                self.display_callback.as_ref().unwrap()(self.buffer.as_str())
             }
             '=' => {
                 self.expression
                     .push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
-                self.evaluate();
+                self.buffer = format!("{}", self.evaluate());
             },
             'C' => {
                 self.buffer = "".to_string();
-                self.display_callback.as_ref().unwrap()(self.buffer.as_str())
+                self.expression.clear();
             }
             _ => panic!("Unexpected value {}", value),
         }
+        self.display_callback.as_ref().unwrap()(self.buffer.as_str())
     }
 
-    fn evaluate(&mut self) {
+    fn evaluate(&mut self) -> i32 {
         self.display_callback.as_ref().unwrap()("wtf");
         let mut stack: VecDeque<i32> = VecDeque::new();
         for thing in self.expression.iter().rev() {
@@ -64,7 +64,7 @@ impl Calculator {
                 }
             }
         }
-        self.display_callback.as_ref().unwrap()(format!("{}", stack.pop_back().unwrap()).as_str());
+        stack.pop_back().unwrap()
     }
 
     fn parse_operator(value: char) -> Expression {

@@ -61,7 +61,7 @@ fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
     content.append(&row);
 
     let seven_button = get_button(calculator.clone(), '7', "7");
-    let eight_button = get_button(calculator.clone(), '7', "8");
+    let eight_button = get_button(calculator.clone(), '8', "8");
     let nine_button = get_button(calculator.clone(), '9', "9");
     let multiply_button = get_button(calculator.clone(), '*', "*");
 
