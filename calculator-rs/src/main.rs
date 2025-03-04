@@ -52,10 +52,10 @@ fn main() {
 }
 
 fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
-    let cancel_button = get_button("C");
-    let idk_button = get_button("idk");
-    let percent_button = get_button("%");
-    let divide_button = get_button("/");
+    let cancel_button = get_button(calculator.clone(), 'C',"C");
+    let idk_button = get_button(calculator.clone(), '*',"idk");
+    let percent_button = get_button(calculator.clone(), '%',"%");
+    let divide_button = get_button(calculator.clone(), '/', "/");
 
     let row = Box::new(Orientation::Horizontal, 0);
     row.append(&cancel_button);
@@ -65,10 +65,10 @@ fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
 
     content.append(&row);
 
-    let seven_button = get_button("7");
-    let eight_button = get_button("8");
-    let nine_button = get_button("9");
-    let multiply_button = get_button("*");
+    let seven_button = get_button(calculator.clone(), '7',"7");
+    let eight_button = get_button(calculator.clone(), '7',"8");
+    let nine_button = get_button(calculator.clone(), '9',"9");
+    let multiply_button = get_button(calculator.clone(), '*',"*");
 
     let row = Box::new(Orientation::Horizontal, 0);
     row.append(&seven_button);
@@ -78,10 +78,10 @@ fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
 
     content.append(&row);
 
-    let four_button = get_button("4");
-    let five_button = get_button("5");
-    let six_button = get_button("6");
-    let minus_button = get_button("-");
+    let four_button = get_button(calculator.clone(), '4',"4");
+    let five_button = get_button(calculator.clone(), '5',"5");
+    let six_button = get_button(calculator.clone(), '6',"6");
+    let minus_button = get_button(calculator.clone(), '-',"-");
 
     let row = Box::new(Orientation::Horizontal, 0);
     row.append(&four_button);
@@ -91,10 +91,10 @@ fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
 
     content.append(&row);
 
-    let one_button = get_button("1");
-    let two_button = get_button("2");
-    let three_button = get_button("3");
-    let plus_button = get_button("+");
+    let one_button = get_button(calculator.clone(), '1',"1");
+    let two_button = get_button(calculator.clone(), '2',"2");
+    let three_button = get_button(calculator.clone(), '3',"3");
+    let plus_button = get_button(calculator.clone(), '+',"+");
 
     let row = Box::new(Orientation::Horizontal, 0);
     row.append(&one_button);
@@ -104,10 +104,10 @@ fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
 
     content.append(&row);
 
-    let idk_button = get_button("idk");
-    let zero_button = get_button("0");
-    let comma_button = get_button(",");
-    let equals_button = get_button("=");
+    let idk_button = get_button(calculator.clone(), '*',"idk");
+    let zero_button = get_button(calculator.clone(), '0',"0");
+    let comma_button = get_button(calculator.clone(), ',',",");
+    let equals_button = get_button(calculator.clone(), '=',"=");
 
     let row = Box::new(Orientation::Horizontal, 0);
     row.append(&idk_button);
@@ -116,19 +116,20 @@ fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
     row.append(&equals_button);
 
     content.append(&row);
-
-    let mut test = calculator.clone();
-    one_button.connect_clicked(move |_| {
-        test.borrow_mut().test();
-    });
 }
 
-fn get_button(label: &str) -> Button {
-     Button::builder()
+fn get_button(calculator: Rc<RefCell<Calculator>>, value: char, label: &str) -> Button {
+     let button = Button::builder()
         .label(label)
         .margin_top(12)
         .margin_bottom(12)
         .margin_start(12)
         .margin_end(12)
-        .build()
+        .build();
+
+        button.connect_clicked(move |_| {
+            calculator.clone().borrow_mut().input(value);
+        });
+
+    button
 }
