@@ -30,9 +30,8 @@ impl Calculator {
                 self.buffer.push(value);
                 self.display_callback.as_ref().unwrap()(self.buffer.as_str())
             }
-            '+' => {
-                self.expression
-                    .push(Expression::Operator(Box::new(|x, y| x + y)));
+            '+' | '-' | '*' | '/' => {
+                self.expression.push(Self::parse_operator(value));
                 self.expression
                     .push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
                 self.buffer = "".to_string();
@@ -42,10 +41,15 @@ impl Calculator {
                 self.expression
                     .push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
                 self.evaluate();
+            },
+            'C' => {
+                self.buffer = "".to_string();
+                self.display_callback.as_ref().unwrap()(self.buffer.as_str())
             }
             _ => panic!("Unexpected value {}", value),
         }
     }
+
     fn evaluate(&mut self) {
         self.display_callback.as_ref().unwrap()("wtf");
         let mut stack: VecDeque<i32> = VecDeque::new();
@@ -56,10 +60,20 @@ impl Calculator {
                     let b = stack.pop_back().unwrap();
                     let a = stack.pop_back().unwrap();
 
-                    stack.push_back(operation(a, b));
+                    stack.push_back(operation(b, a));
                 }
             }
         }
         self.display_callback.as_ref().unwrap()(format!("{}", stack.pop_back().unwrap()).as_str());
+    }
+
+    fn parse_operator(value: char) -> Expression {
+        match value {
+            '+' => Expression::Operator(Box::new(|x, y| x + y)),
+            '-' => Expression::Operator(Box::new(|x, y| x - y)),
+            '*' => Expression::Operator(Box::new(|x, y| x * y)),
+            '/' => Expression::Operator(Box::new(|x, y| x / y)),
+            _ => panic!("{} is not a valid operator", value),
+        }
     }
 }
