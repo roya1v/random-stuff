@@ -1,3 +1,6 @@
+use core::panic;
+use std::cell::{Ref, RefCell};
+use std::rc::Rc;
 use std::{fmt::Error, io, vec};
 
 use libadwaita::gtk::builders::LabelBuilder;
@@ -5,6 +8,10 @@ use libadwaita::prelude::*;
 
 use libadwaita::{ActionRow, Application, ApplicationWindow, HeaderBar};
 use libadwaita::gtk::{Box, Button, Label, ListBox, Orientation, SelectionMode};
+use logic::Calculator;
+
+mod calculator;
+mod logic;
 
 fn main() {
     let application = Application::builder()
@@ -14,12 +21,23 @@ fn main() {
     application.connect_activate(|app| {
         let content = Box::new(Orientation::Vertical, 0);
 
-
+        let mut calculator = Calculator::new();
 
         content.append(&HeaderBar::new());
         let label = Label::builder().label("test").build();
         content.append(&label);
-        setup_keypad(&content);
+
+
+        let test = Rc::new(label);
+
+        test.set_label("hello");
+
+        let test2 = test.clone();
+        calculator.set_display(std::boxed::Box::new( move |new_label| {
+            test2.set_label(&new_label);
+        }));
+
+        setup_keypad(&content, Rc::new(RefCell::new(calculator)));
 
         let window = ApplicationWindow::builder()
             .application(app)
@@ -33,7 +51,7 @@ fn main() {
     application.run();
 }
 
-fn setup_keypad(content: &Box) {
+fn setup_keypad(content: &Box, calculator: Rc<RefCell<Calculator>>) {
     let cancel_button = get_button("C");
     let idk_button = get_button("idk");
     let percent_button = get_button("%");
@@ -98,6 +116,11 @@ fn setup_keypad(content: &Box) {
     row.append(&equals_button);
 
     content.append(&row);
+
+    let mut test = calculator.clone();
+    one_button.connect_clicked(move |_| {
+        test.borrow_mut().test();
+    });
 }
 
 fn get_button(label: &str) -> Button {
@@ -109,70 +132,3 @@ fn get_button(label: &str) -> Button {
         .margin_end(12)
         .build()
 }
-
-// fn main2() {
-//     loop {
-//         let mut expression = String::new();
-//         let stdin = io::stdin(); // We get `Stdin` here.
-//         stdin.read_line(&mut expression).unwrap();
-//         let result = evaluate_polish_notion(&expression.trim()).unwrap();
-//         println !("={}", result); 
-//     }
-// }
-
-// enum Expression {
-//     Operand(i32),
-//     Operator(Box<dyn Fn(i32, i32) -> i32>)
-// }
-
-// fn evaluate_polish_notion(expression: &str) -> Result<i32, Error> {
-//     let mut expressions: Vec<Expression> = vec![];
-//     let mut buffer: Vec<char> = vec![];
-//     for char in expression.chars() {
-//         if let Some(expression) = parse(char) {
-//             let operand = buffer.clone().into_iter().collect::<String>().parse::<i32>().unwrap();
-//             expressions.push(Expression::Operand(operand));
-//             buffer.clear();
-//             expressions.push(expression);
-//         } else {
-//             buffer.push(char);
-//         }
-//     }
-//     if !buffer.is_empty() {
-//         let operand = buffer.clone().into_iter().collect::<String>().parse::<i32>().unwrap();
-//         expressions.push(Expression::Operand(operand));
-//     }
-
-//     let mut x = Option::<i32>::None;
-//     let mut operator = Option::<Box<dyn Fn(i32, i32) -> i32>>::None;
-
-//     for expression in expressions.iter() {
-        
-//         match expression {
-//             Expression::Operand(y) => {
-//                 if let Some(x1) = x   {
-//                     if let Some(operator2) = operator {
-//                         let test = operator2(*y, x1);
-//                         x = Some(test);
-//                         operator = None;
-//                     }
-//                 } else {
-//                     x = Some(*y)
-//                 }
-//             },
-//             Expression::Operator(operator2) => operator = Some(Box::new(operator2)),
-//         }
-//     }
-    
-//     Ok(x.unwrap())
-// }
-
-// fn parse(character: char) -> Option<Expression> {
-//     match character {
-//         '+' => Some(Expression::Operator(Box::new(|x, y| {x + y}))),
-//         '-' => Some(Expression::Operator(Box::new(|x, y| {x - y}))),
-//         '*' => Some(Expression::Operator(Box::new(|x, y| {x * y}))),
-//         '/' => Some(Expression::Operator(Box::new(|x, y| {x / y}))),
-//         _ => None
-//     }
-// }
