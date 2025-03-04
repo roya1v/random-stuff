@@ -1,11 +1,14 @@
 use std::collections::VecDeque;
 
-use crate::calculator::Expression;
-
 pub struct Calculator {
     buffer: String,
     expression: Vec<Expression>,
     display_callback: Option<Box<dyn Fn(&str) -> ()>>,
+}
+
+pub enum Expression {
+    Operand(i32),
+    Operator(Box<dyn Fn(i32, i32) -> i32>),
 }
 
 impl Calculator {
@@ -13,7 +16,7 @@ impl Calculator {
         Self {
             display_callback: None,
             buffer: "".to_string(),
-            expression: vec![]
+            expression: vec![],
         }
     }
 
@@ -26,15 +29,18 @@ impl Calculator {
             '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' => {
                 self.buffer.push(value);
                 self.display_callback.as_ref().unwrap()(self.buffer.as_str())
-            },
+            }
             '+' => {
-                self.expression.push(Expression::Operator(Box::new(|x, y| {x + y})));
-                self.expression.push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
+                self.expression
+                    .push(Expression::Operator(Box::new(|x, y| x + y)));
+                self.expression
+                    .push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
                 self.buffer = "".to_string();
                 self.display_callback.as_ref().unwrap()(self.buffer.as_str())
-            },
+            }
             '=' => {
-                self.expression.push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
+                self.expression
+                    .push(Expression::Operand(self.buffer.parse::<i32>().unwrap()));
                 self.evaluate();
             }
             _ => panic!("Unexpected value {}", value),
@@ -51,10 +57,9 @@ impl Calculator {
                     let a = stack.pop_back().unwrap();
 
                     stack.push_back(operation(a, b));
-                },
+                }
             }
         }
         self.display_callback.as_ref().unwrap()(format!("{}", stack.pop_back().unwrap()).as_str());
-
     }
 }
