@@ -4,7 +4,7 @@ export async function GET(request: Request) {
     return Response.json(items)
 }
 
-let items: Array<ToDoItem> = [        {
+let items: Array<ToDoItem> = [{
     id: 0,
     content: "Hello, World!",
     is_done: false
