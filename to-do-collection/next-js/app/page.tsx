@@ -30,7 +30,7 @@ export default function Home() {
         item.id === updatedItem.id ? { ...item, is_done: newChecked } : item
       )
     );
-    fetch("http://localhost:3000/todos", {
+    fetch("/api/todos", {
       method: "PUT",
       body: JSON.stringify(updatedItem),
       headers: { "Content-Type": "application/json" },
