@@ -3,19 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-
-interface ToDoItem {
-  id: number | undefined;
-  content: string;
-  is_done: boolean;
-}
+import { ToDoItem } from "./_todoItem";
 
 export default function Home() {
   const [items, setItems] = useState(Array<ToDoItem>());
   const [newItem, setNewItem] = useState("");
   useEffect(() => {
     let ignore = false;
-    fetch("http://localhost:3000/todos")
+    fetch("/api/todos")
       .then((resp) => resp.json() as Promise<Array<ToDoItem>>)
       .then((items) => {
         console.log(items);
@@ -48,7 +43,7 @@ export default function Home() {
       id: undefined,
       is_done: false,
     };
-    fetch("http://localhost:3000/todos", {
+    fetch("/api/todos", {
       method: "POST",
       body: JSON.stringify(item),
       headers: { "Content-Type": "application/json" },
