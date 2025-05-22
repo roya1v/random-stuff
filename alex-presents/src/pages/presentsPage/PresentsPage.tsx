@@ -42,9 +42,8 @@ export function PresentsPage() {
                             console.log(present.id)
                             return (
                                 <div key={present.id} className="m-4">
-                                    <div className="flex flex-row items-center">
-                                        {present.title}
-                                        <div className="flex-auto"></div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <PresentInfo present={present} />
                                         <Button onClick={() => {
                                             updateDoc(doc(db, "presents", present.id), { presenter: auth.currentUser!.uid }).then(() => { setRefreshKey(prev => prev + 1) })
                                         }}>
@@ -60,9 +59,8 @@ export function PresentsPage() {
                             console.log(present.id)
                             return (
                                 <div key={present.id} className="m-4">
-                                    <div className="flex flex-row items-center">
-                                        {present.title}
-                                        <div className="flex-auto"></div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <PresentInfo present={present} />
                                         <Button variant="destructive" onClick={() => {
                                             updateDoc(doc(db, "presents", present.id), { presenter: null }).then(() => { setRefreshKey(prev => prev + 1) })
                                         }}>
@@ -81,4 +79,16 @@ export function PresentsPage() {
             </div>
         </div>
     )
+}
+
+interface PresentInfoProps {
+    present: Present
+}
+
+function PresentInfo({ present }: PresentInfoProps) {
+    return (<div className="min-w-0 wrap-break-word flex flex-col">
+        <h3 className="text-wrap">{present.title}</h3>
+        {present.site != null && <a href={present.site} className="text-blue-500 italic underline" target="_blank" rel="noopener noreferrer">Ссылка на сайт</a>}
+        {present.note != null && <p className="text-gray-500 italic underline">Примечание: {present.note}</p>}
+    </div>)
 }
