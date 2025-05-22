@@ -26,7 +26,7 @@ export function PresentsPage() {
 
     return (
         <div className="bg-slate-100">
-            <div className="p-4 flex items-center h-screen justify-center flex-col ">
+            <div className="p-4 flex items-center min-h-screen justify-center flex-col overflow-scroll">
                 <Card className="w-full lg:w-[600px]">
                     <CardHeader className="flex flex-col items-center">
                         <h1 className="text-xl">Подарки для</h1>
