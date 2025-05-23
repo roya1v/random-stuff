@@ -6,7 +6,7 @@ import { PresentsPage } from './pages/presentsPage/PresentsPage';
 
 function App() {
 
-    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [isLoggedIn, setLoggedIn] = useState<boolean | null>(null);
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -18,18 +18,30 @@ function App() {
         });
     })
 
-    if (isLoggedIn) {
+    if (isLoggedIn == null) {
         return (
-            <>
-                <PresentsPage />
-            </>
+            <div className="flex justify-center items-center h-screen">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="animate-spin"
+                >
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                </svg>
+            </div>
         )
+    } else if (isLoggedIn) {
+        return (<PresentsPage />)
+
     } else {
-        return (
-            <>
-                <AuthPage />
-            </>
-        )
+        return (<AuthPage />)
     }
 }
 
