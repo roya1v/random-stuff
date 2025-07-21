@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:api-validator}",
+            "name": "Debug api-validator",
+            "program": "${workspaceFolder:api-validator}/.build/debug/api-validator",
+            "preLaunchTask": "swift: Build Debug api-validator"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:api-validator}",
+            "name": "Release api-validator",
+            "program": "${workspaceFolder:api-validator}/.build/release/api-validator",
+            "preLaunchTask": "swift: Build Release api-validator"
+        }
+    ]
+}
