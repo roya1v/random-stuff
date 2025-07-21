@@ -21,9 +21,9 @@ let package = Package(
             swiftSettings: swiftSettings
         ),
         .testTarget(
-            name: "TemplateBareTests",
+            name: "TodoServerTests",
             dependencies: [
-                .target(name: "TemplateBare"),
+                .target(name: "TodoServer"),
                 .product(name: "VaporTesting", package: "vapor"),
             ],
             swiftSettings: swiftSettings

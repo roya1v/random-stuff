@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:vapor-swift}",
+      "name": "Debug TodoServer",
+      "program": "${workspaceFolder:vapor-swift}/.build/debug/TodoServer",
+      "preLaunchTask": "swift: Build Debug TodoServer"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:vapor-swift}",
+      "name": "Release TodoServer",
+      "program": "${workspaceFolder:vapor-swift}/.build/release/TodoServer",
+      "preLaunchTask": "swift: Build Release TodoServer"
+    }
+  ]
+}
