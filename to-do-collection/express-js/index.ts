@@ -21,7 +21,11 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-app.get("/todos", async (req, res) => {
+app.get("/api/available", async (req, res) => {
+  res.json(["v1"]);
+});
+
+app.get("/api/v1/todos", async (req, res) => {
   const items = await collection.find({}).toArray();
   res.json(items);
 });
