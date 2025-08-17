@@ -1,9 +1,12 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 
 import { apiV1 } from './api/v1.js';
 
 const app = new Hono()
+
+app.use('/api/*', cors())
 
 app.get('/api/available', (c) => {
   return c.json(['v1'])
