@@ -3,7 +3,19 @@ info:
   title: Todo collection's scheme
   version: 1.0.0
 paths:
-  /todos:
+  /api/available:
+    get:
+      summary: Get available api versions.
+      responses:
+        '200':
+          description: Available api versions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  enum: ['v1']
+  /api/v1:
     get:
       summary: Get all todos
       description: Get all existing todos as a list.
@@ -16,7 +28,7 @@ paths:
               schema:
                 type: array
                 items: 
-                  $ref: '#/components/schemas/ToDo'
+                  $ref: '#/components/schemas/Todo'
     post:
       summary: Create a new todo
       description: Create a new todo
@@ -26,7 +38,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ToDo'
+              $ref: '#/components/schemas/Todo'
         required: true
       responses:
         '200':
@@ -34,26 +46,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ToDo'  
-    put:
-      summary: Update an existing todo.
-      description: Update an existing todo.
-      operationId: updateToDo
-      requestBody:
-        description: The new todo content
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ToDo'
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ToDo'
-  /todos/{id}/delete:
+                $ref: '#/components/schemas/Todo'  
+
+  /api/v1/{id}:
     delete:
       parameters:
         - name: id
@@ -69,10 +64,27 @@ paths:
       responses:
         '200':
          description: Successful operation
-        
+    put:
+      summary: Update an existing todo.
+      description: Update an existing todo.
+      operationId: updateToDo
+      requestBody:
+        description: The new todo content
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
 components:
   schemas:
-    ToDo:
+    Todo:
       required:
         - content
       type: object
@@ -83,13 +95,14 @@ components:
           example: 10
         content:
           type: string
+          description: 'The description of the item that needs to be done.'
           example: Buy stuff
         is_done:
           type: boolean
   requestBodies:
-    ToDo:
-      description: ToDo that needs to be created
+    Todo:
+      description: Todo that needs to be created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ToDo'
+            $ref: '#/components/schemas/Todo'
