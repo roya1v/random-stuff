@@ -10,11 +10,11 @@ use crate::{app_state::AppState, core::todo_store::ToDoItem};
 
 pub fn make_router(state: Arc<AppState>) -> Router {
     Router::new()
-        .route("/", get(|| async { "Hello, World!" }))
-        .route("/todos", get(get_all_todos))
-        .route("/todos", post(new_todo))
-        .route("/todos", put(update_todo))
-        .route("/todos/:todo_id/delete", delete(delete_todo))
+        .route("/api/available", get(|| async { Json(vec!["v1"]) }))
+        .route("/api/v1", get(get_all_todos))
+        .route("/api/v1", post(new_todo))
+        .route("/api/v1", put(update_todo))
+        .route("/api/v1/:todo_id", delete(delete_todo))
         .with_state(state)
 }
 

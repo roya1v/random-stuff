@@ -11,6 +11,7 @@ target/
 
 # SQLite Database files
 *.db
+*.db-*
 
 # Local env
 .env

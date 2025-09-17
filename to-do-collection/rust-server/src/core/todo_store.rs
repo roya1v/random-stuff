@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use serde::{Deserialize, Serialize};
-use sqlx::{query, sqlite::SqliteConnectOptions, ConnectOptions, Error, Row, SqliteConnection};
+use sqlx::{query, Error, Row, SqliteConnection};
 use tokio::sync::Mutex;
 
 #[derive(Serialize, Deserialize)]
