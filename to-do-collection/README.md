@@ -10,7 +10,7 @@ This is a collection of todo client and server apps.
 | leptos-rs | Rust, leptos | ❌ |
 | next-js | TS, NextJS | ❌ |
 | objc-ios-app | Objective-C, UIKit | ❌ |
-| rust-server | Axum, sqlit | ❌ |
+| rust-server | Axum, sqlx, sqlite | ✅ |
 | hono-ts | TS, hono, drizzle | ✅ |
 | python-client | Python, Textual | ❌ |
 | vapor-swift | Swift, Vapor | ❌ |
