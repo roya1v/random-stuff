@@ -9,7 +9,7 @@ This is a collection of todo client and server apps.
 | fastapi-server | Python3, fastapi, sqlite | ❌ |
 | leptos-rs | Rust, leptos | ❌ |
 | next-js | TS, NextJS | ❌ |
-| objc-ios-app | Objective-C, UIKit | ❌ |
+| objc-ios-app | Objective-C, UIKit | ✅ |
 | rust-server | Axum, sqlx, sqlite | ✅ |
 | hono-ts | TS, hono, drizzle | ✅ |
 | python-client | Python, Textual | ❌ |

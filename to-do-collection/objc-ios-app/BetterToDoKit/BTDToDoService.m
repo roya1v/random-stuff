@@ -16,7 +16,7 @@
 
 - (void)fetchAll:(ToDoItemsCompletionHandler)completionHandler {
     NSURLComponents *urlComponens = [self getBaseUrl];
-    urlComponens.path = @"/todos";
+    urlComponens.path = @"/api/v1";
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:urlComponens.URL];
     request.HTTPMethod = @"GET";
@@ -50,7 +50,7 @@
 - (void)updateItem:(BTDToDoItem * _Nonnull)item
               then:(ToDoItemCompletionHandler)completionHandler {
     NSURLComponents *urlComponens = [self getBaseUrl];
-    urlComponens.path = @"/todos";
+    urlComponens.path = @"/api/v1";
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:urlComponens.URL];
     request.HTTPMethod = @"PUT";
@@ -91,7 +91,7 @@
            then:(ToDoItemCompletionHandler)completionHandler {
 
     NSURLComponents *urlComponens = [self getBaseUrl];
-    urlComponens.path = @"/todos";
+    urlComponens.path = @"/api/v1";
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:urlComponens.URL];
     request.HTTPMethod = @"POST";
@@ -130,7 +130,7 @@
 
 - (void)deleteItem:(BTDToDoItem *)item then:(void(^)(NSError * error))completionHandler {
     NSURLComponents *urlComponens = [self getBaseUrl];
-    urlComponens.path = [NSString stringWithFormat:@"/todos/%@/delete", item.id];
+    urlComponens.path = [NSString stringWithFormat:@"/api/v1/%@", item.id];
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:urlComponens.URL];
     request.HTTPMethod = @"DELETE";
