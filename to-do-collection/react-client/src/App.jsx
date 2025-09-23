@@ -1,24 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
+import { useTodoStore } from './todoStore'
+import { NewTodoField } from './NewTodoField'
 
 function App() {
-  const [items, setItems] = useState([])
-
+  const todos = useTodoStore((state) => state.todos)
+  const refresh = useTodoStore((state) => state.refresh)
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('http://localhost:3000/api/v1')
-      const data = await res.json()
-      setItems(data)
-    }
-    fetchData();
+    refresh();
   }, [])
 
   return (
     <>
       <div>
-        {items.map((item) => <div key={item.id}>{item.content}<input type="checkbox"></input></div>)}
-        <input type="text"></input>
-        <button>Create</button>
+        {todos.map((item) => <div key={item.id}>{item.content}<input type="checkbox"></input></div>)}
+        <NewTodoField />
       </div>
     </>
   )
