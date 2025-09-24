@@ -46,24 +46,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todo'  
-
-  /api/v1/{id}:
-    delete:
-      parameters:
-        - name: id
-          in: path
-          description: ToDo ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      summary: Delete an existing todo.
-      description: Delete an existing todo.
-      operationId: deleteToDo
-      responses:
-        '200':
-         description: Successful operation
+                $ref: '#/components/schemas/Todo'
     put:
       summary: Update an existing todo.
       description: Update an existing todo.
@@ -82,6 +65,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
+  /api/v1/{id}:
+    delete:
+      parameters:
+        - name: id
+          in: path
+          description: ToDo ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Delete an existing todo.
+      description: Delete an existing todo.
+      operationId: deleteToDo
+      responses:
+        '200':
+         description: Successful operation
+
 components:
   schemas:
     Todo:

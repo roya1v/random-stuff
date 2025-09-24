@@ -11,7 +11,7 @@ This is a collection of todo client and server apps.
 | next-js | TS, NextJS | ❌ |
 | objc-ios-app | Objective-C, UIKit | ✅ |
 | rust-server | Axum, sqlx, sqlite | ✅ |
-| hono-ts | TS, hono, drizzle | ✅ |
+| hono-ts | TS, hono, drizzle | ❌ |
 | python-client | Python, Textual | ❌ |
 | vapor-swift | Swift, Vapor | ❌ |
 | react-client | JS, React | ❌ |
