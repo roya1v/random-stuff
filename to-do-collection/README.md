@@ -14,5 +14,5 @@ This is a collection of todo client and server apps.
 | hono-ts | TS, hono, drizzle | ❌ |
 | python-client | Python, Textual | ❌ |
 | vapor-swift | Swift, Vapor | ❌ |
-| react-client | JS, React | ❌ |
+| react-client | JS, React | ✅ |
 | react-native | TS, React-Native | ❌ |

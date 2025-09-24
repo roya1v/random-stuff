@@ -33,5 +33,15 @@ export const useTodoStore = create((set, get) => ({
         body: JSON.stringify(item)
       })
     await get().refresh()
+    },
+    remove: async (id) => {
+      await fetch(`http://localhost:3000/api/v1/${id}`, {
+        method: "delete",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      })
+    await get().refresh()
     }
 }))
