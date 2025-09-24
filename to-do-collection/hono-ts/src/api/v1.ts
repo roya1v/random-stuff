@@ -22,9 +22,11 @@ apiV1.post('/', async (c) => {
   return c.json(newItem)
 })
 
-apiV1.put('/:id', async (c) => {
-  const id = c.req.param('id')
-  const item: typeof todosTable.$inferInsert = await c.req.json()
+apiV1.put('/', async (c) => {
+  const json = await c.req.json()
+  const id = json['id']
+  delete json['id'] // idk how to do it else
+  const item: typeof todosTable.$inferInsert = json
   const newItem = await db.update(todosTable).set(item).where(eq(todosTable.id, +id)).returning()
   return c.json(newItem)
 })
