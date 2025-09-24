@@ -13,10 +13,27 @@ function App() {
   return (
     <>
       <div>
-        {todos.map((item) => <div key={item.id}>{item.content}<input type="checkbox"></input></div>)}
+        {todos.map((item) => <TodoRow key={item.id} item={item}/>)}
         <NewTodoField />
       </div>
     </>
+  )
+}
+
+function TodoRow({item}) {
+  const update = useTodoStore((state) => state.update)
+  return (
+    <div>
+      {item.content}
+      <input 
+      type="checkbox"
+      checked={item.is_done}
+      onChange={(e) => {update({
+        id: item.id,
+        content: item.content,
+        is_done: e.target.checked
+      })}}></input>
+    </div>
   )
 }
 
